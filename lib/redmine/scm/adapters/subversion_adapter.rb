@@ -160,22 +160,26 @@ module Redmine
             begin
               doc = parse_xml(output)
               each_xml_element(doc['log'], 'logentry') do |logentry|
-                paths = []
-                each_xml_element(logentry['paths'], 'path') do |path|
-                  paths << {:action => path['action'],
-                            :path => path['__content__'],
-                            :from_path => path['copyfrom-path'],
-                            :from_revision => path['copyfrom-rev']
-                            }
-                end if logentry['paths'] && logentry['paths']['path']
-                paths.sort! { |x,y| x[:path] <=> y[:path] }
+                begin
+                  paths = []
+                  each_xml_element(logentry['paths'], 'path') do |path|
+                    paths << {:action => path['action'],
+                              :path => path['__content__'],
+                              :from_path => path['copyfrom-path'],
+                              :from_revision => path['copyfrom-rev']
+                              }
+                  end if logentry['paths'] && logentry['paths']['path']
+                  paths.sort! { |x,y| x[:path] <=> y[:path] }
 
-                revisions << Revision.new({:identifier => logentry['revision'],
-                              :author => (logentry['author'] ? logentry['author']['__content__'] : ""),
-                              :time => Time.parse(logentry['date']['__content__'].to_s).localtime,
-                              :message => logentry['msg']['__content__'],
-                              :paths => paths
-                            })
+                  revisions << Revision.new({:identifier => logentry['revision'],
+                                :author => (logentry['author'] ? logentry['author']['__content__'] : ""),
+                                :time => Time.parse(logentry['date']['__content__'].to_s).localtime,
+                                :message => logentry['msg']['__content__'],
+                                :paths => paths
+                              })
+                rescue
+                  logger.warn "Skipped svn revision ##{logentry['revision']} due to parse error" if logentry && logentry['revision']
+                end
               end
             rescue
             end
