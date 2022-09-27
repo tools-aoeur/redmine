@@ -508,11 +508,38 @@ class Mailer < ActionMailer::Base
       # Log errors when raise_delivery_errors is set to false, Rails does not
       mail.raise_delivery_errors = true
       super
-    rescue Exception => e
-      if ActionMailer::Base.raise_delivery_errors
-        raise e
+    rescue => e
+      unhandled = true
+      msg = e.message
+      if msg.include?('No such user')
+        username = msg.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
+        if mail.to.include?(username)
+          unhandled = false
+          to = mail.to
+          to.delete(username)
+          mail.to = to
+        end
+        if mail.cc.include?(username)
+          unhandled = false
+          cc = mail.cc
+          cc.delete(username)
+          mail.cc = cc
+        end
+        if mail.bcc.include?(username)
+          unhandled = false
+          bcc = mail.bcc
+          bcc.delete(username)
+          mail.bcc = bcc
+        end
+      end
+      if unhandled
+        if ActionMailer::Base.raise_delivery_errors
+          raise e
+        else
+          Rails.logger.error "Email delivery error: #{e.message}"
+        end
       else
-        Rails.logger.error "Email delivery error: #{e.message}"
+        retry
       end
     end
   end
