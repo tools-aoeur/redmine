@@ -125,6 +125,8 @@ end %>
 </div>
 <% end %>
 
+<%= call_hook(:view_issues_show_after_details, :issue => @issue) %>
+
 <% if @journals.present? %>
 <div id="history">
 <h3><%=l(:label_history)%></h3>
