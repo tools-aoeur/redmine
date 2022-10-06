@@ -18,7 +18,7 @@ gem "rexml", require: false if Gem.ruby_version >= Gem::Version.new('3.0')
 gem 'i18n', '~> 1.10.0'
 gem "rbpdf", "~> 1.20.0"
 gem 'addressable'
-gem 'rubyzip', '~> 2.3.0'
+gem 'rubyzip' #, '~> 2.3.0'
 gem 'net-smtp', '~> 0.3.0'
 gem 'net-imap', '~> 0.2.2'
 gem 'net-pop', '~> 0.1.1'
