@@ -144,7 +144,7 @@ class AuthSourceLdap < AuthSource
   def initialize_ldap_con(ldap_user, ldap_password)
     options = { :host => self.host,
                 :port => self.port,
-                :encryption => (self.tls ? :simple_tls : nil)
+                :encryption => (self.tls ? { method: :simple_tls, tls_options: { verify_mode: OpenSSL::SSL::VERIFY_PEER } } : nil)
               }
     options.merge!(:auth => { :method => :simple, :username => ldap_user, :password => ldap_password }) unless ldap_user.blank? && ldap_password.blank?
     Net::LDAP.new options
