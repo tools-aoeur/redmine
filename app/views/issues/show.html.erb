@@ -118,6 +118,8 @@ end %>
 
 </div>
 
+<%= call_hook(:view_issues_show_after_details, :issue => @issue) %>
+
 <% if @changesets.present? %>
 <div id="issue-changesets">
 <h3><%=l(:label_associated_revisions)%></h3>
