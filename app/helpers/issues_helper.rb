@@ -91,13 +91,27 @@ module IssuesHelper
 
   def render_descendants_tree(issue)
     s = '<table class="list issues odd-even">'
-    issue_list(issue.descendants.visible.preload(:status, :priority, :tracker, :assigned_to).sort_by(&:lft)) do |child, level|
+    s << content_tag(:thead,
+           content_tag('th', l(:field_subject)) +
+           content_tag('th', l(:field_priority)) +
+           content_tag('th', l(:field_status)) +
+           content_tag('th', l(:field_fixed_version)) +
+           content_tag('th', l(:field_assigned_to)) +
+           content_tag('th', l(:field_done_ratio)),
+           class: '')
+    prio_sortable = "#{IssuePriority.table_name}.position DESC"
+    selector = issue.descendants.visible.includes(:priority).preload(:status, :priority, :tracker, :assigned_to)
+    selector = selector.reorder(prio_sortable)
+    issue_list(selector) do |child, level|
+    #issue_list(issue.descendants.visible.preload(:status, :priority, :tracker, :assigned_to).sort_by(&:lft)) do |child, level|
       css = "issue issue-#{child.id} hascontextmenu #{child.css_classes}"
       css << " idnt idnt-#{level}" if level > 0
       s << content_tag('tr',
              content_tag('td', check_box_tag("ids[]", child.id, false, :id => nil), :class => 'checkbox') +
              content_tag('td', link_to_issue(child, :project => (issue.project_id != child.project_id)), :class => 'subject', :style => 'width: 50%') +
+             content_tag('td', h(child.priority)) +
              content_tag('td', h(child.status), :class => 'status') +
+             content_tag('td', link_to_if(child.fixed_version.present?, child.fixed_version, child.fixed_version), :class => 'fixed_version') +
              content_tag('td', link_to_user(child.assigned_to), :class => 'assigned_to') +
              content_tag('td', child.disabled_core_fields.include?('done_ratio') ? '' : progress_bar(child.done_ratio), :class=> 'done_ratio'),
              :class => css)
@@ -110,7 +124,17 @@ module IssuesHelper
   def render_issue_relations(issue, relations)
     manage_relations = User.current.allowed_to?(:manage_issue_relations, issue.project)
 
-    s = ''.html_safe
+    #s = ''.html_safe
+    s = content_tag(:thead,
+           content_tag('th', l(:field_subject)) +
+           content_tag('th', l(:field_priority)) +
+           content_tag('th', l(:field_status)) +
+           content_tag('th', l(:field_fixed_version)) +
+           content_tag('th', l(:field_assigned_to)) +
+           content_tag('th', l(:field_start_date)) +
+           content_tag('th', l(:field_due_date)) +
+           content_tag('th', l(:field_done_ratio)),
+           class: '')
     relations.each do |relation|
       other_issue = relation.other_issue(issue)
       css = "issue hascontextmenu #{other_issue.css_classes}"
@@ -126,7 +150,10 @@ module IssuesHelper
       s << content_tag('tr',
              content_tag('td', check_box_tag("ids[]", other_issue.id, false, :id => nil), :class => 'checkbox') +
              content_tag('td', relation.to_s(@issue) {|other| link_to_issue(other, :project => Setting.cross_project_issue_relations?)}.html_safe, :class => 'subject', :style => 'width: 50%') +
+             content_tag('td', other_issue.priority) +
              content_tag('td', other_issue.status, :class => 'status') +
+             content_tag('td', link_to_if(other_issue.fixed_version.present?, other_issue.fixed_version, other_issue.fixed_version), :class => 'fixed_version') +
+             content_tag('td', link_to_user(other_issue.assigned_to), :class => 'assigned_to') +
              content_tag('td', format_date(other_issue.start_date), :class => 'start_date') +
              content_tag('td', format_date(other_issue.due_date), :class => 'due_date') +
              content_tag('td', other_issue.disabled_core_fields.include?('done_ratio') ? '' : progress_bar(other_issue.done_ratio), :class=> 'done_ratio') +
