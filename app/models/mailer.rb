@@ -359,7 +359,7 @@ class Mailer < ActionMailer::Base
       :subject => "[#{Setting.app_title}] #{l(:mail_subject_security_notification)}"
   end
 
-	# Notifies admins about settings changes
+  # Notifies admins about settings changes
   def self.security_settings_updated(changes)
     return unless changes.present?
 
@@ -508,7 +508,7 @@ class Mailer < ActionMailer::Base
       # Log errors when raise_delivery_errors is set to false, Rails does not
       mail.raise_delivery_errors = true
       super
-    rescue => e
+    rescue Exception => e
       unhandled = true
       msg = e.message
       if msg.include?('No such user')
