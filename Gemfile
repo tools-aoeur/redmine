@@ -116,4 +116,4 @@ end
 gem 'puma'
 gem 'sd_notify'
 gem 'fluent-logger'
-gem 'fluent_logger_rails'
+gem 'fluent_logger_rails', git: 'https://github.com/tools-aoeur/fluent_logger_rails.git', branch: 'rails4-backport'
