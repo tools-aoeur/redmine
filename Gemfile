@@ -116,3 +116,4 @@ end
 gem 'puma'
 gem 'sd_notify'
 gem 'act-fluent-logger-rails'
+gem 'lograge'
