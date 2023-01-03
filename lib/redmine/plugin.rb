@@ -106,6 +106,26 @@ module Redmine
 
       p.path = PluginLoader.directories.find {|d| d.to_s == p.directory}
 
+      # append current git/svn information if available
+      begin
+        directory = File.expand_path(p.directory)
+        Dir.chdir(directory) do
+          info = if Dir.exist?('.git')
+            command = '/usr/bin/git describe --tags'
+            `#{command}`.strip
+          elsif Dir.exist?('.svn')
+            command = '/usr/bin/svnversion'
+            revision = `#{command}`.strip
+            "r#{revision}"
+          end
+          p.version "#{p.version} (#{info})" if p.version.present? && info.present?
+        end
+      rescue StandardError => e
+        # not critical therefore info
+        Rails.logger.info "Plugin registration git/svn info retrieval failed: #{e.message}"
+      end
+      # --
+
       # Adds plugin locales if any
       # YAML translation files should be found under <plugin>/config/locales/
       Rails.application.config.i18n.load_path += Dir.glob(File.join(p.directory, 'config', 'locales', '*.yml'))
