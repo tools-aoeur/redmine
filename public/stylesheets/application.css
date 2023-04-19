@@ -564,18 +564,12 @@ ul.projects div.description li {list-style-type:initial;}
 #projects-index li.root ul.projects { border-left: 3px solid #e0e0e0; padding-left:1em;}
 #projects-index ul.projects li.root {
   margin-bottom: 1em;
-  padding: 15px 20px;
+  padding: 10px 20px;
   border: 1px solid #d7d7d7;
   border-radius: 3px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  break-inside: avoid-column;
-  -webkit-break-inside: avoid-column;
-  -moz-break-inside: avoid-column;
-  page-break-inside:avoid;
-  -webkit-column-break-inside: avoid;
-  -moz-column-break-inside: avoid;
   width: 100%;
 }
 #projects-index ul.projects li.child {margin-top: 1em;}
