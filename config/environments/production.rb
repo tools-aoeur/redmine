@@ -17,9 +17,6 @@ Rails.application.configure do
   # Disable delivery errors
   config.action_mailer.raise_delivery_errors = false
 
-  # No email in production log
-  config.action_mailer.logger = nil
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 end
