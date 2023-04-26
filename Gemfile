@@ -13,7 +13,7 @@ gem 'nokogiri', '~> 1.18.3'
 gem 'i18n', '~> 1.14.1'
 gem 'rbpdf', '~> 1.21.4'
 gem 'addressable'
-gem 'rubyzip', '~> 2.4.0'
+gem 'rubyzip'
 gem 'propshaft', '~> 1.1.0'
 gem 'rack', '>= 3.1.3'
 gem "stimulus-rails", "~> 1.3"
@@ -115,9 +115,9 @@ group :test do
   gem "capybara", ">= 3.39"
   gem 'selenium-webdriver', '>= 4.11.0'
   # RuboCop
-  gem 'rubocop', '~> 1.76.0', require: false
-  gem 'rubocop-performance', '~> 1.25.0', require: false
-  gem 'rubocop-rails', '~> 2.32.0', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
   gem 'bundle-audit', require: false
   # for testing oauth provider capabilities
   gem 'oauth2'
