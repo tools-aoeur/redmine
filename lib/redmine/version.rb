@@ -17,8 +17,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-require 'redmine/scm/adapters/subversion_adapter'
-
 module Redmine
   # @private
   module VERSION
@@ -30,20 +28,14 @@ module Redmine
     # * official release: nil
     # * stable branch:    stable
     # * trunk:            devel
-    BRANCH = 'stable'
+    BRANCH = nil
 
     # Retrieves the revision from the working copy
     def self.revision
-      if File.directory?(File.join(Rails.root, '.svn'))
-        begin
-          path = Redmine::Scm::Adapters::AbstractAdapter.shell_quote(Rails.root.to_s)
-          if `#{Redmine::Scm::Adapters::SubversionAdapter.client_command} info --xml #{path}` =~ /commit\s+revision="(\d+)"/
-            return $1.to_i
-          end
-        rescue
-          # Could not find the current revision
-        end
-      end
+      revision_file = File.join(Rails.root, 'revision.info')
+
+      return File.readlines(revision_file).first.strip if File.file?(revision_file)
+
       nil
     end
 
