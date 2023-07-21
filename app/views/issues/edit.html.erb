@@ -1,6 +1,24 @@
-<h2><%= "#{@issue.tracker_was} ##{@issue.id}" %></h2>
-
-<%= render :partial => 'edit' %>
-<% content_for :header_tags do %>
-    <%= robot_exclusion_tag %>
-<% end %>
+<%
+  ZAppEngine.start_capture_requested_assets
+  override = ViewOverride.issue_edit
+                         .active_instance
+                         .select { |vo| vo.matches?(project: @project, tracker: @issue.tracker) }
+  if override.any?
+    atp_log("HIER more than one matching override") if override.length > 1
+    snippet = override.first.vo_code_snippet
+    begin
+      result = render_snippet(snippet, { view_override: override.first })
+    rescue => e
+      atp_log "Override exception: issue ##{@issue.id}"
+      atp_log "Override exception: controller #{controller_name}"
+      atp_log "Override exception: action #{action_name}"
+      atp_log "Override exception: ViewOverridesHelper defined #{Object.const_defined?(:ViewOverridesHelper)}"
+      atp_log "Override exception: ViewOverridesHelper#render_snippet defined #{ViewOverridesHelper.respond_to?('render_snippet')}" if Object.const_defined?(:ViewOverridesHelper)
+      raise e
+    end
+  end
+  to_render = result.present? ? result : (render partial: 'original_edit')
+%>
+<%= render partial: 'z_app_engine/requested_assets' %>
+<%= render partial: 'z_app_engine/entity_picker_setup' %>
+<%= to_render %>
