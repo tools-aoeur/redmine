@@ -1,6 +1,19 @@
-<h2><%= "#{@issue.tracker_was} ##{@issue.id}" %></h2>
+<!-- to support view override using hooks -->
+<% call_hook(:view_issues_edit_view_override) %>
 
-<%= render :partial => 'edit' %>
-<% content_for :header_tags do %>
+<% if @view_issues_edit_view_override&.dig(:assets).present? %>
+  <% @view_issues_edit_view_override[:assets].each do |hook_assets| %>
+    <%= hook_assets.html_safe %>
+  <% end %>
+<% end %>
+
+<% if @view_issues_edit_view_override&.dig(:content).present? %>
+  <%= @view_issues_edit_view_override[:content] %>
+<% else %>
+  <h2><%= "#{@issue.tracker_was} ##{@issue.id}" %></h2>
+
+  <%= render :partial => 'edit' %>
+  <% content_for :header_tags do %>
     <%= robot_exclusion_tag %>
+  <% end %>
 <% end %>
