@@ -1,3 +1,15 @@
+<!-- to support view override using hooks -->
+<% call_hook(:view_issues_show_view_override, issue: @issue, project: @project) %>
+
+<% if @view_issues_show_view_override&.dig(:assets).present? %>
+  <% @view_issues_show_view_override[:assets].each do |hook_assets| %>
+    <%= hook_assets.html_safe %>
+  <% end %>
+<% end %>
+
+<% if @view_issues_show_view_override&.dig(:content).present? %>
+  <%= @view_issues_show_view_override[:content].html_safe %>
+<% else %>
 <%= render :partial => 'action_menu' %>
 
 <h2 class="inline-flex"><%= issue_heading(@issue) %></h2>
@@ -151,3 +163,5 @@ end %>
 <% end %>
 
 <%= context_menu %>
+
+<% end %>
