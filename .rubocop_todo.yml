@@ -611,10 +611,6 @@ Rails/ApplicationMailer:
     - 'app/models/mailer.rb'
 
 # This cop supports safe auto-correction (--auto-correct).
-Rails/ApplicationRecord:
-  Enabled: false
-
-# This cop supports safe auto-correction (--auto-correct).
 # Configuration parameters: Include.
 # Include: **/test/**/*
 Rails/AssertNot:
