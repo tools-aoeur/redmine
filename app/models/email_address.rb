@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-class EmailAddress < ActiveRecord::Base
+class EmailAddress < ApplicationRecord
   include Redmine::SafeAttributes
 
   EMAIL_REGEXP = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+(?:(?:xn--[-a-z0-9]+)|(?:[a-z]{2,})))\z/i
