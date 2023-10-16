@@ -44,6 +44,8 @@ class UsersController < ApplicationController
   def index
     use_session = !request.format.csv?
     retrieve_query(UserQuery, use_session)
+    sort_init 'login', 'asc'
+    sort_update %w(login firstname lastname admin created_on last_login_on auth_source_id)
 
     # API backwards compatibility: handle legacy filter parameters
     unless request.format.html?

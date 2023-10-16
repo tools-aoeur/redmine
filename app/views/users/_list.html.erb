@@ -45,6 +45,11 @@
         <%= content_tag('td', column_content(column, user), class: column.css_classes) %>
       <% end %>
     <% end %>
+    
+    <td class="auth_source_id">
+      <%= user.auth_source.name unless user.auth_source_id.nil? %>
+    </td>
+
     <td class="buttons">
       <%= link_to_context_menu %>
     </td>
