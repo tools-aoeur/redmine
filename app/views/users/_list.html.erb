@@ -36,6 +36,11 @@
     <% @query.inline_columns.each do |column| %>
       <% if column.name == :login %>
         <%= content_tag('td', link_to(user.login, edit_user_path(user)), class: column.css_classes) %>
+      <% elsif column.name == :admin %>
+        <%= content_tag('td', class: column.css_classes) do %>
+          <%= user.admin? ? l(:general_text_Yes) : l(:general_text_No) %>
+          <%= call_hook(:view_users_admin_extra, { user: user }) %>
+        <% end %>
       <% else %>
         <%= content_tag('td', column_content(column, user), class: column.css_classes) %>
       <% end %>
