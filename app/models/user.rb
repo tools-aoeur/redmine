@@ -251,15 +251,6 @@ class User < Principal
     user
   end
 
-  # Returns the user who matches the given autologin +key+ or nil
-  def self.try_to_autologin(key)
-    user = Token.find_active_user('autologin', key, Setting.autologin.to_i)
-    if user
-      user.update_last_login_on!
-      user
-    end
-  end
-
   def self.name_formatter(formatter = nil)
     USER_FORMATS[formatter || Setting.user_format] || USER_FORMATS[:firstname_lastname]
   end
@@ -455,16 +446,6 @@ class User < Principal
 
   def delete_session_token(value)
     Token.where(:user_id => id, :action => 'session', :value => value).delete_all
-  end
-
-  # Generates a new autologin token and returns its value
-  def generate_autologin_token
-    token = Token.create!(:user_id => id, :action => 'autologin')
-    token.value
-  end
-
-  def delete_autologin_token(value)
-    Token.where(:user_id => id, :action => 'autologin', :value => value).delete_all
   end
 
   def twofa_totp_key
@@ -956,12 +937,11 @@ class User < Principal
   end
 
   # Delete all outstanding password reset tokens on password change.
-  # Delete the autologin tokens on password change to prohibit session leakage.
   # This helps to keep the account secure in case the associated email account
   # was compromised.
   def destroy_tokens
     if saved_change_to_hashed_password? || (saved_change_to_status? && !active?) || (saved_change_to_twofa_scheme? && twofa_scheme.present?)
-      tokens = ['recovery', 'autologin', 'session']
+      tokens = ['recovery', 'session']
       Token.where(:user_id => id, :action => tokens).delete_all
     end
   end
