@@ -135,27 +135,6 @@ class SessionsControllerTest < Redmine::ControllerTest
     end
   end
 
-  def test_expired_user_session_should_be_restarted_if_autologin
-    created = 2.hours.ago
-    token = Token.create!(:user_id => 2, :action => 'session', :created_on => created, :updated_on => created)
-
-    with_settings :session_lifetime => '720', :session_timeout => '60', :autologin => 7 do
-      autologin_token = Token.create!(:user_id => 2, :action => 'autologin', :created_on => 1.day.ago)
-      @request.cookies['autologin'] = autologin_token.value
-
-      get(
-        :index,
-        :session => {
-          :user_id => 2,
-          :tk => token.value
-        }
-      )
-      assert_equal 2, session[:user_id]
-      assert_response :success
-      assert_not_equal token.value, session[:tk]
-    end
-  end
-
   def test_expired_user_session_should_set_locale
     set_language_if_valid 'it'
     user = User.find(2)

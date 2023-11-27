@@ -272,7 +272,6 @@ class TwofaTest < Redmine::IntegrationTest
 
   def test_enable_twofa_should_destroy_tokens
     recovery_token = Token.create!(:user_id => 2, :action => 'recovery')
-    autologin_token = Token.create!(:user_id => 2, :action => 'autologin')
     other_session_token = Token.create!(:user_id => 2, :action => 'session')
 
     with_settings twofa: "2" do
@@ -298,7 +297,6 @@ class TwofaTest < Redmine::IntegrationTest
     end
 
     assert_nil Token.find_by_id(recovery_token.id)
-    assert_nil Token.find_by_id(autologin_token.id)
     assert_nil Token.find_by_id(other_session_token.id)
   end
 end

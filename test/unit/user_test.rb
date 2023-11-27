@@ -504,7 +504,6 @@ class UserTest < ActiveSupport::TestCase
 
   def test_password_change_should_destroy_tokens
     recovery_token = Token.create!(:user_id => 2, :action => 'recovery')
-    autologin_token = Token.create!(:user_id => 2, :action => 'autologin')
     session_token = Token.create!(:user_id => 2, :action => 'session')
 
     user = User.find(2)
@@ -512,13 +511,11 @@ class UserTest < ActiveSupport::TestCase
     assert user.save
 
     assert_nil Token.find_by_id(recovery_token.id)
-    assert_nil Token.find_by_id(autologin_token.id)
     assert_nil Token.find_by_id(session_token.id)
   end
 
   def test_mail_change_should_destroy_tokens
     recovery_token = Token.create!(:user_id => 2, :action => 'recovery')
-    autologin_token = Token.create!(:user_id => 2, :action => 'autologin')
     session_token = Token.create!(:user_id => 2, :action => 'session')
 
     user = User.find(2)
@@ -526,13 +523,11 @@ class UserTest < ActiveSupport::TestCase
     assert user.save
 
     assert_nil Token.find_by_id(recovery_token.id)
-    assert_nil Token.find_by_id(autologin_token.id)
     assert_nil Token.find_by_id(session_token.id)
   end
 
   def test_lock_should_destroy_tokens
     recovery_token = Token.create!(:user_id => 2, :action => 'recovery')
-    autologin_token = Token.create!(:user_id => 2, :action => 'autologin')
     session_token = Token.create!(:user_id => 2, :action => 'session')
 
     user = User.find(2)
@@ -540,13 +535,11 @@ class UserTest < ActiveSupport::TestCase
     assert user.save
 
     assert_nil Token.find_by_id(recovery_token.id)
-    assert_nil Token.find_by_id(autologin_token.id)
     assert_nil Token.find_by_id(session_token.id)
   end
 
   def test_twofa_activation_should_destroy_tokens
     recovery_token = Token.create!(:user_id => 2, :action => 'recovery')
-    autologin_token = Token.create!(:user_id => 2, :action => 'autologin')
     session_token = Token.create!(:user_id => 2, :action => 'session')
 
     user = User.find(2)
@@ -554,25 +547,21 @@ class UserTest < ActiveSupport::TestCase
     assert user.save
 
     assert_nil Token.find_by_id(recovery_token.id)
-    assert_nil Token.find_by_id(autologin_token.id)
     assert_nil Token.find_by_id(session_token.id)
   end
 
   def test_change_on_other_fields_should_not_destroy_tokens
     recovery_token = Token.create!(:user_id => 2, :action => 'recovery')
-    autologin_token = Token.create!(:user_id => 2, :action => 'autologin')
 
     user = User.find(2)
     user.firstname = "Bobby"
     assert user.save
 
     assert_equal recovery_token, Token.find_by_id(recovery_token.id)
-    assert_equal autologin_token, Token.find_by_id(autologin_token.id)
   end
 
-  def test_delete_login_tokens_should_delete_recovery_autologin_and_session_tokens
+  def test_delete_login_tokens_should_delete_recovery_and_session_tokens
     recovery_token = Token.create!(:user_id => 2, :action => 'recovery')
-    autologin_token = Token.create!(:user_id => 2, :action => 'autologin')
     session_token = Token.create!(:user_id => 2, :action => 'session')
     api_token = Token.create!(:user_id => 2, :action => 'api')
     other_users_token = Token.create!(:user_id => 3, :action => 'session')
@@ -580,7 +569,6 @@ class UserTest < ActiveSupport::TestCase
     User.find(2).delete_login_tokens
 
     assert_nil Token.find_by_id(recovery_token.id)
-    assert_nil Token.find_by_id(autologin_token.id)
     assert_nil Token.find_by_id(session_token.id)
     assert Token.find_by_id(api_token.id)
     assert Token.find_by_id(other_users_token.id)

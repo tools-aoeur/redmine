@@ -40,11 +40,11 @@ class TokenTest < ActiveSupport::TestCase
     assert  Token.exists?(t2.id)
   end
 
-  def test_create_session_or_autologin_token_should_keep_last_10_tokens
+  def test_create_session_token_should_keep_last_10_tokens
     Token.delete_all
     user = User.find(1)
 
-    ["autologin", "session"].each do |action|
+    ["session"].each do |action|
       assert_difference 'Token.count', 10 do
         10.times {Token.create!(:user => user, :action => action)}
       end
@@ -70,11 +70,6 @@ class TokenTest < ActiveSupport::TestCase
   def test_destroy_expired_should_destroy_expired_tokens
     Token.delete_all
 
-    # Expiration of autologin tokens is determined by Setting.autologin
-    Setting.autologin = "7"
-    Token.create!(:user_id => 2, :action => 'autologin', :created_on => 3.weeks.ago)
-    Token.create!(:user_id => 3, :action => 'autologin', :created_on => 3.days.ago)
-
     # Expiration of register and recovery tokens is determined by Token.validity_time
     Token.create!(:user_id => 1, :action => 'register', :created_on => 7.days.ago)
     Token.create!(:user_id => 3, :action => 'register', :created_on => 7.hours.ago)
@@ -86,8 +81,8 @@ class TokenTest < ActiveSupport::TestCase
     Token.create!(:user_id => 2, :action => 'unknown_action', :created_on => 2.days.ago)
     Token.create!(:user_id => 3, :action => 'unknown_action', :created_on => 2.hours.ago)
 
-    assert_difference 'Token.count', -4 do
-      assert_equal 4, Token.destroy_expired
+    assert_difference 'Token.count', -3 do
+      assert_equal 3, Token.destroy_expired
     end
   end
 

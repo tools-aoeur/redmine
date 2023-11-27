@@ -139,7 +139,7 @@ class EmailAddress < ApplicationRecord
   end
 
   # Delete all outstanding password reset tokens on email change.
-  # Delete the autologin and session tokens as well to prohibit session leakage.
+  # Delete the session tokens as well to prohibit session leakage.
   # This helps to keep the account secure in case the associated email account
   # was compromised.
   def destroy_tokens
