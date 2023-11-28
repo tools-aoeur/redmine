@@ -293,7 +293,7 @@ class TwofaTest < Redmine::IntegrationTest
       assert_redirected_to "/my/account"
       assert_not_equal token, session[:tk]
       assert_nil Token.find_by(:user_id => 2, :action => 'session', :value => token)
-      assert User.verify_session_token(2, session[:tk])
+      assert User.verify_session_token(session)
     end
 
     assert_nil Token.find_by_id(recovery_token.id)
