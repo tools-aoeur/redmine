@@ -467,9 +467,16 @@ class User < Principal
     # for redis sessions, check times
     if self.redis_session_store?
       created_on = session[:created_on]
-      return false if Setting.session_lifetime? && created_on <= Setting.session_lifetime.to_i.minutes.ago
-
       updated_on = session[:updated_on]
+
+      # special case reattach existing token on updating to this codebase (redis state is nil for created_on / updated_on)
+      if created_on.nil? || updated_on.nil?
+        session[:created_on] ||= Time.now
+        session[:updated_on] ||= Time.now
+        return true
+      end
+
+      return false if Setting.session_lifetime? && created_on <= Setting.session_lifetime.to_i.minutes.ago
       return false if Setting.session_timeout?  && updated_on <= Setting.session_timeout.to_i.minutes.ago
 
       session[:updated_on] = Time.now if updated_on <= 1.minute.ago
