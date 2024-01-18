@@ -1024,7 +1024,6 @@ de:
   setting_issue_group_assignment: Ticketzuweisung an Gruppen erlauben
   setting_issue_list_default_columns: Standard-Spalten in der Ticket-Auflistung
   setting_issues_export_limit: Maximale Anzahl Tickets bei CSV/PDF-Export
-  setting_jsonp_enabled: JSONP Unterstützung aktivieren
   setting_link_copied_issue: Tickets beim Kopieren verlinken
   setting_login_required: Authentifizierung erforderlich
   setting_mail_from: E-Mail-Absender
