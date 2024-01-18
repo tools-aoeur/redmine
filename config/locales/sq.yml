@@ -478,7 +478,6 @@ sq:
   setting_thumbnails_enabled: Shfaq miniatura bashkëngjitjesh
   setting_thumbnails_size: Madhësi miniaturash (në piksel)
   setting_non_working_week_days: Ditë kur s’punohet
-  setting_jsonp_enabled: Aktivizo mbulim JSONP-je
   setting_default_projects_tracker_ids: Ndjekës parazgjedhje për projekte të reja
   setting_mail_handler_excluded_filenames: Përjashto bashkëngjitje sipas emrash
   setting_force_default_language_for_anonymous: Detyro përdorimin e gjuhës parazgjedhje për përdorues anonimë

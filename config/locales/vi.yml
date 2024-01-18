@@ -1110,7 +1110,6 @@ vi:
   permission_edit_documents: Soạn thảo tài liệu
   permission_delete_documents: Xóa tài liệu
   label_gantt_progress_line: Tiến độ
-  setting_jsonp_enabled: Cho phép trợ giúp JSONP
   field_inherit_members: Các thành viên kế thừa
   field_closed_on: Đã đóng
   field_generate_password: Generate password

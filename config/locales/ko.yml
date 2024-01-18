@@ -1106,7 +1106,6 @@ ko:
   permission_edit_documents: 문서 편집
   permission_delete_documents: 문서 삭제
   label_gantt_progress_line: 진행 선
-  setting_jsonp_enabled: JSONP 허용
   field_inherit_members: 상위 프로젝트 구성원 상속
   field_closed_on: 완료일
   field_generate_password: 비밀번호 생성
