@@ -25,12 +25,4 @@ module AdminHelper
                         [l(:project_status_archived), '9'],
                         [l(:project_status_scheduled_for_deletion), '10']], selected.to_s)
   end
-
-  def plugin_data_for_updates(plugins)
-    data = {"v" => Redmine::VERSION.to_s, "p" => {}}
-    plugins.each do |plugin|
-      data["p"].merge! plugin.id => {"v" => plugin.version, "n" => plugin.name, "a" => plugin.author}
-    end
-    data
-  end
 end

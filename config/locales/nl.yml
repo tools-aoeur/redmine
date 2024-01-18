@@ -512,7 +512,6 @@ nl:
   label_changed_from: changed from
   label_changes_details: Details van alle wijzigingen
   label_changeset_plural: Changesets
-  label_check_for_updates: Controleren of er updates beschikbaar zijn
   label_checkboxes: keuzevakjes
   label_child_revision: Sub
   label_chronological_order: In chronologische volgorde
@@ -700,7 +699,6 @@ nl:
   label_last_notes: Last notes
   label_last_tab_visited: Last visited tab
   label_last_week: vorige week
-  label_latest_compatible_version: Laatste compatibele versie
   label_latest_revision: Meest recente revisie
   label_latest_revision_plural: Meest recente revisies
   label_ldap: LDAP

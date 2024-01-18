@@ -548,7 +548,6 @@
   label_changed_from: 前一個是
   label_changes_details: 所有變更的明細
   label_changeset_plural: 變更集清單
-  label_check_for_updates: 檢查更新
   label_checkboxes: 核取方塊
   label_child_revision: 子項
   label_chronological_order: 以時間由遠至近排序
@@ -737,7 +736,6 @@
 
   label_last_tab_visited: 上次瀏覽的分頁
   label_last_week: 上週
-  label_latest_compatible_version: 最新的相容版本
   label_latest_revision: 最新的修訂版
   label_latest_revision_plural: 最新的修訂版清單
   label_ldap: LDAP
