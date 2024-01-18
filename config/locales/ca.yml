@@ -519,7 +519,6 @@ ca:
   label_changed_from: canviat de
   label_changes_details: "Detalls de tots els canvis"
   label_changeset_plural: "Conjunt de canvis"
-  label_check_for_updates: "Comprovar actualitzacions"
   label_checkboxes: "Camps de selecció (Checkboxes)"
   label_child_revision: "Fill"
   label_chronological_order: "En ordre cronològic"
@@ -707,7 +706,6 @@ ca:
   label_last_notes: Últimes notes
   label_last_tab_visited: Última pestanya visitada
   label_last_week: "l'última setmana"
-  label_latest_compatible_version: "Ultima versió compatible"
   label_latest_revision: "Última revisió"
   label_latest_revision_plural: "Últimes revisions"
   label_ldap: LDAP

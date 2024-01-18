@@ -563,7 +563,6 @@ az:
   label_changed_from: changed from
   label_changes_details: Bütün dəyişikliklərə görə təfsilatlar
   label_changeset_plural: Dəyişikliklər
-  label_check_for_updates: Check for updates
   label_checkboxes: checkboxes
   label_child_revision: Əsas
   label_chronological_order: Xronoloji ardıcıllıq ilə
@@ -755,7 +754,6 @@ az:
   label_last_notes: Last notes
   label_last_tab_visited: Last visited tab
   label_last_week: sonuncu həftə
-  label_latest_compatible_version: Latest compatible version
   label_latest_revision: Sonuncu redaksiya
   label_latest_revision_plural: Sonuncu redaksiyalar
   label_ldap: LDAP

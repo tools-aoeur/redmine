@@ -530,7 +530,6 @@ uk:
   label_changed_from: changed from
   label_changes_details: Подробиці по всіх змінах
   label_changeset_plural: Набори змін
-  label_check_for_updates: Перевірити оновлення
   label_checkboxes: чекбокси
   label_child_revision: Підпорядкований
   label_chronological_order: В хронологічному порядку
@@ -718,7 +717,6 @@ uk:
   label_last_notes: Останні коментарі
   label_last_tab_visited: Last visited tab
   label_last_week: попередній тиждень
-  label_latest_compatible_version: Остання сумісна версія
   label_latest_revision: Остання версія
   label_latest_revision_plural: Останні версії
   label_ldap: LDAP

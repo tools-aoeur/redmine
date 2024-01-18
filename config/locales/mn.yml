@@ -518,7 +518,6 @@ mn:
   label_changed_from: changed from
   label_changes_details: Бүх өөрчлөлтүүдийн дэлгэрэнгүй
   label_changeset_plural: Өөрчлөлтүүд
-  label_check_for_updates: Check for updates
   label_checkboxes: checkboxes
   label_child_revision: Child
   label_chronological_order: Цагаан толгойн үсгийн дарааллаар
@@ -706,7 +705,6 @@ mn:
   label_last_notes: Сүүлчийн тэмдэглэл
   label_last_tab_visited: Last visited tab
   label_last_week: өнгөрсөн долоо хоног
-  label_latest_compatible_version: Latest compatible version
   label_latest_revision: Сүүлийн үеийн хувилбар
   label_latest_revision_plural: Сүүлийн үеийн хувилбарууд
   label_ldap: LDAP

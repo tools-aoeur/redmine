@@ -513,7 +513,6 @@ sk:
   label_changed_from: changed from
   label_changes_details: Detail všetkých zmien
   label_changeset_plural: Súbory zmien
-  label_check_for_updates: Check for updates
   label_checkboxes: checkboxes
   label_child_revision: Potomok
   label_chronological_order: V chronologickom poradí
@@ -701,7 +700,6 @@ sk:
   label_last_notes: Last notes
   label_last_tab_visited: Last visited tab
   label_last_week: minulý týždeň
-  label_latest_compatible_version: Latest compatible version
   label_latest_revision: Posledná revízia
   label_latest_revision_plural: Posledné revízie
   label_ldap: LDAP

@@ -517,7 +517,6 @@ pt:
   label_changed_from: changed from
   label_changes_details: Detalhes de todas as mudanças
   label_changeset_plural: Commits
-  label_check_for_updates: Verificar atualizações
   label_checkboxes: caixa de seleção
   label_child_revision: Filha
   label_chronological_order: Em ordem cronológica
@@ -706,7 +705,6 @@ pt:
   label_last_notes: Last notes
   label_last_tab_visited: Last visited tab
   label_last_week: semana passada
-  label_latest_compatible_version: Última versão compatível
   label_latest_revision: Última revisão
   label_latest_revision_plural: Últimas revisões
   label_ldap: LDAP

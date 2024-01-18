@@ -520,7 +520,6 @@ lt:
   label_changed_from: changed from
   label_changes_details: Visų pakeitimų detalės
   label_changeset_plural: Pakeitimų rinkiniai
-  label_check_for_updates: Tikrinti, ar yra atnaujinimų
   label_checkboxes: žymimieji langeliai
   label_child_revision: Sekanti revizija
   label_chronological_order: Chronologine tvarka
@@ -709,7 +708,6 @@ lt:
   label_last_notes: Paskutinės pastabos
   label_last_tab_visited: Paskutinis žiūrėtas skirtukas
   label_last_week: praeita savaitė
-  label_latest_compatible_version: Naujausia suderinama versija
   label_latest_revision: Paskutinė revizija
   label_latest_revision_plural: Paskutinės revizijos
   label_ldap: LDAP

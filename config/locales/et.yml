@@ -530,7 +530,6 @@ et:
   label_changed_from: changed from
   label_changes_details: "Kõigi muudatuste üksikasjad"
   label_changeset_plural: "Muudatused"
-  label_check_for_updates: "Vaata uuendusi"
   label_checkboxes: "märkeruudud"
   label_child_revision: "Järglane"
   label_chronological_order: "kronoloogiline"
@@ -718,7 +717,6 @@ et:
   label_last_notes: Last notes
   label_last_tab_visited: Last visited tab
   label_last_week: "eelmisel nädalal"
-  label_latest_compatible_version: "Värskeim ühilduv versioon"
   label_latest_revision: "Viimane sissekanne"
   label_latest_revision_plural: "Viimased sissekanded"
   label_ldap: LDAP

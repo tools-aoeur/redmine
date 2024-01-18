@@ -532,7 +532,6 @@ es-PA:
   label_changed_from: changed from
   label_changes_details: Detalles de todos los cambios
   label_changeset_plural: Cambios
-  label_check_for_updates: Comprobar actualizaciones
   label_checkboxes: casillas de selección
   label_child_revision: Hijo
   label_chronological_order: En orden cronológico
@@ -720,7 +719,6 @@ es-PA:
   label_last_notes: Last notes
   label_last_tab_visited: Last visited tab
   label_last_week: última semana
-  label_latest_compatible_version: Útima versión compatible
   label_latest_revision: Última revisión
   label_latest_revision_plural: Últimas revisiones
   label_ldap: LDAP

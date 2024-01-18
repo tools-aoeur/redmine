@@ -531,7 +531,6 @@ pl:
   label_changed_from: changed from
   label_changes_details: Szczegóły wszystkich zmian
   label_changeset_plural: Zestawienia zmian
-  label_check_for_updates: Sprawdź aktualizacje
   label_checkboxes: pola wyboru
   label_child_revision: Dziecko
   label_chronological_order: W kolejności chronologicznej
@@ -719,7 +718,6 @@ pl:
   label_last_notes: Ostatnie notatki
   label_last_tab_visited: Ostatnio oglądana zakładka
   label_last_week: ostatni tydzień
-  label_latest_compatible_version: Najnowsza kompatybilna wersja
   label_latest_revision: Najnowsza rewizja
   label_latest_revision_plural: Najnowsze rewizje
   label_ldap: LDAP
