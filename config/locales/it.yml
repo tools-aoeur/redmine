@@ -1254,7 +1254,6 @@ it:
   setting_issue_group_assignment: Permetti di assegnare una segnalazione a gruppi
   setting_issue_list_default_columns: Colonne predefinite mostrate nell'elenco segnalazioni
   setting_issues_export_limit: Limite esportazione segnalazioni
-  setting_jsonp_enabled: Abilita supporto a JSONP
   setting_link_copied_issue: Collega le segnalazioni dopo la copia
   setting_login_required: Autenticazione richiesta
   setting_lost_password: Password dimenticata

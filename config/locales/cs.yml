@@ -1232,7 +1232,6 @@ cs:
   setting_issue_group_assignment: Povolit přiřazení úkolu skupině
   setting_issue_list_default_columns: Výchozí sloupce zobrazené v seznamu úkolů
   setting_issues_export_limit: Limit pro export úkolů
-  setting_jsonp_enabled: Povolit podporu JSONP
   setting_link_copied_issue: Vytvořit odkazy na kopírované úkol
   setting_login_required: Autentifikace vyžadována
   setting_lost_password: Zapomenuté heslo

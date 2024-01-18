@@ -1231,7 +1231,6 @@ ar:
   setting_issue_group_assignment: السماح للإحالة الى المجموعات
   setting_issue_list_default_columns: الاعمدة الافتراضية المعروضة في قائمة بند العمل
   setting_issues_export_limit: الحد الاقصى لتصدير بنود العمل لملفات خارجية
-  setting_jsonp_enabled: Enable JSONP support
   setting_link_copied_issue: Link issues on copy
   setting_login_required: مطلوب المصادقة
   setting_lost_password: فقدت كلمة السر

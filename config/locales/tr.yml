@@ -1242,7 +1242,6 @@ tr:
   setting_issue_group_assignment: Gruplara iş atanmasına izin ver
   setting_issue_list_default_columns: İş listesinde gösterilen varsayılan sütunlar
   setting_issues_export_limit: İşlerin dışa aktarılma sınırı
-  setting_jsonp_enabled: JSONP desteğini etkinleştir
   setting_link_copied_issue: Kopyalamada işleri ilişkilendir
   setting_login_required: Kimlik denetimi gerekli mi
   setting_lost_password: Parolamı unuttum

@@ -1250,7 +1250,6 @@ pt-BR:
   setting_issue_group_assignment: Permitir atribuições de tarefas a grupos
   setting_issue_list_default_columns: Colunas na lista de tarefas por padrão
   setting_issues_export_limit: Limite de exportação das tarefas
-  setting_jsonp_enabled: Ativar suporte JSONP
   setting_link_copied_issue: Relacionar tarefas copiadas
   setting_login_required: Exigir autenticação
   setting_lost_password: Perdi minha senha

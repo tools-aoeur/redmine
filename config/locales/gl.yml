@@ -1252,7 +1252,6 @@ gl:
   setting_issue_group_assignment: "Permitir asignar peticións a grupos."
   setting_issue_list_default_columns: "Columnas predeterminadas para a lista de peticións."
   setting_issues_export_limit: Límite de exportación de peticións
-  setting_jsonp_enabled: "Activar a compatibilidade con JSONP."
   setting_link_copied_issue: "Ligar aos tíckets ao copialos"
   setting_login_required: Requírese identificación
   setting_lost_password: Esqueceu a contrasinal?

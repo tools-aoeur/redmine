@@ -1296,7 +1296,6 @@
   setting_issue_group_assignment: 允許議題被分派至群組
   setting_issue_list_default_columns: 預設顯示於議題清單的欄位
   setting_issues_export_limit: 議題匯出限制
-  setting_jsonp_enabled: 啟用 JSONP 支援
   setting_link_copied_issue: 複製時連結議題
   setting_login_required: 需要驗證
   setting_lost_password: 允許使用電子郵件重新設定密碼

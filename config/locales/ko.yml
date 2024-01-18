@@ -1265,7 +1265,6 @@ ko:
   setting_issue_group_assignment: "그룹에 일감 할당 허용"
   setting_issue_list_default_columns: 일감 목록에 표시할 항목
   setting_issues_export_limit: 일감 내보내기 제한
-  setting_jsonp_enabled: JSONP 허용
   setting_link_copied_issue: 복사할 때 일감 연결
   setting_login_required: 인증이 필요함
   setting_lost_password: 비밀번호 찾기

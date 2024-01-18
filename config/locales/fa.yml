@@ -1229,7 +1229,6 @@ fa:
   setting_issue_group_assignment: اجازه واگذاری مسئله به گروه‌ها
   setting_issue_list_default_columns: ستون‌های پیش‌فرض نمایش داده شده در فهرست مسئله‌ها
   setting_issues_export_limit: محدودیت صدور مسئله‌ها
-  setting_jsonp_enabled: فعال‌سازی پشتیبانی JSONP
   setting_link_copied_issue: ارتباط مسائل در هنگام رونوشت
   setting_login_required: الزامی بودن ورود
   setting_lost_password: اجازه بازنشانی گذرواژه با رایانامه

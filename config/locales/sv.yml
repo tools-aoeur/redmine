@@ -1275,7 +1275,6 @@ sv:
   setting_issue_group_assignment: Tillåt att ärenden tilldelas grupper
   setting_issue_list_default_columns: Standardkolumner i ärendelistan
   setting_issues_export_limit: Exportgräns för ärenden
-  setting_jsonp_enabled: Aktivera JSONP-stöd
   setting_link_copied_issue: Länka ärenden på kopia
   setting_login_required: Kräver inloggning
   setting_lost_password: Glömt lösenord

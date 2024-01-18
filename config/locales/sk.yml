@@ -1229,7 +1229,6 @@ sk:
   setting_issue_group_assignment: Povoliť priradenie úlohy skupine
   setting_issue_list_default_columns: Predvolené stĺpce zobrazené v zozname úloh
   setting_issues_export_limit: Maximálny počet úloh pri exporte
-  setting_jsonp_enabled: Povoliť podporu JSONP
   setting_link_copied_issue: Link issues on copy
   setting_login_required: Vyžadovaná autentifikácia
   setting_lost_password: Zabudnuté heslo

@@ -1336,7 +1336,6 @@ ru:
   setting_issue_group_assignment: Разрешить назначение задач группам пользователей
   setting_issue_list_default_columns: Столбцы, отображаемые в списке задач по умолчанию
   setting_issues_export_limit: Ограничение по экспортируемым задачам
-  setting_jsonp_enabled: Поддержка JSONP
   setting_link_copied_issue: Связывать задачи при копировании
   setting_login_required: Необходима аутентификация
   setting_lost_password: Восстановление пароля

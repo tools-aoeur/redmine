@@ -1221,7 +1221,6 @@ zh:
   setting_issue_group_assignment: 允许将问题指派给组
   setting_issue_list_default_columns: 问题列表中显示的默认列
   setting_issues_export_limit: 问题导出条目的限制
-  setting_jsonp_enabled: 启用JSONP支持
   setting_link_copied_issue: 复制时关联问题
   setting_login_required: 要求认证
   setting_lost_password: 忘记密码

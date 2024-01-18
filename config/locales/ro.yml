@@ -1226,7 +1226,6 @@ ro:
   setting_issue_group_assignment: Allow issue assignment to groups
   setting_issue_list_default_columns: Coloane implicite afișate în lista de tichete
   setting_issues_export_limit: Limită de tichete exportate
-  setting_jsonp_enabled: Enable JSONP support
   setting_link_copied_issue: Link issues on copy
   setting_login_required: Necesita autentificare
   setting_lost_password: Parolă uitată

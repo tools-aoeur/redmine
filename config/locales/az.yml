@@ -1322,7 +1322,6 @@ az:
   setting_issue_group_assignment: İstifadəçi qruplarına təyinata icazə vermək
   setting_issue_list_default_columns: Susmaya görə tapşırıqların siyahısında əks oluna sütunlar
   setting_issues_export_limit: İxrac olunan tapşırıqlar üzrə məhdudiyyətlər
-  setting_jsonp_enabled: Enable JSONP support
   setting_link_copied_issue: Link issues on copy
   setting_login_required: Autentifikasiya vacibdir
   setting_lost_password: Parolun bərpası

@@ -1245,7 +1245,6 @@ uk:
   setting_issue_group_assignment: Надавати доступ до створення задача групам користувачів
   setting_issue_list_default_columns: Колонки, що відображаються за умовчанням в списку питань
   setting_issues_export_limit: Обмеження по задачах, що експортуються
-  setting_jsonp_enabled: Включити JSONP підтримку
   setting_link_copied_issue: Зв'язати задачі при копіюванні
   setting_login_required: Необхідна аутентифікація
   setting_lost_password: Забули пароль

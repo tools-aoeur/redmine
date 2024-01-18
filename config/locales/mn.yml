@@ -1234,7 +1234,6 @@ mn:
   setting_issue_group_assignment: Allow issue assignment to groups
   setting_issue_list_default_columns: Асуудлуудыг харуулах стандарт баганууд
   setting_issues_export_limit: Асуудал экспортлох хязгаар
-  setting_jsonp_enabled: Enable JSONP support
   setting_link_copied_issue: Link issues on copy
   setting_login_required: Нэвтрэх шаардлагатай
   setting_lost_password: Нууц үгээ алдсан

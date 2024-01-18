@@ -1226,7 +1226,6 @@
   setting_issue_group_assignment: Tillat tildeling av saker til grupper
   setting_issue_list_default_columns: Standardkolonner vist i sakslisten
   setting_issues_export_limit: Eksportgrense for saker
-  setting_jsonp_enabled: Enable JSONP support
   setting_link_copied_issue: Link issues on copy
   setting_login_required: Krever innlogging
   setting_lost_password: Mistet passord

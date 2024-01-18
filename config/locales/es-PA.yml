@@ -1283,7 +1283,6 @@ es-PA:
   setting_issue_group_assignment: Permitir asignar incidencias a grupos
   setting_issue_list_default_columns: Columnas por defecto para la lista de incidencias
   setting_issues_export_limit: Límite de exportación de incidencias
-  setting_jsonp_enabled: Habilitar soporte de JSONP
   setting_link_copied_issue: Enlazar incidencia cuando se copia
   setting_login_required: Se requiere identificación
   setting_lost_password: ¿Olvidaste la contraseña?

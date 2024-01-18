@@ -1238,7 +1238,6 @@ ca:
   setting_issue_group_assignment: "Permetre assignar incidències als grups"
   setting_issue_list_default_columns: "Columnes mostrades per defecte en la llista d'incidències"
   setting_issues_export_limit: "Límit d'exportació d'incidències"
-  setting_jsonp_enabled: "Habilitar suport JSONP"
   setting_link_copied_issue: "Enllaçar incidència quan es realitzi la còpia"
   setting_login_required: "Es necessita autenticació"
   setting_lost_password: "Has oblidat la contrasenya?"

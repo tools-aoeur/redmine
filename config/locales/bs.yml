@@ -1242,7 +1242,6 @@ bs:
   setting_issue_group_assignment: Dozvoli dodjelu tiketa grupama
   setting_issue_list_default_columns: Podrazumijevane koleone za prikaz na listi aktivnosti
   setting_issues_export_limit: Limit za eksport aktivnosti
-  setting_jsonp_enabled: Omogući JSONP podršku
   setting_link_copied_issue: Poveži tiketi prilikom kopiranja
   setting_login_required: Authentifikacija obavezna
   setting_lost_password: Zaboravljena šifra
