@@ -460,7 +460,6 @@ fr:
   setting_thumbnails_enabled: Afficher les vignettes des images
   setting_thumbnails_size: Taille des vignettes (en pixels)
   setting_non_working_week_days: Jours non travaillés
-  setting_jsonp_enabled: Activer le support JSONP
   setting_default_projects_tracker_ids: Trackers par défaut pour les nouveaux projets
   setting_mail_handler_excluded_filenames: Exclure les fichiers attachés par leur nom
   setting_force_default_language_for_anonymous: Forcer la langue par défault pour les utilisateurs anonymes

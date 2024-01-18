@@ -506,7 +506,6 @@ it:
   setting_thumbnails_enabled: Mostra miniature degli allegati
   setting_thumbnails_size: Dimensioni delle miniature (in pixels)
   setting_non_working_week_days: Giorni non lavorativi
-  setting_jsonp_enabled: Abilita supporto a JSONP
   setting_default_projects_tracker_ids: Trackers di default per nuovi progetti
   setting_mail_handler_excluded_filenames: Escludi allegati per nome
   setting_force_default_language_for_anonymous: Forza la lingua di default per gli utenti anonimi
