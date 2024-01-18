@@ -1251,7 +1251,6 @@ ta-IN:
   setting_issue_group_assignment: குழுக்களுக்கு சிக்கல் ஒதுக்கலை அனுமதிக்கவும்
   setting_issue_list_default_columns: இயல்புநிலை நெடுவரிசைகள் சிக்கல் பட்டியலில் காட்டப்படும்
   setting_issues_export_limit: ஏற்றுமதி வரம்பை சிக்கல்கள்
-  setting_jsonp_enabled: JSONP ஆதரவை இயக்கு
   setting_link_copied_issue: நகலில் சிக்கல்களை இணைக்கவும்
   setting_login_required: அங்கீகாரம் தேவை
   setting_lost_password: இழந்தத கடவுச்சொல்

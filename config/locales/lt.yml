@@ -1244,7 +1244,6 @@ lt:
   setting_issue_group_assignment: Leisti darbo priskirimą grupėms
   setting_issue_list_default_columns: Numatytieji stulpeliai darbų sąraše
   setting_issues_export_limit: Darbų eksportavimo riba
-  setting_jsonp_enabled: Įgalinti JSONP palaikymą
   setting_link_copied_issue: Susieti darbus kopijavimo metu
   setting_login_required: Reikalingas autentiškumo nustatymas
   setting_lost_password: Leisti slaptažodžio atstatymą elektroninu laišku

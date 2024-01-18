@@ -1233,7 +1233,6 @@ nl:
   setting_issue_group_assignment: Groepstoewijzingen toelaten
   setting_issue_list_default_columns: Zichtbare standaardkolommen in lijst met issues
   setting_issues_export_limit: Max aantal te exporteren issues
-  setting_jsonp_enabled: JSONP support inschakelen
   setting_link_copied_issue: Koppelen met issue bij kopiëren
   setting_login_required: Authenticatie vereist
   setting_lost_password: Wachtwoord vergeten

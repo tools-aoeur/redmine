@@ -1251,7 +1251,6 @@
   setting_issue_group_assignment: Felelősként csoport is megadható
   setting_issue_list_default_columns: Az alapértelmezésként megjelenített oszlopok a feladat listában
   setting_issues_export_limit: Feladatok exportálásának korlátja
-  setting_jsonp_enabled: JSONP engedélyezése
   setting_link_copied_issue: Feladat hivatkozása másoláskor
   setting_login_required: Azonosítás szükséges
   setting_lost_password: Elfelejtett jelszó

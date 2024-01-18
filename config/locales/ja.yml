@@ -1246,7 +1246,6 @@ ja:
   setting_issue_group_assignment: グループへのチケット割り当てを許可
   setting_issue_list_default_columns: チケットの一覧で表示する項目
   setting_issues_export_limit: エクスポートするチケット数の上限
-  setting_jsonp_enabled: JSONPを有効にする
   setting_link_copied_issue: チケットをコピーしたときに関連を設定
   setting_login_required: 認証が必要
   setting_lost_password: パスワード再設定機能の使用を許可
