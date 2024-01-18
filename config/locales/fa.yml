@@ -964,8 +964,6 @@ fa:
   label_radio_buttons: انتخاب فقط یکی از گزینه‌ها
   label_link_values_to: پیوند مقادیر به URL
   label_custom_field_select_type: نوع شیئی را که بخش سفارشی قرار است به آن پیوست شود، انتخاب کنید
-  label_check_for_updates: آزمون به‌روزرسانی
-  label_latest_compatible_version: آخرین نسخه سازگار
   label_unknown_plugin: افزونه ناشناخته
   label_add_projects: افزودن پروژه‌ها
   label_users_visibility_all: همه کاربران فعال

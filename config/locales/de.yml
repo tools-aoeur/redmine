@@ -470,7 +470,6 @@ de:
   label_changes_details: Details aller Änderungen
   label_changeset_plural: Changesets
   label_checkboxes: Checkboxen
-  label_check_for_updates: Auf Updates prüfen
   label_child_revision: Nachfolger
   label_chronological_order: in zeitlicher Reihenfolge
   label_close_versions: Vollständige Versionen schließen
@@ -614,7 +613,6 @@ de:
   label_last_n_days: "die letzten %{count} Tage"
   label_last_n_weeks: letzte %{count} Wochen
   label_last_week: vorige Woche
-  label_latest_compatible_version: Letzte kompatible Version
   label_latest_revision: Aktuellste Revision
   label_latest_revision_plural: Aktuellste Revisionen
   label_ldap: LDAP

@@ -975,8 +975,6 @@ fr:
   label_radio_buttons: boutons radio
   label_link_values_to: Lier les valeurs vers l'URL
   label_custom_field_select_type: Selectionner le type d'objet auquel attacher le champ personnalisé
-  label_check_for_updates: Vérifier les mises à jour
-  label_latest_compatible_version: Dernière version compatible
   label_unknown_plugin: Plugin inconnu
   label_add_projects: Ajouter des projets
   label_users_visibility_all: Tous les utilisateurs actifs
