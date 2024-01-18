@@ -1089,8 +1089,6 @@ pt:
   setting_force_default_language_for_loggedin: Forçar língua por omissão para utilizadores registados
   label_custom_field_select_type: Selecione o tipo de objeto ao qual o campo personalizado será atribuído
   label_issue_assigned_to_updated: Utilizador titular atualizado
-  label_check_for_updates: Verificar atualizações
-  label_latest_compatible_version: Última versão compatível
   label_unknown_plugin: Extensão desconhecida
   label_radio_buttons: radio buttons
   label_group_anonymous: Utilizadores anónimos
