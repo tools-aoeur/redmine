@@ -1046,7 +1046,6 @@ sk:
   permission_edit_documents: Úprava dokumentov
   permission_delete_documents: Mazanie dokumentov
   label_gantt_progress_line: Indikátor napredovania
-  setting_jsonp_enabled: Povoliť podporu JSONP
   field_inherit_members: Zdediť členov
   field_closed_on: Uzavreté
   field_generate_password: Vygenerovať heslo

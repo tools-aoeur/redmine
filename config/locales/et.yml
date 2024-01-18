@@ -1070,7 +1070,6 @@ et:
   permission_edit_documents: "Muuda dokumente"
   permission_delete_documents: "Kustuta dokumente"
   label_gantt_progress_line: "Progressi graafik"
-  setting_jsonp_enabled: "JSONP tugi sees"
   field_inherit_members: "Päri liikmed"
   field_closed_on: "Suletud kuupäeval"
   field_generate_password: "Loo parool"
