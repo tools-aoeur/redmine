@@ -516,7 +516,6 @@ cs:
   label_changed_from: změněno od
   label_changes_details: Detail všech změn
   label_changeset_plural: Revize
-  label_check_for_updates: Zkontroluj aktualizace
   label_checkboxes: zaškrtávátka
   label_child_revision: Potomek
   label_chronological_order: V chronologickém pořadí
@@ -704,7 +703,6 @@ cs:
   label_last_notes: Poslední poznámky
   label_last_tab_visited: Poslední zobrazená karta
   label_last_week: minulý týden
-  label_latest_compatible_version: Poslední kompatibilní verze
   label_latest_revision: Poslední revize
   label_latest_revision_plural: Poslední revize
   label_ldap: LDAP

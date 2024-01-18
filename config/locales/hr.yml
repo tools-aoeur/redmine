@@ -511,7 +511,6 @@ hr:
   label_changed_from: changed from
   label_changes_details: Detalji svih promjena
   label_changeset_plural: Promjene
-  label_check_for_updates: Check for updates
   label_checkboxes: checkboxes
   label_child_revision: Child
   label_chronological_order: U kronološkom redoslijedu
@@ -699,7 +698,6 @@ hr:
   label_last_notes: Last notes
   label_last_tab_visited: Last visited tab
   label_last_week: prošlog tjedna
-  label_latest_compatible_version: Latest compatible version
   label_latest_revision: Posljednja revizija
   label_latest_revision_plural: Posljednje revizije
   label_ldap: LDAP
