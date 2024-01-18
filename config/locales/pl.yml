@@ -1263,7 +1263,6 @@ pl:
   setting_issue_group_assignment: Zezwól przypisywać zagadnienia do grup
   setting_issue_list_default_columns: Domyślne kolumny wyświetlane na liście zagadnień
   setting_issues_export_limit: Limit eksportu zagadnień
-  setting_jsonp_enabled: Włącz wsparcie dla JSONP
   setting_link_copied_issue: Powiązywanie zagadnień podczas kopiowania
   setting_login_required: Wymagane zalogowanie
   setting_lost_password: Pozwól zresetować hasło przez e-mail

@@ -1266,7 +1266,6 @@ fr:
   setting_issue_group_assignment: Permettre l'assignation des demandes aux groupes
   setting_issue_list_default_columns: Colonnes affichées par défaut sur la liste des demandes
   setting_issues_export_limit: Limite d'exportation des demandes
-  setting_jsonp_enabled: Activer le support JSONP
   setting_link_copied_issue: Lier les demandes lors de la copie
   setting_login_required: Authentification obligatoire
   setting_lost_password: Autoriser la réinitialisation par email de mot de passe perdu

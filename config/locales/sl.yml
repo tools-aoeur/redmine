@@ -1238,7 +1238,6 @@ sl:
   setting_issue_group_assignment: Dovoli dodeljevanje zahtevka skupinam
   setting_issue_list_default_columns: Privzeti stolpci prikazani na seznamu zahtevkov
   setting_issues_export_limit: Skrajna meja za izvoz zahtevkov
-  setting_jsonp_enabled: Enable JSONP support
   setting_link_copied_issue: Link issues on copy
   setting_login_required: Zahtevano overovljanje
   setting_lost_password: Spremeni geslo

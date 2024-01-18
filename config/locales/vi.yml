@@ -1289,7 +1289,6 @@ vi:
   setting_issue_group_assignment: Cho phép gán vấn đề đến các nhóm
   setting_issue_list_default_columns: Các cột mặc định hiển thị trong danh sách vấn đề
   setting_issues_export_limit: Giới hạn Export vấn đề
-  setting_jsonp_enabled: Cho phép trợ giúp JSONP
   setting_link_copied_issue: Liên kết các vấn đề dựa trên bản sao
   setting_login_required: Cần đăng nhập
   setting_lost_password: Phục hồi mật mã

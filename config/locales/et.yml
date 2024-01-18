@@ -1251,7 +1251,6 @@ et:
   setting_issue_group_assignment: "Luba teemade andmine gruppidele"
   setting_issue_list_default_columns: "Teemade nimekirja vaikimisi veerud"
   setting_issues_export_limit: "Teemade ekspordi limiit"
-  setting_jsonp_enabled: "JSONP tugi sees"
   setting_link_copied_issue: "Kopeerimisel lingi teemad"
   setting_login_required: "Autentimine on kohustuslik"
   setting_lost_password: "Kui parool on ununud..."

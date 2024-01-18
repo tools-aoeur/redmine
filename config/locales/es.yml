@@ -1288,7 +1288,6 @@ es:
   setting_issue_group_assignment: Permitir asignar peticiones a grupos
   setting_issue_list_default_columns: Columnas por defecto para la lista de peticiones
   setting_issues_export_limit: Límite de exportación de peticiones
-  setting_jsonp_enabled: Habilitar soporte de JSONP
   setting_link_copied_issue: Enlazar petición cuando se copia
   setting_login_required: Se requiere identificación
   setting_lost_password: ¿Olvidaste la contraseña?
