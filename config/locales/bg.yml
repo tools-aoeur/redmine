@@ -1242,7 +1242,6 @@ bg:
   setting_issue_group_assignment: Разрешено назначаването на задачи на групи
   setting_issue_list_default_columns: Показвани колони по подразбиране
   setting_issues_export_limit: Максимален брой задачи за експорт
-  setting_jsonp_enabled: Разрешаване на поддръжка на JSONP
   setting_link_copied_issue: Свързване на задачите при копиране
   setting_login_required: Изискване за вход в Redmine
   setting_lost_password: Забравена парола
