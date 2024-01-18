@@ -511,7 +511,6 @@ sr-YU:
   label_changed_from: changed from
   label_changes_details: Detalji svih promena
   label_changeset_plural: Skupovi promena
-  label_check_for_updates: Check for updates
   label_checkboxes: checkboxes
   label_child_revision: Child
   label_chronological_order: po hronološkom redosledu
@@ -699,7 +698,6 @@ sr-YU:
   label_last_notes: Last notes
   label_last_tab_visited: Last visited tab
   label_last_week: poslednje sedmice
-  label_latest_compatible_version: Latest compatible version
   label_latest_revision: Poslednja revizija
   label_latest_revision_plural: Poslednje revizije
   label_ldap: LDAP

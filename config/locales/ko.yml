@@ -511,7 +511,6 @@ ko:
   label_changed_from: changed from
   label_changes_details: 모든 상세 변경 내역
   label_changeset_plural: 변경묶음
-  label_check_for_updates: 업데이트 확인
   label_checkboxes: 체크박스
   label_child_revision: "하위"
   label_chronological_order: 시간 순으로 정렬
@@ -699,7 +698,6 @@ ko:
   label_last_notes: 마지막 댓글
   label_last_tab_visited: 최근 조회한 탭
   label_last_week: 지난 주
-  label_latest_compatible_version: 최종 호환 버전
   label_latest_revision: 최근 개정판
   label_latest_revision_plural: 최근 개정판
   label_ldap: LDAP

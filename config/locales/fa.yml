@@ -508,7 +508,6 @@ fa:
   label_changed_from: تغییر کرده از
   label_changes_details: جزئیات همه تغییرات
   label_changeset_plural: تغییرهای مخزن کد
-  label_check_for_updates: آزمون به‌روزرسانی
   label_checkboxes: مربع‌های علامت‌زنی
   label_child_revision: فرزند
   label_chronological_order: به ترتیب تاریخ
@@ -697,7 +696,6 @@ fa:
   label_last_notes: آخرین یادداشت‌ها
   label_last_tab_visited: آخرین برگه مشاهده‌شده
   label_last_week: هفته قبل
-  label_latest_compatible_version: آخرین نسخه سازگار
   label_latest_revision: آخرین بازبینی
   label_latest_revision_plural: آخرین بازبینی‌ها
   label_ldap: LDAP

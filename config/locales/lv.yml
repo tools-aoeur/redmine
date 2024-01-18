@@ -507,7 +507,6 @@ lv:
   label_changed_from: changed from
   label_changes_details: Visu izmaiņu detaļas
   label_changeset_plural: Izmaiņu kopumi
-  label_check_for_updates: Check for updates
   label_checkboxes: checkboxes
   label_child_revision: Child
   label_chronological_order: Hronoloģiskā kārtībā
@@ -695,7 +694,6 @@ lv:
   label_last_notes: Last notes
   label_last_tab_visited: Last visited tab
   label_last_week: pagājušo šonedēļ
-  label_latest_compatible_version: Latest compatible version
   label_latest_revision: Pēdējā revīzija
   label_latest_revision_plural: Pēdējās revīzijas
   label_ldap: LDAP

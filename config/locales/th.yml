@@ -507,7 +507,6 @@ th:
   label_changed_from: changed from
   label_changes_details: รายละเอียดการเปลี่ยนแปลงทั้งหมด
   label_changeset_plural: กลุ่มการเปลี่ยนแปลง
-  label_check_for_updates: Check for updates
   label_checkboxes: checkboxes
   label_child_revision: Child
   label_chronological_order: เรียงจากเก่าไปใหม่
@@ -695,7 +694,6 @@ th:
   label_last_notes: Last notes
   label_last_tab_visited: Last visited tab
   label_last_week: อาทิตย์ที่แล้ว
-  label_latest_compatible_version: Latest compatible version
   label_latest_revision: รุ่นการแก้ไขล่าสุด
   label_latest_revision_plural: รุ่นการแก้ไขล่าสุด
   label_ldap: LDAP

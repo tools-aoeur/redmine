@@ -506,7 +506,6 @@ en-GB:
   label_changed_from: changed from
   label_changes_details: Details of all changes
   label_changeset_plural: Changesets
-  label_check_for_updates: Check for updates
   label_checkboxes: checkboxes
   label_child_revision: Child
   label_chronological_order: In chronological order
@@ -694,7 +693,6 @@ en-GB:
   label_last_notes: Last notes
   label_last_tab_visited: Last visited tab
   label_last_week: last week
-  label_latest_compatible_version: Latest compatible version
   label_latest_revision: Latest revision
   label_latest_revision_plural: Latest revisions
   label_ldap: LDAP

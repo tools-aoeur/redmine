@@ -510,7 +510,6 @@ el:
   label_changed_from: changed from
   label_changes_details: Λεπτομέρειες όλων των αλλαγών
   label_changeset_plural: Changesets
-  label_check_for_updates: Check for updates
   label_checkboxes: checkboxes
   label_child_revision: Child
   label_chronological_order: Κατά χρονολογική σειρά
@@ -698,7 +697,6 @@ el:
   label_last_notes: Last notes
   label_last_tab_visited: Last visited tab
   label_last_week: την προηγούμενη εβδομάδα
-  label_latest_compatible_version: Latest compatible version
   label_latest_revision: Τελευταία αναθεώριση
   label_latest_revision_plural: Τελευταίες αναθεωρήσεις
   label_ldap: LDAP

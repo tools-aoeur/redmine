@@ -511,7 +511,6 @@ fi:
   label_changed_from: changed from
   label_changes_details: Kaikkien muutosten yksityiskohdat
   label_changeset_plural: Muutosryhmät
-  label_check_for_updates: Check for updates
   label_checkboxes: checkboxes
   label_child_revision: Child
   label_chronological_order: Aikajärjestyksessä
@@ -700,7 +699,6 @@ fi:
   label_last_notes: Last notes
   label_last_tab_visited: Last visited tab
   label_last_week: viime viikolla
-  label_latest_compatible_version: Latest compatible version
   label_latest_revision: Viimeisin versio
   label_latest_revision_plural: Viimeisimmät versiot
   label_ldap: LDAP

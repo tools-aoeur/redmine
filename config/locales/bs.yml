@@ -507,7 +507,6 @@ bs:
   label_changed_from: changed from
   label_changes_details: Detalji svih promjena
   label_changeset_plural: Setovi promjena
-  label_check_for_updates: Provjeri ažuriranja
   label_checkboxes: potvrdni kvadratić
   label_child_revision: Potomak
   label_chronological_order: Hronološki poredak
@@ -696,7 +695,6 @@ bs:
   label_last_notes: Posljednji komentari
   label_last_tab_visited: Last visited tab
   label_last_week: posljednja sedmica
-  label_latest_compatible_version: Najnovija kompatibilna verzija
   label_latest_revision: Posljednja revizija
   label_latest_revision_plural: Posljednje revizije
   label_ldap: LDAP

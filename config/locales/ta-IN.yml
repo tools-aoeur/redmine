@@ -509,7 +509,6 @@ ta-IN:
   label_changed_from: இதிலிருந்து மாற்றப்பட்ட
   label_changes_details: அனைத்து மாற்றங்களின் விவரங்கள்
   label_changeset_plural: மாற்றங்கள்
-  label_check_for_updates: புதுப்பிப்புகளைச் சரிபார்க்கவும்
   label_checkboxes: தேர்வுப்பெட்டிகள்
   label_child_revision: கீழ்
   label_chronological_order: காலவரிசைப்படி
@@ -697,7 +696,6 @@ ta-IN:
   label_last_notes: கடைசி குறிப்புகள்
   label_last_tab_visited: கடைசியாக பார்வையிட்ட தாவல்
   label_last_week: கடந்த வாரம்
-  label_latest_compatible_version: சமீபத்திய இணக்கமான பதிப்பு
   label_latest_revision: சமீபத்திய திருத்தம்
   label_latest_revision_plural: சமீபத்திய திருத்தங்கள்
   label_ldap: LDAP

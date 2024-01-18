@@ -508,7 +508,6 @@ ar:
   label_changed_from: changed from
   label_changes_details: تفاصيل جميع التغييرات
   label_changeset_plural: اعدادات التغير
-  label_check_for_updates: Check for updates
   label_checkboxes: checkboxes
   label_child_revision: الطفل
   label_chronological_order: في ترتيب زمني
@@ -697,7 +696,6 @@ ar:
   label_last_notes: Last notes
   label_last_tab_visited: Last visited tab
   label_last_week: الأسبوع الماضي
-  label_latest_compatible_version: Latest compatible version
   label_latest_revision: آخر تنقيح
   label_latest_revision_plural: أحدث المراجعات
   label_ldap: LDAP

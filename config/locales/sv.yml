@@ -514,7 +514,6 @@ sv:
   label_changed_from: ändrad från
   label_changes_details: Detaljer om alla ändringar
   label_changeset_plural: Ändringssgrupper
-  label_check_for_updates: Leta efter uppdateringar
   label_checkboxes: kryssrutor
   label_child_revision: Barn
   label_chronological_order: I kronologisk ordning
@@ -703,7 +702,6 @@ sv:
   label_last_notes: Senaste noteringar
   label_last_tab_visited: Senast besökta flik
   label_last_week: senaste veckan
-  label_latest_compatible_version: Senaste kompatibla version
   label_latest_revision: Senaste revisionen
   label_latest_revision_plural: Senaste revisionerna
   label_ldap: LDAP

@@ -507,7 +507,6 @@ sq:
   label_changed_from: changed from
   label_changes_details: Hollësi të krejt ndryshimeve
   label_changeset_plural: Grupe ndryshimesh
-  label_check_for_updates: Kontrollo për përditësime
   label_checkboxes: kutiza
   label_child_revision: Pjellë
   label_chronological_order: Në rend kohor
@@ -696,7 +695,6 @@ sq:
   label_last_notes: Shënimet e fundit
   label_last_tab_visited: Skeda e vizituar e fundit
   label_last_week: javën e shkuar
-  label_latest_compatible_version: Versioni më i ri i përputhshëm
   label_latest_revision: Rishikimi më i ri
   label_latest_revision_plural: Rishikimet më të rinj
   label_ldap: LDAP

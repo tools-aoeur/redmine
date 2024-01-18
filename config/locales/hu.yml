@@ -514,7 +514,6 @@
   label_changed_from: changed from
   label_changes_details: Változások részletei
   label_changeset_plural: Changesets
-  label_check_for_updates: Frissítések keresése
   label_checkboxes: jelölőnégyzet
   label_child_revision: Gyerek
   label_chronological_order: Időrendben
@@ -702,7 +701,6 @@
   label_last_notes: Legutóbbi megjegyzések
   label_last_tab_visited: Legutóbbi fül
   label_last_week: múlt hét
-  label_latest_compatible_version: Legutóbbi kompatibilis verzió
   label_latest_revision: Legutolsó revízió
   label_latest_revision_plural: Legutolsó revíziók
   label_ldap: LDAP

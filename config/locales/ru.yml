@@ -567,7 +567,6 @@ ru:
   label_changed_from: изменено с
   label_changes_details: Подробности по всем изменениям
   label_changeset_plural: Изменения
-  label_check_for_updates: Проверить обновления
   label_checkboxes: чекбоксы
   label_child_revision: Дочерний
   label_chronological_order: В хронологическом порядке
@@ -763,7 +762,6 @@ ru:
   label_last_notes: Последние примечания
   label_last_tab_visited: Последняя посещённая вкладка
   label_last_week: прошлая неделя
-  label_latest_compatible_version: Последняя совместимая версия
   label_latest_revision: Последняя редакция
   label_latest_revision_plural: Последние редакции
   label_ldap: LDAP

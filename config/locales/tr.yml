@@ -508,7 +508,6 @@ tr:
   label_changed_from: şuradan değiştirildi
   label_changes_details: Bütün değişikliklerin detayları
   label_changeset_plural: Değişiklik Listeleri
-  label_check_for_updates: Güncellemeleri kontrol et
   label_checkboxes: kutucuk
   label_child_revision: Alt
   label_chronological_order: Tarih sırasına göre
@@ -696,7 +695,6 @@ tr:
   label_last_notes: Son notlar
   label_last_tab_visited: Son ziyaret edilen sekme
   label_last_week: Geçen hafta
-  label_latest_compatible_version: Son uyumlul sürüm
   label_latest_revision: En son değişiklik
   label_latest_revision_plural: En son değişiklikler
   label_ldap: LDAP

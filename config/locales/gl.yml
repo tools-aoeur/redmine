@@ -513,7 +513,6 @@ gl:
   label_changed_from: cambiou de
   label_changes_details: Detalles de todos os cambios
   label_changeset_plural: Cambios
-  label_check_for_updates: "Comprobar se hai actualizacións"
   label_checkboxes: "caixas de opción múltiple"
   label_child_revision: "Subrevisión"
   label_chronological_order: En orde cronolóxica
@@ -701,7 +700,6 @@ gl:
   label_last_notes: Últimas notas
   label_last_tab_visited: Última lapela visitada
   label_last_week: última semana
-  label_latest_compatible_version: "Última versión compatíbel"
   label_latest_revision: Última revisión
   label_latest_revision_plural: Últimas revisións
   label_ldap: LDAP

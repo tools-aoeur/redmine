@@ -509,7 +509,6 @@ bg:
   label_changed_from: променено от
   label_changes_details: Подробни промени
   label_changeset_plural: Ревизии
-  label_check_for_updates: Проверка за нови версии
   label_checkboxes: чек-бокс
   label_child_revision: Ревизия наследник
   label_chronological_order: Хронологичен ред
@@ -698,7 +697,6 @@ bg:
   label_last_notes: Последни коментари
   label_last_tab_visited: Последно посетен таб
   label_last_week: последната седмица
-  label_latest_compatible_version: Последна съвместима версия
   label_latest_revision: Последна ревизия
   label_latest_revision_plural: Последни ревизии
   label_ldap: LDAP

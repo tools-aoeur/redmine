@@ -504,7 +504,6 @@ ja:
   label_changed_from: 過去の値
   label_changes_details: 全変更の詳細
   label_changeset_plural: 更新履歴
-  label_check_for_updates: アップデートを確認
   label_checkboxes: チェックボックス
   label_child_revision: 子
   label_chronological_order: 古い順
@@ -693,7 +692,6 @@ ja:
   label_last_notes: 最新のコメント
   label_last_tab_visited: 最後に開いたタブ
   label_last_week: 先週
-  label_latest_compatible_version: 互換性のある最新バージョン
   label_latest_revision: 最新リビジョン
   label_latest_revision_plural: 最新リビジョン
   label_ldap: LDAP

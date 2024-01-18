@@ -526,7 +526,6 @@ vi:
   label_changed_from: changed from
   label_changes_details: Chi tiết của mọi thay đổi
   label_changeset_plural: Thay đổi
-  label_check_for_updates: Kiểm tra cập nhật
   label_checkboxes: checkboxes
   label_child_revision: Con
   label_chronological_order: Bài cũ xếp trước
@@ -715,7 +714,6 @@ vi:
   label_last_notes: Ghi chú mới nhất
   label_last_tab_visited: Tab được truy cập lần cuối
   label_last_week: tuần trước
-  label_latest_compatible_version: Phiên bản tương thích mới nhất
   label_latest_revision: Bản điều chỉnh cuối cùng
   label_latest_revision_plural: Bản điều chỉnh cuối cùng
   label_ldap: LDAP
