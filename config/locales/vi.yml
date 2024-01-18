@@ -1130,8 +1130,6 @@ vi:
   setting_force_default_language_for_loggedin: Bắt buộc ngôn ngữ mặc định cho người dùng đã đăng nhập
   label_custom_field_select_type: Chọn loại đối tượng mà trường tùy chỉnh được đính kèm
   label_issue_assigned_to_updated: Đã cập nhật người được gán
-  label_check_for_updates: Kiểm tra cập nhật
-  label_latest_compatible_version: Phiên bản tương thích mới nhất
   label_unknown_plugin: Plugin không xác định
   label_radio_buttons: nút radio
   label_group_anonymous: Người dùng ẩn danh
