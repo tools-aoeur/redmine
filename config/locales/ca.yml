@@ -1084,8 +1084,6 @@ ca:
   setting_force_default_language_for_loggedin: "Forçar llenguatge per defecte als usuaris identificats."
   label_custom_field_select_type: "Seleccioni el tipus d'objecte al qual vol posar el camp personalitzat"
   label_issue_assigned_to_updated: "Persona assignada actualitzada"
-  label_check_for_updates: "Comprovar actualitzacions"
-  label_latest_compatible_version: "Ultima versió compatible"
   label_unknown_plugin: "Complement desconegut"
   label_radio_buttons: "Camps de selecció (Radiobutton)"
   label_group_anonymous: "Usuaris anònims"

@@ -1090,8 +1090,6 @@ uk:
   setting_force_default_language_for_loggedin: Не визначати мову для зареєстрованих користувачів
   label_custom_field_select_type: Виберіть тип об'єкта, для якого буде створено поле для налаштування
   label_issue_assigned_to_updated: Виконавець оновлений
-  label_check_for_updates: Перевірити оновлення
-  label_latest_compatible_version: Остання сумісна версія
   label_unknown_plugin: Невідомий плагін
   label_radio_buttons: радіо-кнопки
   label_group_anonymous: Анонімні користувачі

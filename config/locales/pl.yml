@@ -1061,8 +1061,6 @@ pl:
   label_radio_buttons: pola opcji
   label_link_values_to: Linkuj wartości do URL
   label_custom_field_select_type: Wybierz typ obiektu, dla którego chcesz utworzyć pole niestandardowe
-  label_check_for_updates: Sprawdź aktualizacje
-  label_latest_compatible_version: Najnowsza kompatybilna wersja
   label_unknown_plugin: Nieznana wtyczka
   label_add_projects: Dodaj projekty
   label_users_visibility_all: Wszyscy aktywni użytkownicy
