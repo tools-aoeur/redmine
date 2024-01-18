@@ -1078,7 +1078,6 @@ pt-BR:
   permission_edit_documents: Editar documentos
   permission_delete_documents: Excluir documentos
   label_gantt_progress_line: Linha de progresso
-  setting_jsonp_enabled: Ativar suporte JSONP
   field_inherit_members: Herdar membros
   field_closed_on: Concluído
   field_generate_password: Gerar senha

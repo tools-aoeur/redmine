@@ -1039,7 +1039,6 @@ nl:
   permission_edit_documents: Documenten bewerken
   permission_delete_documents: Documenten verwijderen
   label_gantt_progress_line: Voortgangslijn
-  setting_jsonp_enabled: JSONP support inschakelen
   field_inherit_members: Bovenliggende leden erven
   field_closed_on: Gesloten
   field_generate_password: Wachtwoord genereren

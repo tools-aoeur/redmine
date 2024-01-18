@@ -23,23 +23,12 @@ module Redmine
   module Views
     module Builders
       class Json < Structure
-        attr_accessor :jsonp
-
         def initialize(request, response)
           super
-          callback = request.params[:callback] || request.params[:jsonp]
-          if callback && Setting.jsonp_enabled?
-            self.jsonp = callback.to_s.gsub(/[^a-zA-Z0-9_.]/, '')
-          end
         end
 
         def output
-          json = @struct.first.to_json
-          if jsonp.present?
-            json = "#{jsonp}(#{json})"
-            @response.content_type = 'application/javascript'
-          end
-          json
+          @struct.first.to_json
         end
       end
     end

@@ -1063,7 +1063,6 @@ uk:
   permission_edit_documents: Редагувати документи
   permission_delete_documents: Видалити документи
   label_gantt_progress_line: Лінія прогресу
-  setting_jsonp_enabled: Включити JSONP підтримку
   field_inherit_members: Наслідувати учасників
   field_closed_on: Закрито
   field_generate_password: Створити пароль
