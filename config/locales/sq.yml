@@ -1024,8 +1024,6 @@ sq:
   label_radio_buttons: butona rrethorë
   label_link_values_to: Lidh vlera te URL
   label_custom_field_select_type: Përzgjidhni lloj objekti te i cili të ngjitet fusha vetjake
-  label_check_for_updates: Kontrollo për përditësime
-  label_latest_compatible_version: Versioni më i ri i përputhshëm
   label_unknown_plugin: Shtojcë e panjohur
   label_add_projects: Shtoni projekte
   label_users_visibility_all: Krejt përdoruesit aktivë

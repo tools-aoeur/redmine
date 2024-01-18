@@ -1121,8 +1121,6 @@ es:
   setting_force_default_language_for_loggedin: Forzar lenguaje por defecto para usuarios identificados
   label_custom_field_select_type: Seleccione el tipo de objeto al que unir el campo personalizado
   label_issue_assigned_to_updated: Persona asignada actualizada
-  label_check_for_updates: Comprobar actualizaciones
-  label_latest_compatible_version: Útima versión compatible
   label_unknown_plugin: Plugin desconocido
   label_radio_buttons: Botones de selección excluyentes
   label_group_anonymous: Usuarios anónimos
