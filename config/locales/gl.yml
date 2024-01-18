@@ -1068,7 +1068,6 @@ gl:
   permission_edit_documents: "Editar os documentos"
   permission_delete_documents: "Eliminar os documentos"
   label_gantt_progress_line: "Liña do progreso"
-  setting_jsonp_enabled: "Activar a compatibilidade con JSONP."
   field_inherit_members: "Herdar os membros"
   field_closed_on: "Pechado"
   field_generate_password: "Xerar un contrasinal"

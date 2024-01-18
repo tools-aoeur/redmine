@@ -446,7 +446,6 @@ sv:
   setting_thumbnails_enabled: Visa miniatyrbilder av bilagor
   setting_thumbnails_size: Storlek på miniatyrbilder (i pixlar)
   setting_non_working_week_days: Lediga dagar
-  setting_jsonp_enabled: Aktivera JSONP-stöd
   setting_default_projects_tracker_ids: Standardärendetyper för nya projekt
 
   permission_add_project: Skapa projekt

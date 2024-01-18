@@ -437,7 +437,6 @@ lt:
   setting_thumbnails_enabled: Rodyti sumažintus priedų atvaizdus
   setting_thumbnails_size: Sumažinto atvaizdo dydis (pikseliais)
   setting_non_working_week_days: Nedarbo dienos
-  setting_jsonp_enabled: Įgalinti JSONP palaikymą
   setting_default_projects_tracker_ids: Numatytieji pėdsekiai naujiems projektams
   setting_mail_handler_excluded_filenames: Neįtraukti priedų su pavadinimu
   setting_force_default_language_for_anonymous: Priverstinai nustatyti numatytąją kalbą anoniminiams vartotojams

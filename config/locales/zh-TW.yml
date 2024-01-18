@@ -533,7 +533,6 @@
   setting_thumbnails_enabled: 顯示附加檔案的縮圖
   setting_thumbnails_size: "縮圖大小 (單位: 像素 pixels)"
   setting_non_working_week_days: 非工作日
-  setting_jsonp_enabled: 啟用 JSONP 支援
   setting_default_projects_tracker_ids: 新專案預設使用的追蹤標籤
   setting_mail_handler_excluded_filenames: 移除符合下列名稱的附件
   setting_force_default_language_for_anonymous: 強迫匿名用戶使用預設語言
