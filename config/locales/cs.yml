@@ -1088,8 +1088,6 @@ cs:
     uživatele
   label_custom_field_select_type: Vybrat typ objektu, ke kterému bude přiřazeno uživatelské pole
   label_issue_assigned_to_updated: Přiřazený uživatel aktualizován
-  label_check_for_updates: Zkontroluj aktualizace
-  label_latest_compatible_version: Poslední kompatibilní verze
   label_unknown_plugin: Nezámý plugin
   label_radio_buttons: radio tlačítka
   label_group_anonymous: Anonymní uživatelé

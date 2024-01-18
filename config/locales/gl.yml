@@ -1095,8 +1095,6 @@ gl:
   setting_force_default_language_for_loggedin: "Definir un idioma predeterminado para os usuarios rexistrados."
   label_custom_field_select_type: "Seleccionar o tipo de obxecto ao que se anexará o campo personalizado."
   label_issue_assigned_to_updated: "Actualizouse o asignado."
-  label_check_for_updates: "Comprobar se hai actualizacións"
-  label_latest_compatible_version: "Última versión compatíbel"
   label_unknown_plugin: "Complemento descoñecido"
   label_radio_buttons: "caixas de opción única"
   label_group_anonymous: "Usuarios anónimos"

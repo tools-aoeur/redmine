@@ -1120,8 +1120,6 @@ sv:
   setting_force_default_language_for_loggedin: Lås till förvalt språk för inloggade användare
   label_custom_field_select_type: Välj den typ av objekt som det anpassade fältet skall användas för
   label_issue_assigned_to_updated: Tilldelad har uppdaterats
-  label_check_for_updates: Leta efter uppdateringar
-  label_latest_compatible_version: Senaste kompatibla version
   label_unknown_plugin: Okänt tillägg
   label_radio_buttons: alternativknappar
   label_group_anonymous: Anonyma användare

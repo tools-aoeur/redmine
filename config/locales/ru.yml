@@ -1188,8 +1188,6 @@ ru:
   setting_force_default_language_for_loggedin: Не определять язык для зарегистрированных пользователей
   label_custom_field_select_type: Выберите тип объекта для которого будет создано настраиваемое поле
   label_issue_assigned_to_updated: Исполнитель обновлен
-  label_check_for_updates: Проверить обновления
-  label_latest_compatible_version: Последняя совместимая версия
   label_unknown_plugin: Неизвестный плагин
   label_radio_buttons: radio buttons
   label_group_anonymous: Анонимные пользователи

@@ -1094,8 +1094,6 @@ et:
   setting_force_default_language_for_loggedin: "Sisse logitud kasutajad on vaikimisi keelega"
   label_custom_field_select_type: "Vali objekti tüüp, millele omaloodud väli külge pannakse"
   label_issue_assigned_to_updated: "Tegeleja uuendatud"
-  label_check_for_updates: "Vaata uuendusi"
-  label_latest_compatible_version: "Värskeim ühilduv versioon"
   label_unknown_plugin: "Tundmatu plugin"
   label_radio_buttons: "raadionupud"
   label_group_anonymous: "Anonüümsed kasutajad"

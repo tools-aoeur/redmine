@@ -1095,8 +1095,6 @@ tr:
   label_custom_field_select_type: Özel alanın bağlı olacağı obje tipini
     seçin
   label_issue_assigned_to_updated: Atanan güncellendi
-  label_check_for_updates: Güncellemeleri kontrol et
-  label_latest_compatible_version: Son uyumlul sürüm
   label_unknown_plugin: Bilinmeyen eklenti
   label_radio_buttons: radyo butonları
   label_group_anonymous: Anonim kullanıcı
