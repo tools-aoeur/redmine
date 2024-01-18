@@ -497,7 +497,6 @@ pl:
   setting_thumbnails_enabled: Wyświetlaj miniatury załączników
   setting_thumbnails_size: Rozmiar miniatury (w pikselach)
   setting_non_working_week_days: Dni nie-robocze
-  setting_jsonp_enabled: Włącz wsparcie dla JSONP
   setting_default_projects_tracker_ids: Domyślne typy zagadnień dla nowych projektów
   setting_mail_handler_excluded_filenames: Wyklucz załączniki wg nazwy
   setting_force_default_language_for_anonymous: Wymuś domyślny język dla anonimowych użytkowników

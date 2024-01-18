@@ -1061,7 +1061,6 @@ cs:
   permission_edit_documents: Upravit dokumenty
   permission_delete_documents: Smazet dokumenty
   label_gantt_progress_line: Vývojová čára
-  setting_jsonp_enabled: Povolit podporu JSONP
   field_inherit_members: Zdědit členy
   field_closed_on: Uzavřeno
   field_generate_password: Generovat heslo

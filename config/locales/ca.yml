@@ -1057,7 +1057,6 @@ ca:
   permission_edit_documents: "Editar document"
   permission_delete_documents: "Eliminar document"
   label_gantt_progress_line: "Línia de progres"
-  setting_jsonp_enabled: "Habilitar suport JSONP"
   field_inherit_members: "Heretar membres"
   field_closed_on: "Tancada"
   field_generate_password: "Generar contrasenya"
