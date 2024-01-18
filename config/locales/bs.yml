@@ -1059,7 +1059,6 @@ bs:
   permission_edit_documents: Uređivanje dokumenata
   permission_delete_documents: Brisanje dokumenata
   label_gantt_progress_line: Tok napretka
-  setting_jsonp_enabled: Omogući JSONP podršku
   field_inherit_members: Naslijedi članove
   field_closed_on: Zatvoreno
   field_generate_password: Generiši šifru
