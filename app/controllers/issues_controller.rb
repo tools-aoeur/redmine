@@ -204,8 +204,8 @@ class IssuesController < ApplicationController
     begin
       saved = save_issue_with_child_records
     rescue ActiveRecord::StaleObjectError => e
-      ZAppEngine::Api.log("Error::FailedToSaveIssue::#{@issue.id} with exception #{e}")
-      ZAppEngine::Api.log("Error::FailedToSaveIssue::#{@issue.id} with backtrace \n\t#{e.backtrace.join("\n\t")}")
+      Rails.logger.info("Error::FailedToSaveIssue::#{@issue.id} with exception #{e}")
+      Rails.logger.info("Error::FailedToSaveIssue::#{@issue.id} with backtrace \n\t#{e.backtrace.join("\n\t")}")
       @issue.detach_saved_attachments
       @conflict = true
       if params[:last_journal_id]
@@ -676,8 +676,8 @@ class IssuesController < ApplicationController
            :journal => @issue.current_journal}
         )
       else
-        ZAppEngine::Api.log("Error::FailedToSaveIssue::#{@issue.id} with errors #{@issue.errors}")
-        ZAppEngine::Api.log("Error::FailedToSaveIssue::#{@issue.id} going for rollback")
+        Rails.logger.info("Error::FailedToSaveIssue::#{@issue.id} with errors #{@issue.errors}")
+        Rails.logger.info("Error::FailedToSaveIssue::#{@issue.id} going for rollback")
         raise ActiveRecord::Rollback
       end
     end
