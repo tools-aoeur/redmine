@@ -478,6 +478,7 @@ fr:
   setting_time_entry_list_defaults: Affichage par défaut de la liste des temps passés
   setting_timelog_accept_0_hours: Autoriser la saisie de temps avec 0 heure
   setting_timelog_max_hours_per_day: Maximum d'heures pouvant être saisies par un utilisateur sur un jour
+  setting_translated_language_ids: Langues traduites
 
   permission_add_project: Créer un projet
   permission_add_subprojects: Créer des sous-projets
@@ -903,6 +904,8 @@ fr:
   label_issue_watchers: Observateurs
   label_example: Exemple
   label_display: Affichage
+  label_language: Langue
+  label_translated_language: Langue traduite
   label_sort: Tri
   label_ascending: Croissant
   label_descending: Décroissant

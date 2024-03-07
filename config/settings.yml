@@ -106,6 +106,9 @@ force_default_language_for_anonymous:
   default: 0
 force_default_language_for_loggedin:
   default: 0
+translated_language_ids:
+  serialized: true
+  default:
 host_name:
   default: localhost:3000
 protocol:
