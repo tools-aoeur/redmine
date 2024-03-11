@@ -46,7 +46,7 @@
         <td></td>
         <% for status in @statuses %>
         <td style="width:<%= 75 / @statuses.size %>%;">
-          <%= status.name %>
+          <%= status.i18n_name %>
         </td>
         <% end %>
       </tr>
@@ -81,7 +81,7 @@
         <% @custom_fields.each do |field| %>
         <tr>
           <td class="name">
-            <%= field.name %> <%= content_tag('span', '*', :class => 'required') if field_required?(field) %>
+            <%= field.i18n_name %> <%= content_tag('span', '*', :class => 'required') if field_required?(field) %>
           </td>
           <% for status in @statuses -%>
           <td class="<%= @permissions[status.id][field.id.to_s].try(:join, ' ') %>" title="<%= field.name %> (<%= status.name %>)">
