@@ -44,6 +44,8 @@ class Tracker < ActiveRecord::Base
   validates_length_of :name, :maximum => 30
   validates_length_of :description, :maximum => 255
 
+  store :i18n, coder: JSON
+
   scope :sorted, lambda {order(:position)}
   scope :named, lambda {|arg| where("LOWER(#{table_name}.name) = LOWER(?)", arg.to_s.strip)}
 
@@ -78,7 +80,8 @@ class Tracker < ActiveRecord::Base
     'position',
     'custom_field_ids',
     'project_ids',
-    'description')
+    'description',
+    'i18n')
 
   def copy_from(arg, options={})
     return if arg.blank?
@@ -158,6 +161,16 @@ class Tracker < ActiveRecord::Base
       trackers.uniq.map(&:core_fields).reduce(:|)
     else
       CORE_FIELDS.dup
+    end
+  end
+
+  # Add translated attributes here and in the edit view
+  %i[name].each do |attr_name|
+    define_method :"i18n_#{attr_name}" do
+      return send(attr_name) if i18n.blank?
+
+      locale = User.current.language.to_s
+      i18n&.dig(attr_name, locale) || send(attr_name)
     end
   end
 
