@@ -31,6 +31,7 @@ class CustomField < ActiveRecord::Base
                           :foreign_key => "custom_field_id"
   acts_as_positioned
   serialize :possible_values
+  store :i18n, coder: JSON
   store :format_store
 
   validates_presence_of :name, :field_format
@@ -100,7 +101,8 @@ class CustomField < ActiveRecord::Base
     'user_role',
     'version_status',
     'extensions_allowed',
-    'full_width_layout')
+    'full_width_layout',
+    'i18n')
 
   def copy_from(arg, options={})
     return if arg.blank?
@@ -341,6 +343,16 @@ class CustomField < ActiveRecord::Base
 
   def css_classes
     "#{field_format}_cf cf_#{id}"
+  end
+
+  # Add translated attributes here and in the edit view
+  %i[name].each do |attr_name|
+    define_method :"i18n_#{attr_name}" do
+      return send(attr_name) if i18n.blank?
+
+      locale = User.current.language.to_s
+      i18n&.dig(attr_name, locale) || send(attr_name)
+    end
   end
 
   protected
