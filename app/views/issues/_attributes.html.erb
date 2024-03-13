@@ -4,7 +4,7 @@
 <div class="splitcontentleft">
 <% if @issue.safe_attribute?('status_id') && @allowed_statuses.present? %>
 <p>
-  <%= f.select :status_id, (@allowed_statuses.collect {|p| [p.name, p.id]}), {:required => true},
+  <%= f.select :status_id, (@allowed_statuses.collect {|p| [p.i18n_name, p.id]}), {:required => true},
                 :onchange => "updateIssueFrom('#{escape_javascript(update_issue_form_path(@project, @issue))}', this)" %>
   <% if @issue.transition_warning %>
     <span class="icon-only icon-warning" title="<%= @issue.transition_warning %>"><%= @issue.transition_warning %></span>
@@ -16,7 +16,7 @@
 <% end %>
 
 <% if @issue.safe_attribute? 'priority_id' %>
-<p><%= f.select :priority_id, (@priorities.collect {|p| [p.name, p.id]}), {:required => true} %></p>
+<p><%= f.select :priority_id, (@priorities.collect {|p| [p.i18n_name, p.id]}), {:required => true} %></p>
 <% end %>
 
 <% if @issue.safe_attribute? 'assigned_to_id' %>
