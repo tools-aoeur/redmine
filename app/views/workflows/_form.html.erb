@@ -12,7 +12,7 @@
     <% for new_status in @statuses %>
     <td style="width:<%= 75 / @statuses.size %>%;">
       <%= toggle_checkboxes_link("table.transitions-#{name} input[type=checkbox]:not(:disabled).new-status-#{new_status.id}", { class: 'no-tooltip' }) %>
-      <%= new_status.name %>
+      <%= new_status.i18n_name %>
     </td>
     <% end %>
   </tr>
@@ -25,7 +25,7 @@
     <td class="name">
       <%= toggle_checkboxes_link("table.transitions-#{name} input[type=checkbox]:not(:disabled).old-status-#{old_status.try(:id) || 0}", { class: 'no-tooltip' }) %>
       <% if old_status %>
-        <% old_status_name = old_status.name %>
+        <% old_status_name = old_status.i18n_name %>
         <%= old_status_name %>
       <% else %>
         <% old_status_name = l(:label_issue_new) %>
@@ -34,7 +34,7 @@
     </td>
     <% for new_status in @statuses -%>
     <% checked = (old_status == new_status) || (transition_counts[[old_status, new_status]] > 0) %>
-    <td class="no-tooltip <%= checked ? 'enabled' : '' %>" title="<%= old_status_name %> &#187; <%= new_status.name %>">
+    <td class="no-tooltip <%= checked ? 'enabled' : '' %>" title="<%= old_status_name %> &#187; <%= new_status.i18n_name %>">
       <%= transition_tag transition_counts[[old_status, new_status]], old_status, new_status, name %>
     </td>
     <% end -%>
