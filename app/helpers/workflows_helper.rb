@@ -38,7 +38,7 @@ module WorkflowsHelper
       all_tag_options[:style] = "display:none;"
     end
     option_tags << content_tag('option', l(:label_all), all_tag_options)
-    option_tags << options_from_collection_for_select(objects, "id", "name", selected)
+    option_tags << options_from_collection_for_select(objects, "id", "i18n_name", selected)
     select_tag name, option_tags, {:multiple => multiple}.merge(options)
   end
 

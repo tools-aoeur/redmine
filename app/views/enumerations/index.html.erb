@@ -17,7 +17,7 @@
 </tr></thead>
 <% enumerations.each do |enumeration| %>
 <tr>
-    <td class="name"><%= link_to enumeration, edit_enumeration_path(enumeration) %></td>
+    <td class="name"><%= link_to enumeration.i18n_name, edit_enumeration_path(enumeration) %></td>
     <td class="tick"><%= checked_image enumeration.is_default? %></td>
     <td class="tick"><%= checked_image enumeration.active? %></td>
     <td class="buttons">

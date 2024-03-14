@@ -13,7 +13,7 @@
   <% Role.givable.sorted.each do |role| %>
     <label class="block custom_field_role" style="padding-left:2em;">
       <%= check_box_tag 'custom_field[role_ids][]', role.id, role_ids.include?(role.id), :id => nil %>
-      <%= role.name %>
+      <%= role.i18n_name %>
     </label>
   <% end %>
   <%= hidden_field_tag 'custom_field[role_ids][]', '' %>

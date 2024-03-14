@@ -6,7 +6,7 @@
                       tracker_ids.include?(tracker.id),
                       :id => "custom_field_tracker_ids_#{tracker.id}" %>
     <label class="no-css" for="custom_field_tracker_ids_<%=tracker.id%>">
-      <%= tracker.name %>
+      <%= tracker.i18n_name %>
     </label>
   <% end %>
   <%= hidden_field_tag "custom_field[tracker_ids][]", '' %>

@@ -1,0 +1,19 @@
+<%= form_tag({:action => 'edit', :tab => 'language'}) do %>
+
+<% current_default_language = Setting.default_language %>
+
+<div class="box tabular settings">
+<p><%= setting_select :default_language, lang_options_for_select(false) %></p>
+
+<p><%= setting_check_box :force_default_language_for_anonymous %></p>
+
+<p><%= setting_check_box :force_default_language_for_loggedin %></p>
+
+<% locales = valid_languages.map { |lang| [ll(lang.to_s, :general_lang_name), lang.to_s] }.sort_by(&:last) %>
+
+<p><%= setting_multiselect :translated_language_ids, locales %></p>
+
+</div>
+
+<%= submit_tag l(:button_save) %>
+<% end %>

@@ -10,7 +10,7 @@
     <th></th>
     <% @roles.each do |role| %>
     <th>
-        <%= content_tag(role.builtin? ? 'em' : 'span', role.name) %>
+        <%= content_tag(role.builtin? ? 'em' : 'span', role.i18n_name) %>
     </th>
     <% end %>
     </tr>

@@ -1,0 +1,16 @@
+<%# requires a :i18n store attribute %>
+<% translated_languages = Setting.translated_language_ids %>
+<% if translated_languages.present? %>
+<fieldset class="box tabular"><legend><%= l(:label_translated_language) %></legend>
+  <%= f.fields_for :i18n do |fi| %>
+    <% translated_languages.each do |locale| %>
+      <p>
+      <%= fi.text_field "#{translated_field}[#{locale}]",
+        value: f.object.i18n&.dig(translated_field, locale),
+        label: ll(locale, :general_lang_name),
+        :size => 50 %>
+      </p>
+    <% end %>
+  <% end %>
+</fieldset>
+<% end %>
