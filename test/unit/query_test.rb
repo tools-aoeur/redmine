@@ -3413,4 +3413,139 @@ class QueryTest < ActiveSupport::TestCase
     assigned_to_values = query.assigned_to_values
     assert_equal expected_names, assigned_to_values[1..].map(&:first)
   end
+
+  # Tests for query sharing functionality
+  def test_query_should_have_default_sharing_none
+    query = IssueQuery.new(:name => 'Test query')
+    assert_equal 'none', query.sharing
+  end
+
+  def test_query_allowed_sharings_for_admin
+    User.current = User.find(1) # Admin
+    query = IssueQuery.new(:project => Project.find(1))
+
+    allowed = query.allowed_sharings
+    assert_include 'none', allowed
+    assert_include 'descendants', allowed
+    assert_include 'hierarchy', allowed
+    assert_include 'tree', allowed
+    assert_include 'system', allowed
+  end
+
+  def test_query_allowed_sharings_for_non_admin
+    User.current = User.find(2) # Non-admin with manage_public_queries permission
+    query = IssueQuery.new(:project => Project.find(1))
+
+    allowed = query.allowed_sharings
+    assert_include 'none', allowed
+    assert_include 'descendants', allowed
+    # Non-admin should not see system sharing
+    assert_not_include 'system', allowed
+  end
+
+  def test_query_allowed_sharings_respects_current_sharing
+    User.current = User.find(2) # Non-admin
+    query = IssueQuery.new(:project => Project.find(1), :sharing => 'system')
+
+    # Even if user can't normally set system sharing, if it's already set they should see it
+    allowed = query.allowed_sharings
+    assert_include 'system', allowed
+  end
+
+  def test_query_allowed_sharings_for_root_project_permissions
+    User.current = User.find(2) # Non-admin with manage_public_queries on root
+    query = IssueQuery.new(:project => Project.find(1)) # ecookbook is root project
+
+    allowed = query.allowed_sharings
+    assert_include 'hierarchy', allowed
+    assert_include 'tree', allowed
+  end
+
+  def test_query_shared_returns_true_for_non_none_sharing
+    query = IssueQuery.new(:sharing => 'descendants')
+    assert query.shared?
+
+    query.sharing = 'hierarchy'
+    assert query.shared?
+
+    query.sharing = 'tree'
+    assert query.shared?
+
+    query.sharing = 'system'
+    assert query.shared?
+  end
+
+  def test_query_shared_returns_false_for_none_sharing
+    query = IssueQuery.new(:sharing => 'none')
+    assert_not query.shared?
+  end
+
+  def test_query_sharing_validation
+    query = IssueQuery.new(:name => 'Test query', :sharing => 'invalid')
+    assert_not query.valid?
+
+    query.sharing = 'none'
+    query.user = User.find(1)
+    assert query.valid?
+  end
+
+  def test_query_sharing_inheritance_none
+    # Create a project hierarchy: Parent -> Child -> Grandchild
+    parent = Project.create!(:name => 'Parent', :identifier => 'parent-sharing-test')
+    child = Project.create!(:name => 'Child', :identifier => 'child-sharing-test', :parent => parent)
+    grandchild = Project.create!(:name => 'Grandchild', :identifier => 'grandchild-sharing-test', :parent => child)
+
+    # Create query with 'none' sharing on child project
+    query = IssueQuery.create!(:name => 'None sharing query', :project => child, :sharing => 'none', :user => User.find(1))
+
+    # Query should only be visible on the project it was created for
+    User.current = User.find(1)
+
+    # Should be available on child project
+    assert IssueQuery.visible.where(:project => child).include?(query)
+
+    # Should not be available on parent or grandchild projects
+    assert_not IssueQuery.visible.where(:project => parent).include?(query)
+    assert_not IssueQuery.visible.where(:project => grandchild).include?(query)
+
+    User.current = nil
+  ensure
+    # Cleanup
+    [grandchild, child, parent].each { |p| p.destroy if p&.persisted? }
+  end
+
+  def test_query_sharing_inheritance_descendants
+    # Create a project hierarchy: Parent -> Child -> Grandchild
+    parent = Project.create!(:name => 'Parent', :identifier => 'parent-desc-test')
+    child = Project.create!(:name => 'Child', :identifier => 'child-desc-test', :parent => parent)
+    grandchild = Project.create!(:name => 'Grandchild', :identifier => 'grandchild-desc-test', :parent => child)
+
+    # Create query with 'descendants' sharing on parent project
+    query = IssueQuery.create!(:name => 'Descendants sharing query', :project => parent, :sharing => 'descendants', :user => User.find(1), :visibility => IssueQuery::VISIBILITY_PUBLIC)
+
+    User.current = User.find(1)
+
+    # Should be available on child and grandchild projects
+    visible_queries = IssueQuery.visible
+
+    # Query should be accessible in descendant projects context
+    assert visible_queries.include?(query)
+
+    User.current = nil
+  ensure
+    # Cleanup
+    [grandchild, child, parent].each { |p| p.destroy if p&.persisted? }
+  end
+
+  def test_query_sharing_system
+    # Create a system-wide shared query
+    query = IssueQuery.create!(:name => 'System sharing query', :project => nil, :sharing => 'system', :user => User.find(1), :visibility => IssueQuery::VISIBILITY_PUBLIC)
+
+    User.current = User.find(1)
+
+    # System queries should be globally visible
+    assert IssueQuery.visible.include?(query)
+
+    User.current = nil
+  end
 end

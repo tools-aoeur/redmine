@@ -80,7 +80,36 @@ class IssueQuery < Query
 
   has_many :projects, foreign_key: 'default_issue_query_id', dependent: :nullify, inverse_of: 'default_issue_query'
   after_update { projects.clear unless visibility == VISIBILITY_PUBLIC }
-  scope :for_all_projects, ->{ where(project_id: nil) }
+  scope :for_all_projects, ->{ where(project_id: nil).or(unscoped.where(sharing: 'system')) }
+
+  validates :sharing, :inclusion => {:in => QUERY_SHARINGS}
+
+  # Redefine the global_or_on_project scope specifically for IssueQuery
+  scope :global_or_on_project, (lambda do |project|
+    if project
+      r = project.root? ? project : project.root
+      left_joins(:project).
+      preload(:project).
+      where(
+        "#{IssueQuery.table_name}.project_id IS NULL" \
+        " OR #{Project.table_name}.id = #{project.id}" \
+        " OR (#{Project.table_name}.status <> #{Project::STATUS_ARCHIVED} AND (" \
+        " #{IssueQuery.table_name}.sharing = 'system'" \
+        " OR (#{Project.table_name}.lft >= #{r.lft}" \
+        " AND #{Project.table_name}.rgt <= #{r.rgt}" \
+        " AND #{IssueQuery.table_name}.sharing = 'tree')" \
+        " OR (#{Project.table_name}.lft < #{project.lft}" \
+        " AND #{Project.table_name}.rgt > #{project.rgt}" \
+        " AND #{IssueQuery.table_name}.sharing IN ('hierarchy', 'descendants'))" \
+        " OR (#{Project.table_name}.lft > #{project.lft}" \
+        " AND #{Project.table_name}.rgt < #{project.rgt}" \
+        " AND #{IssueQuery.table_name}.sharing = 'hierarchy')" \
+        "))"
+      )
+    else
+      where(project_id: nil).or(unscoped.where(sharing: 'system'))
+    end
+  end)
 
   def self.default(project: nil, user: User.current)
     # user default
@@ -99,6 +128,53 @@ class IssueQuery < Query
       return query if query&.visibility == VISIBILITY_PUBLIC
     end
     nil
+  end
+
+  def self.visible(*args)
+    user = args.shift || User.current
+    base = Project.allowed_to_condition(user, view_permission, *args)
+    scope = joins("LEFT OUTER JOIN #{Project.table_name} ON #{table_name}.project_id = #{Project.table_name}.id").
+      where("#{table_name}.project_id IS NULL OR (#{base})")
+
+    if user.admin?
+      scope.where("#{table_name}.visibility <> ? OR #{table_name}.user_id = ?", VISIBILITY_PRIVATE, user.id)
+    elsif user.memberships.any?
+      scope.where(
+        "#{table_name}.visibility = ?" +
+          " OR (#{table_name}.visibility = ? AND #{table_name}.id IN (" +
+          "SELECT DISTINCT q.id FROM #{table_name} q" +
+          " INNER JOIN #{table_name_prefix}queries_roles#{table_name_suffix} qr on qr.query_id = q.id" +
+          " INNER JOIN #{MemberRole.table_name} mr ON mr.role_id = qr.role_id" +
+          " INNER JOIN #{Member.table_name} m ON m.id = mr.member_id AND m.user_id = ?" +
+          " INNER JOIN #{Project.table_name} p ON p.id = m.project_id AND p.status <> ?" +
+          " WHERE q.project_id IS NULL OR q.project_id = m.project_id))" +
+          " OR #{table_name}.user_id = ?",
+        VISIBILITY_PUBLIC, VISIBILITY_ROLES, user.id, Project::STATUS_ARCHIVED, user.id)
+    elsif user.logged?
+      scope.where("#{table_name}.visibility = ? OR #{table_name}.user_id = ?", VISIBILITY_PUBLIC, user.id)
+    else
+      scope.where("#{table_name}.visibility = ?", VISIBILITY_PUBLIC)
+    end
+  end
+
+  # Returns true if the query is visible to +user+ or the current user.
+  def visible?(user=User.current)
+    return true if user.admin?
+
+    return false unless project.nil? || user.allowed_to?(self.class.view_permission, project)
+
+    case visibility
+    when VISIBILITY_PUBLIC
+      true
+    when VISIBILITY_ROLES
+      if project
+        user.roles_for_project(project).intersect?(roles)
+      else
+        user.memberships.joins(:member_roles).where(:member_roles => {:role_id => roles.map(&:id)}).any?
+      end
+    else
+      user == self.user
+    end
   end
 
   def initialize(attributes=nil, *args)
