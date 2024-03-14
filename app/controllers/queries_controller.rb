@@ -141,6 +141,7 @@ class QueriesController < ApplicationController
     else
       @query.visibility = Query::VISIBILITY_PRIVATE
     end
+    @query.sharing = params[:query] && params[:query][:sharing] || 'none'
     @query
   end
 
