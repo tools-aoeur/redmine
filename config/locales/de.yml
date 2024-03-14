@@ -525,6 +525,8 @@ de:
   label_diff_side_by_side: nebeneinander
   label_disabled: gesperrt
   label_display: Anzeige
+  label_language: Sprache
+  label_translated_language: Übersetzte Sprache
   label_display_per_page: "Pro Seite: %{value}"
   label_display_used_statuses_only: Zeige nur Status an, die von diesem Tracker verwendet werden
   label_document: Dokument
@@ -1053,6 +1055,7 @@ de:
   setting_thumbnails_size: Größe der Vorschaubilder (in Pixeln)
   setting_time_format: Zeitformat
   setting_timespan_format: Format für Zeitspannen
+  setting_translated_language_ids: Übersetzte Sprachen
   setting_unsubscribe: Benutzern erlauben, das eigene Benutzerkonto zu löschen
   setting_user_format: Benutzer-Anzeigeformat
   setting_welcome_text: Willkommenstext

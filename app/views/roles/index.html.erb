@@ -14,7 +14,7 @@
   <tbody>
 <% for role in @roles %>
   <tr class="<%= role.builtin? ? "builtin" : "givable" %>">
-  <td class="name"><%= content_tag(role.builtin? ? 'em' : 'span', link_to(role.name, edit_role_path(role))) %></td>
+  <td class="name"><%= content_tag(role.builtin? ? 'em' : 'span', link_to(role.i18n_name, edit_role_path(role))) %></td>
   <td>
     <% unless role.builtin? || role.workflow_rules.exists? %>
       <span class="icon icon-warning">

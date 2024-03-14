@@ -104,7 +104,7 @@ module CustomFieldsHelper
   def custom_field_name_tag(custom_field)
     title = custom_field.description.presence
     css = title ? "field-description" : nil
-    content_tag 'span', custom_field.name, :title => title, :class => css
+    content_tag 'span', custom_field.i18n_name, :title => title, :class => css
   end
 
   # Return custom field label tag

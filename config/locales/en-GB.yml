@@ -374,6 +374,7 @@ en-GB:
   setting_gantt_items_limit: Maximum number of items displayed on the gantt chart
   setting_issue_group_assignment: Allow ticket assignment to groups
   setting_default_issue_start_date_to_creation_date: Use current date as start date for new tickets
+  setting_translated_language_ids: Translated languages
 
   permission_add_project: Create project
   permission_add_subprojects: Create subprojects
@@ -757,6 +758,8 @@ en-GB:
   label_issue_watchers: Watchers
   label_example: Example
   label_display: Display
+  label_language: Language
+  label_translated_language: Translated language
   label_sort: Sort
   label_ascending: Ascending
   label_descending: Descending
