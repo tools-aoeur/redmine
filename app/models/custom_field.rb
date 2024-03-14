@@ -20,6 +20,7 @@
 class CustomField < ActiveRecord::Base
   include Redmine::SafeAttributes
   include Redmine::SubclassFactory
+  include TranslatableAttributes
 
   has_many :enumerations,
            lambda {order(:position)},
@@ -32,6 +33,8 @@ class CustomField < ActiveRecord::Base
   acts_as_positioned
   serialize :possible_values
   store :format_store
+
+  i18n :name
 
   validates_presence_of :name, :field_format
   validates_uniqueness_of :name, :scope => :type, :case_sensitive => true
@@ -72,6 +75,7 @@ class CustomField < ActiveRecord::Base
       where(:visible => true)
     end
   end)
+
   def visible_by?(project, user=User.current)
     visible? || user.admin?
   end
@@ -100,7 +104,8 @@ class CustomField < ActiveRecord::Base
     'user_role',
     'version_status',
     'extensions_allowed',
-    'full_width_layout')
+    'full_width_layout',
+    'i18n')
 
   def copy_from(arg, options={})
     return if arg.blank?

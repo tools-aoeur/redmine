@@ -18,7 +18,7 @@
   <tbody>
 <% for status in @issue_statuses %>
   <tr>
-  <td class="name"><%= link_to status.name, edit_issue_status_path(status) %></td>
+  <td class="name"><%= link_to status.i18n_name, edit_issue_status_path(status) %></td>
   <% if Issue.use_status_for_done_ratio? %>
   <td><%= status.default_done_ratio %></td>
   <% end %>
