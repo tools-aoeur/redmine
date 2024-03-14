@@ -19,12 +19,15 @@
 
 class IssueStatus < ApplicationRecord
   include Redmine::SafeAttributes
+  include TranslatableAttributes
 
   after_update :handle_is_closed_change
   before_destroy :check_integrity
   has_many :workflows, :class_name => 'WorkflowTransition', :foreign_key => "old_status_id"
   has_many :workflow_transitions_as_new_status, :class_name => 'WorkflowTransition', :foreign_key => "new_status_id"
   acts_as_positioned
+
+  i18n :name
 
   before_destroy :delete_workflow_rules
 
@@ -42,7 +45,8 @@ class IssueStatus < ApplicationRecord
     'description',
     'is_closed',
     'position',
-    'default_done_ratio')
+    'default_done_ratio',
+    'i18n')
 
   # Update all the +Issues+ setting their done_ratio to the value of their +IssueStatus+
   def self.update_issue_done_ratios

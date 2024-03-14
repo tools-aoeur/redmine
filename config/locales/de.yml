@@ -593,6 +593,8 @@ de:
   label_disable_notifications: Benachrichtigungen deaktivieren
   label_disabled: gesperrt
   label_display: Anzeige
+  label_language: Sprache
+  label_translated_language: Übersetzte Sprache
   label_display_per_page: "Pro Seite: %{value}"
   label_display_type: Ergebnisse anzeigen als
   label_display_type_board: Karte
@@ -1316,6 +1318,7 @@ de:
   setting_timelog_max_hours_per_day: Maximale Anzahl der täglich buchbaren Stunden pro Benutzer
   setting_timelog_required_fields: Erforderliche Felder für Zeitbuchungen
   setting_timespan_format: Format für Zeitspannen
+  setting_translated_language_ids: Übersetzte Sprachen
   setting_twofa: Zwei-Faktor-Authentifizierung
   setting_unsubscribe: Benutzern erlauben, das eigene Benutzerkonto zu löschen
   setting_user_format: Benutzer-Anzeigeformat
