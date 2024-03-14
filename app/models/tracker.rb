@@ -19,6 +19,7 @@
 
 class Tracker < ActiveRecord::Base
   include Redmine::SafeAttributes
+  include TranslatableAttributes
 
   CORE_FIELDS_UNDISABLABLE = %w(project_id tracker_id subject is_private).freeze
   # Fields that can be disabled
@@ -27,6 +28,8 @@ class Tracker < ActiveRecord::Base
     %w(assigned_to_id category_id fixed_version_id parent_issue_id
        start_date due_date estimated_hours done_ratio description priority_id).freeze
   CORE_FIELDS_ALL = (CORE_FIELDS_UNDISABLABLE + CORE_FIELDS).freeze
+
+  i18n :name
 
   before_destroy :check_integrity
   belongs_to :default_status, :class_name => 'IssueStatus'
@@ -78,7 +81,8 @@ class Tracker < ActiveRecord::Base
     'position',
     'custom_field_ids',
     'project_ids',
-    'description')
+    'description',
+    'i18n')
 
   def copy_from(arg, options={})
     return if arg.blank?
