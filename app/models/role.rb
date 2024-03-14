@@ -79,7 +79,6 @@ class Role < ActiveRecord::Base
 
   serialize :permissions, ::Role::PermissionsAttributeCoder
   store :settings, :accessors => [:permissions_all_trackers, :permissions_tracker_ids]
-  store :i18n, coder: JSON
 
   validates_presence_of :name
   validates_uniqueness_of :name, :case_sensitive => true
@@ -296,16 +295,6 @@ class Role < ActiveRecord::Base
   # it will be created on the fly.
   def self.anonymous
     find_or_create_system_role(BUILTIN_ANONYMOUS, 'Anonymous')
-  end
-
-  # Add translated attributes here and in the edit view
-  %i[name].each do |attr_name|
-    define_method :"i18n_#{attr_name}" do
-      return send(attr_name) if i18n.blank?
-
-      locale = User.current.language.to_s
-      i18n&.dig(attr_name, locale) || send(attr_name)
-    end
   end
 
   private

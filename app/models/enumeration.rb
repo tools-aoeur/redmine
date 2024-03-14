@@ -38,7 +38,6 @@ class Enumeration < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name, :scope => [:type, :project_id], :case_sensitive => true
   validates_length_of :name, :maximum => 30
-  store :i18n, coder: JSON
 
   scope :shared, lambda {where(:project_id => nil)}
   scope :sorted, lambda {order(:position)}
@@ -133,16 +132,6 @@ class Enumeration < ActiveRecord::Base
   def self.same_active_state?(new, previous)
     new = (new == "1" ? true : false)
     return new == previous
-  end
-
-  # Add translated attributes here and in the edit view
-  %i[name].each do |attr_name|
-    define_method :"i18n_#{attr_name}" do
-      return send(attr_name) if i18n.blank?
-
-      locale = User.current.language.to_s
-      i18n&.dig(attr_name, locale) || send(attr_name)
-    end
   end
 
   private
