@@ -19,6 +19,7 @@
 
 class Role < ActiveRecord::Base
   include Redmine::SafeAttributes
+  include TranslatableAttributes
 
   # Custom coder for the permissions attribute that should be an
   # array of symbols. Rails 3 uses Psych which can be *unbelievably*
@@ -52,6 +53,8 @@ class Role < ActiveRecord::Base
     ['all', :label_users_visibility_all],
     ['members_of_visible_projects', :label_users_visibility_members_of_visible_projects]
   ]
+
+  i18n :name
 
   scope :sorted, lambda {order(:builtin, :position)}
   scope :givable, lambda {order(:position).where(:builtin => 0)}
