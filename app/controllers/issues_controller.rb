@@ -203,7 +203,9 @@ class IssuesController < ApplicationController
     saved = false
     begin
       saved = save_issue_with_child_records
-    rescue ActiveRecord::StaleObjectError
+    rescue ActiveRecord::StaleObjectError => e
+      Rails.logger.info("Error::FailedToSaveIssue::#{@issue.id} with exception #{e}")
+      Rails.logger.info("Error::FailedToSaveIssue::#{@issue.id} with backtrace \n\t#{e.backtrace.join("\n\t")}")
       @issue.detach_saved_attachments
       @conflict = true
       if params[:last_journal_id]
@@ -674,6 +676,8 @@ class IssuesController < ApplicationController
            :journal => @issue.current_journal}
         )
       else
+        Rails.logger.info("Error::FailedToSaveIssue::#{@issue.id} with errors #{@issue.errors}")
+        Rails.logger.info("Error::FailedToSaveIssue::#{@issue.id} going for rollback")
         raise ActiveRecord::Rollback
       end
     end
