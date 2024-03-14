@@ -147,6 +147,11 @@ module QueriesHelper
     tags
   end
 
+  def format_query_sharing(sharing)
+    sharing = 'none' unless Query::QUERY_SHARINGS.include?(sharing)
+    l("label_version_sharing_#{sharing}")
+  end
+
   def grouped_query_results(items, query, &block)
     result_count_by_group = query.result_count_by_group
     previous_group, first = false, true
@@ -334,8 +339,7 @@ module QueriesHelper
     session_key = klass.name.underscore.to_sym
 
     if params[:query_id].present?
-      scope = klass.where(:project_id => nil)
-      scope = scope.or(klass.where(:project_id => @project)) if @project
+      scope = klass
       @query = scope.find(params[:query_id])
       raise ::Unauthorized unless @query.visible?
 

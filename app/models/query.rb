@@ -248,6 +248,8 @@ class Query < ActiveRecord::Base
   VISIBILITY_ROLES   = 1
   VISIBILITY_PUBLIC  = 2
 
+  QUERY_SHARINGS = %w(none descendants hierarchy tree system)
+
   belongs_to :project
   belongs_to :user
   has_and_belongs_to_many :roles, :join_table => "#{table_name_prefix}queries_roles#{table_name_suffix}", :foreign_key => "query_id"
@@ -337,7 +339,29 @@ class Query < ActiveRecord::Base
 
   # Scope of queries that are global or on the given project
   scope :global_or_on_project, (lambda do |project|
-    where(:project_id => (project.nil? ? nil : [nil, project.id]))
+    if project
+      r = project.root? ? project : project.root
+      left_joins(:project).
+      preload(:project).
+      where(
+        "#{IssueQuery.table_name}.project_id IS NULL" \
+        " OR #{Project.table_name}.id = #{project.id}" \
+        " OR (#{Project.table_name}.status <> #{Project::STATUS_ARCHIVED} AND (" \
+        " #{IssueQuery.table_name}.sharing = 'system'" \
+        " OR (#{Project.table_name}.lft >= #{r.lft}" \
+        " AND #{Project.table_name}.rgt <= #{r.rgt}" \
+        " AND #{IssueQuery.table_name}.sharing = 'tree')" \
+        " OR (#{Project.table_name}.lft < #{project.lft}" \
+        " AND #{Project.table_name}.rgt > #{project.rgt}" \
+        " AND #{IssueQuery.table_name}.sharing IN ('hierarchy', 'descendants'))" \
+        " OR (#{Project.table_name}.lft > #{project.lft}" \
+        " AND #{Project.table_name}.rgt < #{project.rgt}" \
+        " AND #{IssueQuery.table_name}.sharing = 'hierarchy')" \
+        "))"
+      )
+    else
+      where(project_id: nil).or(unscoped.where(sharing: 'system'))
+    end
   end)
 
   scope :sorted, lambda {order(:name, :id)}
@@ -416,6 +440,30 @@ class Query < ActiveRecord::Base
   # Returns true if the query is available for all projects
   def is_global?
     new_record? ? project_id.nil? : project_id_in_database.nil?
+  end
+
+  def allowed_sharings(user = User.current)
+    QUERY_SHARINGS.select do |s|
+      if sharing == s
+        true
+      else
+        case s
+        when 'system'
+          # Only admin users can set a systemwide sharing
+          user.admin?
+        when 'hierarchy', 'tree'
+          # Only users allowed to manage versions of the root project can
+          # set sharing to hierarchy or tree
+          project.nil? || user.allowed_to?(:manage_public_queries, project.root)
+        else
+          true
+        end
+      end
+    end
+  end
+
+  def shared?
+    sharing != 'none'
   end
 
   def queried_table_name
