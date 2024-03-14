@@ -260,6 +260,8 @@ class Query < ApplicationRecord
   VISIBILITY_ROLES   = 1
   VISIBILITY_PUBLIC  = 2
 
+  QUERY_SHARINGS = %w(none descendants hierarchy tree system)
+
   belongs_to :project
   belongs_to :user
   has_and_belongs_to_many :roles, :join_table => "#{table_name_prefix}queries_roles#{table_name_suffix}", :foreign_key => "query_id"
@@ -273,6 +275,7 @@ class Query < ApplicationRecord
   validates_length_of :description, :maximum => 255
   validates :visibility, :inclusion => {:in => [VISIBILITY_PUBLIC, VISIBILITY_ROLES, VISIBILITY_PRIVATE]}
   validate :validate_query_filters
+  validate :validate_sharing_permission
   validate do |query|
     errors.add(:base, l(:label_role_plural) + ' ' + l('activerecord.errors.messages.blank')) if query.visibility == VISIBILITY_ROLES && roles.blank?
   end
@@ -441,6 +444,30 @@ class Query < ApplicationRecord
     new_record? ? project_id.nil? : project_id_in_database.nil?
   end
 
+  def allowed_sharings(user = User.current)
+    QUERY_SHARINGS.select do |s|
+      if sharing == s
+        true
+      else
+        case s
+        when 'system'
+          # Only admin users can set a systemwide sharing
+          user.admin?
+        when 'hierarchy', 'tree'
+          # Only users allowed to manage versions of the root project can
+          # set sharing to hierarchy or tree
+          project.nil? || user.allowed_to?(:manage_public_queries, project.root)
+        else
+          true
+        end
+      end
+    end
+  end
+
+  def shared?
+    sharing != 'none'
+  end
+
   def queried_table_name
     @queried_table_name ||= self.class.queried_class.table_name
   end
@@ -528,6 +555,14 @@ class Query < ApplicationRecord
           # filter doesn't require any value
           ["o", "c", "!*", "*", "nd", "t", "ld", "nw", "w", "lw", "l2w", "nm", "m", "lm", "y", "*o", "!o"].include? operator_for(field)
     end if filters
+  end
+
+  def validate_sharing_permission
+    return if sharing.blank? || sharing == 'none'
+
+    unless allowed_sharings(user || User.current).include?(sharing)
+      errors.add(:sharing, :invalid)
+    end
   end
 
   def add_filter_error(field, message)

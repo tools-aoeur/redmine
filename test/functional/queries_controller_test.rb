@@ -1070,4 +1070,190 @@ class QueriesControllerTest < Redmine::ControllerTest
     # Verify that the checkbox is not disabled when editing a project-specific query
     assert_select 'input[name=query_is_for_all][type=checkbox]:not([checked]):not([disabled])'
   end
+
+  # Tests for query sharing functionality
+  def test_new_query_should_show_sharing_options
+    @request.session[:user_id] = 1
+    get :new
+    assert_response :success
+
+    # Should show sharing dropdown for global queries
+    assert_select 'select[name=?]', 'query[sharing]'
+    assert_select 'select[name=?] option[value=none]', 'query[sharing]'
+    assert_select 'select[name=?] option[value=descendants]', 'query[sharing]'
+    assert_select 'select[name=?] option[value=hierarchy]', 'query[sharing]'
+    assert_select 'select[name=?] option[value=tree]', 'query[sharing]'
+    assert_select 'select[name=?] option[value=system]', 'query[sharing]'
+  end
+
+  def test_new_project_query_should_show_limited_sharing_options
+    @request.session[:user_id] = 2 # Non-admin user
+    get(:new, :params => {:project_id => 1})
+    assert_response :success
+
+    # Should show sharing dropdown for project queries
+    assert_select 'select[name=?]', 'query[sharing]'
+    assert_select 'select[name=?] option[value=none]', 'query[sharing]'
+    assert_select 'select[name=?] option[value=descendants]', 'query[sharing]'
+    # Non-admin users should not see system sharing option
+    assert_select 'select[name=?] option[value=system]', 'query[sharing]', 0
+  end
+
+  def test_create_query_with_sharing_none
+    @request.session[:user_id] = 2
+    query = new_record(IssueQuery) do
+      post(
+        :create,
+        :params => {
+          :project_id => 'ecookbook',
+          :query => {
+            :name => 'Query with none sharing',
+            :sharing => 'none'
+          }
+        }
+      )
+      assert_response :found
+    end
+    assert_equal 'none', query.sharing
+  end
+
+  def test_create_query_with_sharing_descendants
+    @request.session[:user_id] = 2
+    query = new_record(IssueQuery) do
+      post(
+        :create,
+        :params => {
+          :project_id => 'ecookbook',
+          :query => {
+            :name => 'Query with descendants sharing',
+            :sharing => 'descendants'
+          }
+        }
+      )
+      assert_response :found
+    end
+    assert_equal 'descendants', query.sharing
+  end
+
+  def test_create_query_with_sharing_hierarchy_by_admin
+    @request.session[:user_id] = 1 # Admin
+    query = new_record(IssueQuery) do
+      post(
+        :create,
+        :params => {
+          :project_id => 'ecookbook',
+          :query => {
+            :name => 'Query with hierarchy sharing',
+            :sharing => 'hierarchy'
+          }
+        }
+      )
+      assert_response :found
+    end
+    assert_equal 'hierarchy', query.sharing
+  end
+
+  def test_create_query_with_sharing_tree_by_admin
+    @request.session[:user_id] = 1 # Admin
+    query = new_record(IssueQuery) do
+      post(
+        :create,
+        :params => {
+          :project_id => 'ecookbook',
+          :query => {
+            :name => 'Query with tree sharing',
+            :sharing => 'tree'
+          }
+        }
+      )
+      assert_response :found
+    end
+    assert_equal 'tree', query.sharing
+  end
+
+  def test_create_query_with_sharing_system_by_admin
+    @request.session[:user_id] = 1 # Admin
+    query = new_record(IssueQuery) do
+      post(
+        :create,
+        :params => {
+          :query => {
+            :name => 'Query with system sharing',
+            :sharing => 'system'
+          }
+        }
+      )
+      assert_response :found
+    end
+    assert_equal 'system', query.sharing
+  end
+
+  def test_create_query_should_ignore_invalid_sharing
+    @request.session[:user_id] = 2
+    query = new_record(IssueQuery) do
+      post(
+        :create,
+        :params => {
+          :project_id => 'ecookbook',
+          :query => {
+            :name => 'Query with invalid sharing',
+            :sharing => 'invalid'
+          }
+        }
+      )
+      assert_response :found
+    end
+    # Should default to 'none' when invalid sharing is provided
+    assert_equal 'none', query.sharing
+  end
+
+  def test_non_admin_cannot_create_query_with_system_sharing
+    @request.session[:user_id] = 2 # Non-admin
+    query = new_record(IssueQuery) do
+      post(
+        :create,
+        :params => {
+          :project_id => 'ecookbook',
+          :query => {
+            :name => 'Query with system sharing attempt',
+            :sharing => 'system'
+          }
+        }
+      )
+      assert_response :found
+    end
+    # Non-admin users should not be able to set system sharing
+    assert_not_equal 'system', query.sharing
+  end
+
+  def test_update_query_sharing
+    @request.session[:user_id] = 1
+    query = IssueQuery.create!(:name => 'Test query', :user_id => 1, :project_id => 1, :sharing => 'none')
+
+    put(
+      :update,
+      :params => {
+        :id => query.id,
+        :query => {
+          :name => 'Updated query',
+          :sharing => 'descendants'
+        }
+      }
+    )
+    assert_response :found
+
+    query.reload
+    assert_equal 'descendants', query.sharing
+  end
+
+  def test_edit_query_should_show_current_sharing_selected
+    @request.session[:user_id] = 1
+    query = IssueQuery.create!(:name => 'Test query', :user_id => 1, :project_id => 1, :sharing => 'hierarchy')
+
+    get(:edit, :params => {:id => query.id})
+    assert_response :success
+
+    # Should show the current sharing value as selected
+    assert_select 'select[name=?] option[value=hierarchy][selected=selected]', 'query[sharing]'
+  end
 end
