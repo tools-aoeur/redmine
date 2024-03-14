@@ -309,7 +309,7 @@ module IssuesHelper
 
   def trackers_options_for_select(issue)
     trackers = trackers_for_select(issue)
-    trackers.collect {|t| [t.name, t.id]}
+    trackers.collect {|t| [t.i18n_name, t.id]}
   end
 
   def trackers_for_select(issue)
