@@ -685,6 +685,7 @@ en-GB:
   label_issues_visibility_public: All non private issues
   label_item_position: "%{position} of %{count}"
   label_jump_to_a_project: Jump to a project...
+  label_language: Language
   label_language_based: Based on user's language
   label_last_changes: "last %{count} changes"
   label_last_month: last month
@@ -907,6 +908,7 @@ en-GB:
   label_tracker_new: New tracker
   label_tracker_plural: Trackers
   label_trackers_description: Trackers description
+  label_translated_language: Translated language
   label_unknown_plugin: Unknown plugin
   label_update_issue_done_ratios: Update issue done ratios
   label_updated_issues: Updated issues
@@ -1283,6 +1285,7 @@ en-GB:
   setting_timelog_max_hours_per_day: Maximum hours that can be logged per day and user
   setting_timelog_required_fields: Required fields for time logs
   setting_timespan_format: Time span format
+  setting_translated_language_ids: Translated languages
   setting_twofa: Two-factor authentication
   setting_unsubscribe: Allow users to delete their own account
   setting_user_format: Users display format

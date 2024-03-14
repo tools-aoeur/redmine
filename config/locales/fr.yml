@@ -704,7 +704,10 @@ fr:
   label_issues_visibility_public: Toutes les demandes non privées
   label_item_position: "%{position} sur %{count}"
   label_jump_to_a_project: Aller à un projet...
+  label_language: Langue
+  label_translated_language: Langue traduite
   label_language_based: Basé sur la langue de l'utilisateur
+  setting_translated_language_ids: Langues traduites
   label_last_changes: "%{count} derniers changements"
   label_last_month: le mois dernier
   label_last_n_days: "les %{count} derniers jours"
