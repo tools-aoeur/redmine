@@ -504,6 +504,7 @@ en:
   setting_timelog_accept_0_hours: Accept time logs with 0 hours
   setting_timelog_max_hours_per_day: Maximum hours that can be logged per day and user
   setting_timelog_accept_future_dates: Accept time logs on future dates
+  setting_translated_language_ids: Translated languages
   setting_show_status_changes_in_mail_subject: Show status changes in ticket mail notifications subject
   setting_project_list_defaults: Projects list defaults
   setting_twofa: Two-factor authentication
@@ -967,6 +968,8 @@ en:
   label_wiki_page_watchers: Watchers
   label_example: Example
   label_display: Display
+  label_language: Language
+  label_translated_language: Translated language
   label_sort: Sort
   label_ascending: Ascending
   label_descending: Descending

@@ -19,6 +19,7 @@
 
 class Enumeration < ActiveRecord::Base
   include Redmine::SubclassFactory
+  include TranslatableAttributes
 
   default_scope lambda {order(:position)}
 
@@ -31,6 +32,8 @@ class Enumeration < ActiveRecord::Base
   before_destroy :check_integrity
   before_save    :check_default
   after_save     :update_children_name
+
+  i18n :name
 
   validates_presence_of :name
   validates_uniqueness_of :name, :scope => [:type, :project_id], :case_sensitive => true
