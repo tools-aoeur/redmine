@@ -142,6 +142,14 @@ class QueriesController < ApplicationController
     else
       @query.visibility = Query::VISIBILITY_PRIVATE
     end
+
+    # Set sharing, but only if it's allowed for the current user
+    requested_sharing = params[:query] && params[:query][:sharing] || 'none'
+    if @query.allowed_sharings.include?(requested_sharing)
+      @query.sharing = requested_sharing
+    else
+      @query.sharing = 'none'
+    end
     @query
   end
 
