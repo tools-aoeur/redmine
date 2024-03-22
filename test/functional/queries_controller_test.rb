@@ -36,7 +36,6 @@ class QueriesControllerTest < Redmine::ControllerTest
     assert_response :success
 
     assert_select 'input[name=?][value="0"][checked=checked]', 'query[visibility]'
-    assert_select 'input[name=query_is_for_all][type=checkbox]:not([checked]):not([disabled])'
     assert_select 'select[name=?]', 'c[]' do
       assert_select 'option[value=tracker]'
       assert_select 'option[value=subject]'
@@ -49,7 +48,6 @@ class QueriesControllerTest < Redmine::ControllerTest
     assert_response :success
 
     assert_select 'input[name=?]', 'query[visibility]', 0
-    assert_select 'input[name=query_is_for_all][type=checkbox][checked]:not([disabled])'
   end
 
   def test_new_on_invalid_project
@@ -463,14 +461,13 @@ class QueriesControllerTest < Redmine::ControllerTest
     assert_equal Query::VISIBILITY_PRIVATE, query.visibility
   end
 
-  def test_create_global_public_query_should_force_private_without_manage_public_queries_permission
+  def test_create_public_query_should_force_private_without_manage_public_queries_permission
     @request.session[:user_id] = 3
     query = new_record(Query) do
       post(
         :create,
         :params => {
           :project_id => 'ecookbook',
-          :query_is_for_all => '1',
           :query => {
             "name" => "name", "visibility" => "2"
           }
@@ -478,7 +475,7 @@ class QueriesControllerTest < Redmine::ControllerTest
       )
       assert_response :found
     end
-    assert_nil query.project
+    assert_not_nil query.project
     assert_equal Query::VISIBILITY_PRIVATE, query.visibility
   end
 
@@ -500,14 +497,13 @@ class QueriesControllerTest < Redmine::ControllerTest
     assert_equal Query::VISIBILITY_PUBLIC, query.visibility
   end
 
-  def test_create_global_public_query_should_force_private_with_manage_public_queries_permission
+  def test_create_project_public_query_with_manage_public_queries_permission_duplicate
     @request.session[:user_id] = 2
     query = new_record(Query) do
       post(
         :create,
         :params => {
           :project_id => 'ecookbook',
-          :query_is_for_all => '1',
           :query => {
             "name" => "name", "visibility" => "2"
           }
@@ -515,18 +511,17 @@ class QueriesControllerTest < Redmine::ControllerTest
       )
       assert_response :found
     end
-    assert_nil query.project
-    assert_equal Query::VISIBILITY_PRIVATE, query.visibility
+    assert_not_nil query.project
+    assert_equal Query::VISIBILITY_PUBLIC, query.visibility
   end
 
-  def test_create_global_public_query_by_admin
+  def test_create_project_public_query_by_admin
     @request.session[:user_id] = 1
     query = new_record(Query) do
       post(
         :create,
         :params => {
           :project_id => 'ecookbook',
-          :query_is_for_all => '1',
           :query => {
             "name" => "name", "visibility" => "2"
           }
@@ -534,7 +529,7 @@ class QueriesControllerTest < Redmine::ControllerTest
       )
       assert_response :found
     end
-    assert_nil query.project
+    assert_not_nil query.project
     assert_equal Query::VISIBILITY_PUBLIC, query.visibility
   end
 
@@ -629,7 +624,6 @@ class QueriesControllerTest < Redmine::ControllerTest
     assert_response :success
 
     assert_select 'input[name=?][value="2"][checked=checked]', 'query[visibility]'
-    assert_select 'input[name=query_is_for_all][type=checkbox][checked=checked]'
   end
 
   def test_edit_global_private_query
@@ -638,7 +632,6 @@ class QueriesControllerTest < Redmine::ControllerTest
     assert_response :success
 
     assert_select 'input[name=?]', 'query[visibility]', 0
-    assert_select 'input[name=query_is_for_all][type=checkbox][checked=checked]'
   end
 
   def test_edit_project_private_query
@@ -647,7 +640,6 @@ class QueriesControllerTest < Redmine::ControllerTest
     assert_response :success
 
     assert_select 'input[name=?]', 'query[visibility]', 0
-    assert_select 'input[name=query_is_for_all][type=checkbox]:not([checked])'
   end
 
   def test_edit_project_public_query
@@ -656,7 +648,6 @@ class QueriesControllerTest < Redmine::ControllerTest
     assert_response :success
 
     assert_select 'input[name=?][value="2"][checked=checked]', 'query[visibility]'
-    assert_select 'input[name=query_is_for_all][type=checkbox]:not([checked])'
   end
 
   def test_edit_sort_criteria
@@ -1031,45 +1022,8 @@ class QueriesControllerTest < Redmine::ControllerTest
     assert_include ["Inactive Activity", "14"], json
   end
 
-  def test_new_query_is_for_all_checkbox_not_disabled
-    @request.session[:user_id] = 1
-    get :new
-    assert_response :success
-    # Verify that the "For all projects" checkbox is not disabled when creating a new query
-    assert_select 'input[name=query_is_for_all][type=checkbox][checked]:not([disabled])'
-  end
-
-  def test_new_project_query_is_for_all_checkbox_not_disabled
-    @request.session[:user_id] = 1
-    get(:new, :params => {:project_id => 1})
-    assert_response :success
-    # Verify that the checkbox is not disabled when creating a new query within a project
-    assert_select 'input[name=query_is_for_all][type=checkbox]:not([checked]):not([disabled])'
-  end
-
-  def test_edit_global_query_is_for_all_checkbox_disabled
-    @request.session[:user_id] = 1
-    # Create a global query (project_id = nil)
-    query = IssueQuery.create!(:name => 'test_global_query', :user_id => 1, :project_id => nil)
-
-    get(:edit, :params => {:id => query.id})
-    assert_response :success
-
-    # Verify that the "For all projects" checkbox is disabled when editing an existing global query
-    assert_select 'input[name=query_is_for_all][type=checkbox][checked][disabled]'
-  end
-
-  def test_edit_project_query_is_for_all_checkbox_not_disabled
-    @request.session[:user_id] = 1
-    # Create a project-specific query
-    query = IssueQuery.create!(:name => 'test_project_query', :user_id => 1, :project_id => 1)
-
-    get(:edit, :params => {:id => query.id})
-    assert_response :success
-
-    # Verify that the checkbox is not disabled when editing a project-specific query
-    assert_select 'input[name=query_is_for_all][type=checkbox]:not([checked]):not([disabled])'
-  end
+  # The tests for "is_for_all" functionality were removed as it
+  # has been disabled and replaced with query sharing functionality
 
   # Tests for query sharing functionality
   def test_new_query_should_show_sharing_options
