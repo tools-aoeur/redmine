@@ -80,6 +80,9 @@ pre, code {font-family: Consolas, Menlo, "Liberation Mono", Courier, monospace;}
   position:absolute;
   width: inherit;
   z-index:45;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 80vh;
   background-color:#fff;
   border-right: 1px solid #759FCF;
   border-bottom: 1px solid #759FCF;
