@@ -14,7 +14,7 @@ gem 'nokogiri', '~> 1.15.2'
 gem 'i18n', '~> 1.14.1'
 gem 'rbpdf', '~> 1.21.3'
 gem 'addressable'
-gem 'rubyzip', '~> 2.3.0'
+gem 'rubyzip'
 
 #  Ruby Standard Gems
 gem 'csv', '~> 3.2.6'
@@ -108,9 +108,9 @@ group :test do
     gem "selenium-webdriver", ">= 4.11.0"
   end
   # RuboCop
-  gem 'rubocop', '~> 1.57.0', require: false
-  gem 'rubocop-performance', '~> 1.19.0', require: false
-  gem 'rubocop-rails', '~> 2.22.1', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
 end
 
 local_gemfile = File.join(File.dirname(__FILE__), "Gemfile.local")
