@@ -106,6 +106,9 @@ force_default_language_for_anonymous:
   default: 0
 force_default_language_for_loggedin:
   default: 0
+translated_language_ids:
+  serialized: true
+  default:
 host_name:
   default: localhost:3000
 protocol:
@@ -308,9 +311,6 @@ gravatar_default:
 start_of_week:
   default: ''
 rest_api_enabled:
-  default: 0
-  security_notifications: 1
-jsonp_enabled:
   default: 0
   security_notifications: 1
 default_notification_option:

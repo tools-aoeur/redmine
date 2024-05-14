@@ -1034,7 +1034,6 @@ nl:
   permission_edit_documents: Documenten bewerken
   permission_delete_documents: Documenten verwijderen
   label_gantt_progress_line: Voortgangslijn
-  setting_jsonp_enabled: JSONP support inschakelen
   field_inherit_members: Bovenliggende leden erven
   field_closed_on: Gesloten
   field_generate_password: Wachtwoord genereren
@@ -1062,8 +1061,6 @@ nl:
   setting_force_default_language_for_loggedin: Standaardtaal voor ingelogde gebruikers
   label_custom_field_select_type: Selecteer het objecttype waaraan u het vrij veld wilt vasthangen
   label_issue_assigned_to_updated: Toegewezen persoon gewijzigd
-  label_check_for_updates: Controleren of er updates beschikbaar zijn
-  label_latest_compatible_version: Laatste compatibele versie
   label_unknown_plugin: Onbekende plugin
   label_radio_buttons: selectieknoppen
   label_group_anonymous: Anonieme gebruikers

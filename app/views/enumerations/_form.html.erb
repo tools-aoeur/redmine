@@ -2,6 +2,7 @@
 
 <div class="box tabular">
   <p><%= f.text_field :name %></p>
+  <%= render :partial => 'common/translations', :locals => { translated_field: :name, :f => f } %>
   <p><%= f.check_box :active %></p>
   <p><%= f.check_box :is_default %></p>
 

@@ -1056,7 +1056,6 @@ zh:
   permission_edit_documents: 编辑文档
   permission_delete_documents: 删除文档
   label_gantt_progress_line: 进度线
-  setting_jsonp_enabled: 启用JSONP支持
   field_inherit_members: 继承父项目成员
   field_closed_on: 结束日期
   field_generate_password: 生成密码
@@ -1081,8 +1080,6 @@ zh:
   setting_force_default_language_for_loggedin: 强制已登录用户使用默认语言
   label_custom_field_select_type: 请选择需要关联自定义属性的类型
   label_issue_assigned_to_updated: 指派人已更新
-  label_check_for_updates: 检查更新
-  label_latest_compatible_version: 最新兼容版本
   label_unknown_plugin: 未知插件
   label_radio_buttons: 单选按钮
   label_group_anonymous: 匿名用户

@@ -495,7 +495,6 @@ fa:
   setting_thumbnails_enabled: نمایش بندانگشتی پیوست‌ها
   setting_thumbnails_size: اندازه بندانگشتی (به پیکسل)
   setting_non_working_week_days: روزهای تعطیل کاری
-  setting_jsonp_enabled: فعال‌سازی پشتیبانی JSONP
   setting_default_projects_tracker_ids: انواع مسئله‌ی پیش‌فرض برای پروژه‌های جدید
   setting_mail_handler_excluded_filenames: مستثنی کردن پیوست‌ها با نام
   setting_force_default_language_for_anonymous: الزام زبان پیش فرض برای کاربران ناشناس
@@ -1050,8 +1049,6 @@ fa:
   label_radio_buttons: انتخاب فقط یکی از گزینه‌ها
   label_link_values_to: پیوند مقادیر به URL
   label_custom_field_select_type: نوع شیئی را که بخش سفارشی قرار است به آن پیوست شود، انتخاب کنید
-  label_check_for_updates: آزمون به‌روزرسانی
-  label_latest_compatible_version: آخرین نسخه سازگار
   label_unknown_plugin: افزونه ناشناخته
   label_add_projects: افزودن پروژه‌ها
   label_users_visibility_all: همه کاربران فعال

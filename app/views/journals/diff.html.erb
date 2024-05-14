@@ -8,4 +8,4 @@
               :onclick => 'if (document.referrer != "") {history.back(); return false;}') %>
 </p>
 
-<% html_title "#{@issue.tracker.name} ##{@issue.id}: #{@issue.subject}" %>
+<% html_title "#{@issue.tracker.i18n_name} ##{@issue.id}: #{@issue.subject}" %>

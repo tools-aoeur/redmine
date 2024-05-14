@@ -1059,7 +1059,6 @@ bs:
   permission_edit_documents: Uređivanje dokumenata
   permission_delete_documents: Brisanje dokumenata
   label_gantt_progress_line: Tok napretka
-  setting_jsonp_enabled: Omogući JSONP podršku
   field_inherit_members: Naslijedi članove
   field_closed_on: Zatvoreno
   field_generate_password: Generiši šifru
@@ -1087,8 +1086,6 @@ bs:
   setting_force_default_language_for_loggedin: Forsiraj uobičajeni jezik za prijavljene korisnike
   label_custom_field_select_type: Odaberite tik objekta za koji želite vezati proizvoljno polje
   label_issue_assigned_to_updated: Odgovorna osoba ažurirana
-  label_check_for_updates: Provjeri ažuriranja
-  label_latest_compatible_version: Najnovija kompatibilna verzija
   label_unknown_plugin: Nepoznat plugin
   label_radio_buttons: radio dugmad
   label_group_anonymous: Anonimni korisnici

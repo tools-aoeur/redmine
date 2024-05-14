@@ -460,7 +460,6 @@ fr:
   setting_thumbnails_enabled: Afficher les vignettes des images
   setting_thumbnails_size: Taille des vignettes (en pixels)
   setting_non_working_week_days: Jours non travaillés
-  setting_jsonp_enabled: Activer le support JSONP
   setting_default_projects_tracker_ids: Trackers par défaut pour les nouveaux projets
   setting_mail_handler_excluded_filenames: Exclure les fichiers attachés par leur nom
   setting_force_default_language_for_anonymous: Forcer la langue par défault pour les utilisateurs anonymes
@@ -479,6 +478,7 @@ fr:
   setting_time_entry_list_defaults: Affichage par défaut de la liste des temps passés
   setting_timelog_accept_0_hours: Autoriser la saisie de temps avec 0 heure
   setting_timelog_max_hours_per_day: Maximum d'heures pouvant être saisies par un utilisateur sur un jour
+  setting_translated_language_ids: Langues traduites
 
   permission_add_project: Créer un projet
   permission_add_subprojects: Créer des sous-projets
@@ -899,6 +899,8 @@ fr:
   label_issue_watchers: Observateurs
   label_example: Exemple
   label_display: Affichage
+  label_language: Langue
+  label_translated_language: Langue traduite
   label_sort: Tri
   label_ascending: Croissant
   label_descending: Décroissant
@@ -971,8 +973,6 @@ fr:
   label_radio_buttons: boutons radio
   label_link_values_to: Lier les valeurs vers l'URL
   label_custom_field_select_type: Selectionner le type d'objet auquel attacher le champ personnalisé
-  label_check_for_updates: Vérifier les mises à jour
-  label_latest_compatible_version: Dernière version compatible
   label_unknown_plugin: Plugin inconnu
   label_add_projects: Ajouter des projets
   label_users_visibility_all: Tous les utilisateurs actifs

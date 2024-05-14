@@ -496,7 +496,6 @@ bg:
   setting_thumbnails_enabled: Показване на миниатюри на прикачените изображения
   setting_thumbnails_size: Размер на миниатюрите (в пиксели)
   setting_non_working_week_days: Не работни дни
-  setting_jsonp_enabled: Разрешаване на поддръжка на JSONP
   setting_default_projects_tracker_ids: Тракери по подразбиране за нови проекти
   setting_mail_handler_excluded_filenames: Имена на прикачени файлове, които да се пропускат при приемане на e-mail-и (например *.vcf, companylogo.gif).
   setting_force_default_language_for_anonymous: Задължително език по подразбиране за анонимните потребители
@@ -1058,8 +1057,6 @@ bg:
   label_radio_buttons: радио-бутони
   label_link_values_to: URL (опция)
   label_custom_field_select_type: "Изберете тип на обект, към който потребителското поле да бъде асоциирано"
-  label_check_for_updates: Проверка за нови версии
-  label_latest_compatible_version: Последна съвместима версия
   label_unknown_plugin: Непознат плъгин
   label_add_projects: Добавяне на проекти
   label_users_visibility_all: Всички активни потребители

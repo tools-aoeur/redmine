@@ -478,7 +478,6 @@ sq:
   setting_thumbnails_enabled: Shfaq miniatura bashkëngjitjesh
   setting_thumbnails_size: Madhësi miniaturash (në piksel)
   setting_non_working_week_days: Ditë kur s’punohet
-  setting_jsonp_enabled: Aktivizo mbulim JSONP-je
   setting_default_projects_tracker_ids: Ndjekës parazgjedhje për projekte të reja
   setting_mail_handler_excluded_filenames: Përjashto bashkëngjitje sipas emrash
   setting_force_default_language_for_anonymous: Detyro përdorimin e gjuhës parazgjedhje për përdorues anonimë
@@ -1020,8 +1019,6 @@ sq:
   label_radio_buttons: butona rrethorë
   label_link_values_to: Lidh vlera te URL
   label_custom_field_select_type: Përzgjidhni lloj objekti te i cili të ngjitet fusha vetjake
-  label_check_for_updates: Kontrollo për përditësime
-  label_latest_compatible_version: Versioni më i ri i përputhshëm
   label_unknown_plugin: Shtojcë e panjohur
   label_add_projects: Shtoni projekte
   label_users_visibility_all: Krejt përdoruesit aktivë

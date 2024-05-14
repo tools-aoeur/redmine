@@ -1088,7 +1088,6 @@ ja:
   permission_add_documents: 文書の追加
   permission_edit_documents: 文書の編集
   permission_delete_documents: 文書の削除
-  setting_jsonp_enabled: JSONPを有効にする
   field_inherit_members: メンバーを継承
   field_closed_on: 終了日
   field_generate_password: パスワードを自動生成
@@ -1112,8 +1111,6 @@ ja:
   setting_force_default_language_for_loggedin: ログインユーザーにデフォルトの言語を強制
   label_custom_field_select_type: カスタムフィールドを追加するオブジェクトを選択してください
   label_issue_assigned_to_updated: 担当者の更新
-  label_check_for_updates: アップデートを確認
-  label_latest_compatible_version: 互換性のある最新バージョン
   label_unknown_plugin: 不明なプラグイン
   label_radio_buttons: ラジオボタン
   label_group_anonymous: 匿名ユーザー

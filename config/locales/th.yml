@@ -1046,7 +1046,6 @@ th:
   permission_edit_documents: Edit documents
   permission_delete_documents: Delete documents
   label_gantt_progress_line: Progress line
-  setting_jsonp_enabled: Enable JSONP support
   field_inherit_members: Inherit members
   field_closed_on: Closed
   field_generate_password: Generate password
@@ -1079,8 +1078,6 @@ th:
   label_custom_field_select_type: Select the type of object to which the custom field
     is to be attached
   label_issue_assigned_to_updated: Assignee updated
-  label_check_for_updates: Check for updates
-  label_latest_compatible_version: Latest compatible version
   label_unknown_plugin: Unknown plugin
   label_radio_buttons: radio buttons
   label_group_anonymous: Anonymous users

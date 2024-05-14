@@ -473,7 +473,6 @@ de:
   label_changes_details: Details aller Änderungen
   label_changeset_plural: Changesets
   label_checkboxes: Checkboxen
-  label_check_for_updates: Auf Updates prüfen
   label_child_revision: Nachfolger
   label_chronological_order: in zeitlicher Reihenfolge
   label_close_versions: Vollständige Versionen schließen
@@ -529,6 +528,8 @@ de:
   label_diff_side_by_side: nebeneinander
   label_disabled: gesperrt
   label_display: Anzeige
+  label_language: Sprache
+  label_translated_language: Übersetzte Sprache
   label_display_per_page: "Pro Seite: %{value}"
   label_display_used_statuses_only: Zeige nur Status an, die von diesem Tracker verwendet werden
   label_document: Dokument
@@ -616,7 +617,6 @@ de:
   label_last_n_days: "die letzten %{count} Tage"
   label_last_n_weeks: letzte %{count} Wochen
   label_last_week: vorige Woche
-  label_latest_compatible_version: Letzte kompatible Version
   label_latest_revision: Aktuellste Revision
   label_latest_revision_plural: Aktuellste Revisionen
   label_ldap: LDAP
@@ -1022,7 +1022,6 @@ de:
   setting_issue_group_assignment: Ticketzuweisung an Gruppen erlauben
   setting_issue_list_default_columns: Standard-Spalten in der Ticket-Auflistung
   setting_issues_export_limit: Maximale Anzahl Tickets bei CSV/PDF-Export
-  setting_jsonp_enabled: JSONP Unterstützung aktivieren
   setting_link_copied_issue: Tickets beim Kopieren verlinken
   setting_login_required: Authentifizierung erforderlich
   setting_mail_from: E-Mail-Absender
@@ -1054,6 +1053,7 @@ de:
   setting_thumbnails_size: Größe der Vorschaubilder (in Pixeln)
   setting_time_format: Zeitformat
   setting_timespan_format: Format für Zeitspannen
+  setting_translated_language_ids: Übersetzte Sprachen
   setting_unsubscribe: Benutzern erlauben, das eigene Benutzerkonto zu löschen
   setting_user_format: Benutzer-Anzeigeformat
   setting_welcome_text: Willkommenstext

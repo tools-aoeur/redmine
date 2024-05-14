@@ -1134,7 +1134,6 @@ az:
   label_any_issues_in_project: any issues in project
   label_cross_project_descendants: With subprojects
   field_private_notes: Private notes
-  setting_jsonp_enabled: Enable JSONP support
   label_gantt_progress_line: Progress line
   permission_add_documents: Add documents
   permission_view_private_notes: View private notes
@@ -1175,8 +1174,6 @@ az:
   label_custom_field_select_type: Select the type of object to which the custom field
     is to be attached
   label_issue_assigned_to_updated: Assignee updated
-  label_check_for_updates: Check for updates
-  label_latest_compatible_version: Latest compatible version
   label_unknown_plugin: Unknown plugin
   label_radio_buttons: radio buttons
   label_group_anonymous: Anonymous users

@@ -1060,7 +1060,6 @@ tr:
   permission_edit_documents: Belgeleri düzenle
   permission_delete_documents: Belgeleri sil
   label_gantt_progress_line: İlerleme çizgisi
-  setting_jsonp_enabled: JSONP desteğini etkinleştir
   field_inherit_members: Devralan kullanıcılar
   field_closed_on: Kapanış tarihi
   field_generate_password: Parola oluştur
@@ -1091,8 +1090,6 @@ tr:
   label_custom_field_select_type: Özel alanın bağlı olacağı obje tipini
     seçin
   label_issue_assigned_to_updated: Atanan güncellendi
-  label_check_for_updates: Güncellemeleri kontrol et
-  label_latest_compatible_version: Son uyumlul sürüm
   label_unknown_plugin: Bilinmeyen eklenti
   label_radio_buttons: radyo butonları
   label_group_anonymous: Anonim kullanıcı

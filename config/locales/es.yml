@@ -817,6 +817,7 @@ es:
   button_create_and_continue: Crear y continuar
   text_custom_field_possible_values_info: 'Un valor en cada línea'
   label_display: Mostrar
+  label_language: Idioma
   field_editable: Modificable
   setting_repository_log_display_limit: Número máximo de revisiones mostradas en el fichero de trazas
   setting_file_max_size_displayed: Tamaño máximo de los ficheros de texto mostrados
@@ -1091,7 +1092,6 @@ es:
   permission_edit_documents: Editar documentos
   permission_delete_documents: Borrar documentos
   label_gantt_progress_line: Línea de progreso
-  setting_jsonp_enabled: Habilitar soporte de JSONP
   field_inherit_members: Heredar miembros
   field_closed_on: Cerrada
   field_generate_password: Generar contraseña
@@ -1117,8 +1117,6 @@ es:
   setting_force_default_language_for_loggedin: Forzar lenguaje por defecto para usuarios identificados
   label_custom_field_select_type: Seleccione el tipo de objeto al que unir el campo personalizado
   label_issue_assigned_to_updated: Persona asignada actualizada
-  label_check_for_updates: Comprobar actualizaciones
-  label_latest_compatible_version: Útima versión compatible
   label_unknown_plugin: Plugin desconocido
   label_radio_buttons: Botones de selección excluyentes
   label_group_anonymous: Usuarios anónimos

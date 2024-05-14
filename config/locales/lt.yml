@@ -437,7 +437,6 @@ lt:
   setting_thumbnails_enabled: Rodyti sumažintus priedų atvaizdus
   setting_thumbnails_size: Sumažinto atvaizdo dydis (pikseliais)
   setting_non_working_week_days: Nedarbo dienos
-  setting_jsonp_enabled: Įgalinti JSONP palaikymą
   setting_default_projects_tracker_ids: Numatytieji pėdsekiai naujiems projektams
   setting_mail_handler_excluded_filenames: Neįtraukti priedų su pavadinimu
   setting_force_default_language_for_anonymous: Priverstinai nustatyti numatytąją kalbą anoniminiams vartotojams
@@ -934,8 +933,6 @@ lt:
   label_radio_buttons: akutės
   label_link_values_to: Nuorodos vertės į URL
   label_custom_field_select_type: Pasirinkite objektą, su kuriuo kliento laukas bus susietas
-  label_check_for_updates: Tikrinti, ar yra atnaujinimų
-  label_latest_compatible_version: Naujausia suderinama versija
   label_unknown_plugin: Nežinomas įskiepis
   label_add_projects: Pridėti projektus
   label_users_visibility_all: Visi aktyvūs vartotojai

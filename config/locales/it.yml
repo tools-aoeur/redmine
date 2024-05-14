@@ -1050,7 +1050,6 @@ it:
   permission_edit_documents: Edita documenti
   permission_delete_documents: Cancella documenti
   label_gantt_progress_line: Linea avanzamento
-  setting_jsonp_enabled: Abilita supporto a JSONP
   field_inherit_members: Eredita membri
   field_closed_on: Chiuso
   field_generate_password: Genera password
@@ -1079,8 +1078,6 @@ it:
   setting_force_default_language_for_loggedin: Forza la lingua di default per gli utenti loggati
   label_custom_field_select_type: Seleziona il tipo di oggetto a cui il campo personalizzato è collegato
   label_issue_assigned_to_updated: Assegnatario aggiornato
-  label_check_for_updates: Verifica aggiornamenti
-  label_latest_compatible_version: Ultima versione compatibile
   label_unknown_plugin: Plugin sconosciuto
   label_radio_buttons: radio buttons
   label_group_anonymous: Utenti anonimi

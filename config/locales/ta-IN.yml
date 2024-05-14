@@ -1058,7 +1058,6 @@ ta-IN:
   permission_edit_documents: ஆவணங்களைத் திருத்து
   permission_delete_documents: ஆவணங்களை நீக்கு
   label_gantt_progress_line: முன்னேற்றக் கோடு
-  setting_jsonp_enabled: JSONP ஆதரவை இயக்கு
   field_inherit_members: உறுப்பினர்களைப் பெறுங்கள்
   field_closed_on: மூடப்பட்டது
   field_generate_password: கடவுச்சொல்லை உருவாக்கவும்
@@ -1089,8 +1088,6 @@ ta-IN:
   label_custom_field_select_type: தனிப்பயன் புலம் எந்த பொருளின் வகையைத் தேர்ந்தெடுக்கவும்
     இணைக்கப்பட வேண்டும்
   label_issue_assigned_to_updated: நியமிக்கப்பட்ட மேம்படுத்தப்பட்டது
-  label_check_for_updates: புதுப்பிப்புகளைச் சரிபார்க்கவும்
-  label_latest_compatible_version: சமீபத்திய இணக்கமான பதிப்பு
   label_unknown_plugin: தெரியாத சொருகி
   label_radio_buttons: வானொலி பொத்தான்கள்
   label_group_anonymous: பெயர் அறியப்படாத பயனர்கள்
