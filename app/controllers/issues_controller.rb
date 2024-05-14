@@ -59,7 +59,7 @@ class IssuesController < ApplicationController
           @offset, @limit = api_offset_and_limit
           @query.column_names = %w(author)
           @issue_count = @query.issue_count
-          @issues = @query.issues(:offset => @offset, :limit => @limit)
+          @issues = @query.issues(:offset => @offset, :limit => @limit, :include => [:assigned_to, :category, :fixed_version, { custom_values: :custom_field }, :parent, :tracker])
           Issue.load_visible_relations(@issues) if include_in_api_response?('relations')
           if User.current.allowed_to?(:view_time_entries, nil, :global => true)
             Issue.load_visible_spent_hours(@issues)
@@ -138,7 +138,7 @@ class IssuesController < ApplicationController
   def new
     respond_to do |format|
       format.html {render :action => 'new', :layout => !request.xhr?}
-      format.js
+      format.js { render 'new.js', layout: false }
     end
   end
 
@@ -205,7 +205,9 @@ class IssuesController < ApplicationController
     saved = false
     begin
       saved = save_issue_with_child_records
-    rescue ActiveRecord::StaleObjectError
+    rescue ActiveRecord::StaleObjectError => e
+      Rails.logger.info("Error::FailedToSaveIssue::#{@issue.id} with exception #{e}")
+      Rails.logger.info("Error::FailedToSaveIssue::#{@issue.id} with backtrace \n\t#{e.backtrace.join("\n\t")}")
       @issue.detach_saved_attachments
       @conflict = true
       if params[:last_journal_id]
@@ -676,6 +678,8 @@ class IssuesController < ApplicationController
            :journal => @issue.current_journal}
         )
       else
+        Rails.logger.info("Error::FailedToSaveIssue::#{@issue.id} with errors #{@issue.errors}")
+        Rails.logger.info("Error::FailedToSaveIssue::#{@issue.id} going for rollback")
         raise ActiveRecord::Rollback
       end
     end
