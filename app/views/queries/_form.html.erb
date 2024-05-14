@@ -25,8 +25,12 @@
 <% end %>
 
 <% unless @query.type == 'ProjectQuery' %>
+<!--
   <p><label for="query_is_for_all"><%=l(:field_is_for_all)%></label>
   <%= check_box_tag 'query_is_for_all', 1, @query.project.nil?, :class => (User.current.admin? ? '' : 'disable-unless-private') %></p>
+-->
+  <p id="sharing"><label for="query_sharing"><%= l(:field_sharing) %></label>
+  <%= select 'query', 'sharing', @query.allowed_sharings.collect {|v| [format_query_sharing(v), v]} %></p>
 <% end %>
 
 <% unless params[:calendar] %>
