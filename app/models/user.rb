@@ -238,15 +238,6 @@ class User < Principal
     user
   end
 
-  # Returns the user who matches the given autologin +key+ or nil
-  def self.try_to_autologin(key)
-    user = Token.find_active_user('autologin', key, Setting.autologin.to_i)
-    if user
-      user.update_last_login_on!
-      user
-    end
-  end
-
   def self.name_formatter(formatter = nil)
     USER_FORMATS[formatter || Setting.user_format] || USER_FORMATS[:firstname_lastname]
   end
@@ -436,24 +427,25 @@ class User < Principal
     api_token.value
   end
 
+  # Returns the ids of visible projects
+  def self.redis_session_store?
+    Rails.application.config.session_store.name == "ActionDispatch::Session::RedisStore"
+  end
+
   # Generates a new session token and returns its value
   def generate_session_token
+    # shortcut for redis sessions, just generate a random id
+    return Redmine::Utils.random_hex(20) if User.redis_session_store?
+
     token = Token.create!(:user_id => id, :action => 'session')
     token.value
   end
 
   def delete_session_token(value)
+    # shortcut for redis sessions, nothing to do
+    return if User.redis_session_store?
+
     Token.where(:user_id => id, :action => 'session', :value => value).delete_all
-  end
-
-  # Generates a new autologin token and returns its value
-  def generate_autologin_token
-    token = Token.create!(:user_id => id, :action => 'autologin')
-    token.value
-  end
-
-  def delete_autologin_token(value)
-    Token.where(:user_id => id, :action => 'autologin', :value => value).delete_all
   end
 
   def twofa_totp_key
@@ -465,23 +457,44 @@ class User < Principal
   end
 
   # Returns true if token is a valid session token for the user whose id is user_id
-  def self.verify_session_token(user_id, token)
+  def self.verify_session_token(user_id)
+    user_id    = session[:user_id]
+    token      = session[:tk]
     return false if user_id.blank? || token.blank?
 
-    scope = Token.where(:user_id => user_id, :value => token.to_s, :action => 'session')
-    if Setting.session_lifetime?
-      scope = scope.where("created_on > ?", Setting.session_lifetime.to_i.minutes.ago)
-    end
-    if Setting.session_timeout?
-      scope = scope.where("updated_on > ?", Setting.session_timeout.to_i.minutes.ago)
-    end
-    last_updated = scope.maximum(:updated_on)
-    if last_updated.nil?
-      false
-    elsif last_updated <= 1.minute.ago
-      scope.update_all(:updated_on => Time.now) == 1
+    # for redis sessions, check times
+    if self.redis_session_store?
+      created_on = session[:created_on]
+      updated_on = session[:updated_on]
+
+      # special case reattach existing token on updating to this codebase (redis state is nil for created_on / updated_on)
+      if created_on.nil? || updated_on.nil?
+        session[:created_on] ||= Time.now
+        session[:updated_on] ||= Time.now
+        return true
+      end
+
+      return false if Setting.session_lifetime? && created_on <= Setting.session_lifetime.to_i.minutes.ago
+      return false if Setting.session_timeout?  && updated_on <= Setting.session_timeout.to_i.minutes.ago
+
+      session[:updated_on] = Time.now if updated_on <= 1.minute.ago
+      return true
     else
-      true
+      scope = Token.where(:user_id => user_id, :value => token.to_s, :action => 'session')
+      if Setting.session_lifetime?
+        scope = scope.where("created_on > ?", Setting.session_lifetime.to_i.minutes.ago)
+      end
+      if Setting.session_timeout?
+        scope = scope.where("updated_on > ?", Setting.session_timeout.to_i.minutes.ago)
+      end
+      last_updated = scope.maximum(:updated_on)
+      if last_updated.nil?
+        false
+      elsif last_updated <= 1.minute.ago
+        scope.update_all(:updated_on => Time.now) == 1
+      else
+        true
+      end
     end
   end
 
@@ -923,12 +936,11 @@ class User < Principal
   end
 
   # Delete all outstanding password reset tokens on password change.
-  # Delete the autologin tokens on password change to prohibit session leakage.
   # This helps to keep the account secure in case the associated email account
   # was compromised.
   def destroy_tokens
     if saved_change_to_hashed_password? || (saved_change_to_status? && !active?) || (saved_change_to_twofa_scheme? && twofa_scheme.present?)
-      tokens = ['recovery', 'autologin', 'session']
+      tokens = ['recovery', 'session']
       Token.where(:user_id => id, :action => tokens).delete_all
     end
   end
