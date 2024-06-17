@@ -31,8 +31,12 @@ module Redmine
       def session_store
         if Rails.application.config.session_store.name == "ActionDispatch::Session::RedisStore"
           options = Rails.application.config.session_options[:servers].first
-          version = Redis.new(options).info['redis_version']
-          "Redis #{version}"
+          server_info = Redis.new(options).info
+          if server_info['server_name'].eql?('valkey')
+            "Valkey #{server_info['valkey_version']}"
+          else
+            "Redis #{server_info['redis_version']}"
+          end
         else
           'unknown'
         end
