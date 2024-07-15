@@ -694,6 +694,7 @@ class Issue < ApplicationRecord
     return @workflow_rule_by_attribute if @workflow_rule_by_attribute && user.nil?
 
     roles = roles_for_workflow(user || User.current)
+    roles = roles.select{ |r| r.permissions_tracker?(:add_issues, tracker) || r.permissions_tracker?(:edit_issues, tracker) }
     return {} if roles.empty?
 
     result = {}
