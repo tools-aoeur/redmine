@@ -684,6 +684,7 @@ class Issue < ActiveRecord::Base
     user_real = user || User.current
     roles = user_real.admin ? Role.all.to_a : user_real.roles_for_project(project)
     roles = roles.select(&:consider_workflow?)
+    roles = roles.select{ |r| r.permissions_tracker?(:add_issues, tracker) || r.permissions_tracker?(:edit_issues, tracker) }
     return {} if roles.empty?
 
     result = {}
