@@ -2,6 +2,10 @@
 
 require File.expand_path('../boot', __FILE__)
 
+# fixes a bug with concurrent-ruby & rails < 7, concurrent-ruby does not
+# require logger anymore, but rails does not require it either
+require 'logger'
+
 require 'rails'
 # Pick the frameworks you want:
 require 'active_model/railtie'
