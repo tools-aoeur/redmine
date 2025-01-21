@@ -25,9 +25,10 @@ module Redmine
       ActiveRecord::Base.include Redmine::I18n
 
       Scm::Base.add "Subversion"
-      Scm::Base.add "Mercurial"
-      Scm::Base.add "Cvs"
-      Scm::Base.add "Bazaar"
+      # Remove Mercurial, Cvs, Bazaar support
+      # Scm::Base.add "Mercurial"
+      # Scm::Base.add "Cvs"
+      # Scm::Base.add "Bazaar"
       Scm::Base.add "Git"
       Scm::Base.add "Filesystem"
 
