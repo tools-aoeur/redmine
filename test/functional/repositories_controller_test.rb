@@ -44,7 +44,7 @@ class RepositoriesControllerTest < Redmine::RepositoryControllerTest
 
   def test_new_should_propose_enabled_scm_only
     @request.session[:user_id] = 1
-    with_settings :enabled_scm => ['Mercurial', 'Git'] do
+    with_settings :enabled_scm => ['Subversion', 'Git'] do
       get(
         :new,
         :params => {
@@ -55,7 +55,7 @@ class RepositoriesControllerTest < Redmine::RepositoryControllerTest
     assert_response :success
     assert_select 'select[name=repository_scm]' do
       assert_select 'option', 3
-      assert_select 'option[value=Mercurial][selected=selected]'
+      assert_select 'option[value=Subversion][selected=selected]'
       assert_select 'option[value=Git]:not([selected])'
     end
   end
