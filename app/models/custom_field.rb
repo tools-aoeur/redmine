@@ -98,6 +98,7 @@ class CustomField < ActiveRecord::Base
     'multiple',
     'description',
     'role_ids',
+    'clear_on_copy',
     'url_pattern',
     'text_formatting',
     'edit_tag_style',
@@ -228,6 +229,10 @@ class CustomField < ActiveRecord::Base
 
   def full_text_formatting?
     text_formatting == 'full'
+  end
+
+  def clear_on_copy?
+    clear_on_copy == '1'
   end
 
   # Returns a ORDER BY clause that can used to sort customized

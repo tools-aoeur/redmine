@@ -474,6 +474,7 @@
   setting_mail_from: 寄件者電子郵件
   setting_plain_text_mail: 純文字郵件 (不含 HTML)
   setting_host_name: 主機名稱
+  setting_clear_on_copy: 清除副本
   setting_text_formatting: 文字格式
   setting_wiki_compression: 壓縮 Wiki 歷史文章
   setting_feeds_limit: Atom 新聞限制
