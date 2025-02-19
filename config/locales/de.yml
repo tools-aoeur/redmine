@@ -1228,6 +1228,7 @@ de:
   setting_autologin: Automatische Anmeldung läuft ab nach
   setting_bulk_download_max_size: Maximalgröße für den aggregierten Download von Anhängen
   setting_cache_formatted_text: Formatierten Text im Cache speichern
+  setting_clear_on_copy: Löschen beim Kopieren
   setting_close_duplicate_issues: Duplikate automatisch schließen
   setting_commit_cross_project_ref: Erlauben, Tickets aller anderen Projekte zu referenzieren
   setting_commit_fix_keywords: Schlüsselwörter (Status)

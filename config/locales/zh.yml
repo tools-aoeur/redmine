@@ -1184,6 +1184,7 @@ zh:
   setting_autologin: 自动登录
   setting_bulk_download_max_size: 批量下载附件大小总计大小限制
   setting_cache_formatted_text: 缓存格式化文字
+  setting_clear_on_copy: 清除副本
   setting_close_duplicate_issues: 自动关闭重复的问题
   setting_commit_cross_project_ref: 允许引用/修复所有其他项目的问题
   setting_commit_fix_keywords: 用于解决问题的关键字

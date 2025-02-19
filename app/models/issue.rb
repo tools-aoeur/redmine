@@ -309,7 +309,7 @@ class Issue < ApplicationRecord
       )
     self.custom_field_values =
       issue.custom_field_values.inject({}) do |h, v|
-        h[v.custom_field_id] = v.value
+        h[v.custom_field_id] = v.value unless v.custom_field.clear_on_copy?
         h
       end
     if options[:keep_status]
