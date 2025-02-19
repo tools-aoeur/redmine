@@ -114,7 +114,7 @@ module Redmine
         CustomField.store_accessor :format_store, *args
       end
 
-      field_attributes :url_pattern, :full_width_layout
+      field_attributes :url_pattern, :full_width_layout, :clear_on_copy
 
       def name
         self.class.format_name

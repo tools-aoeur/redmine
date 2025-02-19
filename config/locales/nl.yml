@@ -705,6 +705,7 @@ nl:
   setting_self_registration: Zelfregistratie toegestaan
   setting_sequential_project_identifiers: Sequentiële projectidentiteiten genereren
   setting_sys_api_enabled: Gebruik WS voor repository beheer
+  setting_clear_on_copy: Wissen op kopie
   setting_text_formatting: Tekstformaat
   setting_time_format: Tijdformaat
   setting_user_format: Weergaveformaat gebruikers
