@@ -769,6 +769,7 @@ es-PA:
   setting_self_registration: Registro permitido
   setting_sequential_project_identifiers: Generar identificadores de proyecto
   setting_sys_api_enabled: Habilitar SW para la gestión del repositorio
+  setting_clear_on_copy: Borrar en copia
   setting_text_formatting: Formato de texto
   setting_time_format: Formato de hora
   setting_user_format: Formato de nombre de usuario

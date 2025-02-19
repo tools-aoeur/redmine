@@ -354,6 +354,7 @@ ja:
   setting_mail_from: 送信元メールアドレス
   setting_plain_text_mail: プレインテキスト形式(HTMLなし)
   setting_host_name: ホスト名とパス
+  setting_clear_on_copy: コピー時にクリアする
   setting_text_formatting: テキスト書式
   setting_cache_formatted_text: テキスト書式の変換結果をキャッシュ
   setting_wiki_compression: Wiki履歴を圧縮する
