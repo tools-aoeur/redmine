@@ -1194,6 +1194,7 @@ en:
   setting_autologin: Autologin
   setting_bulk_download_max_size: Maximum total size for bulk download
   setting_cache_formatted_text: Cache formatted text
+  setting_clear_on_copy: Clear on copy
   setting_close_duplicate_issues: Close duplicate issues automatically
   setting_commit_cross_project_ref: Allow issues of all the other projects to be referenced and fixed
   setting_commit_fix_keywords: Fixing keywords

@@ -1217,6 +1217,7 @@ fr:
   setting_autologin: Durée maximale de connexion automatique
   setting_bulk_download_max_size: Taille totale maximale du téléchargement groupé
   setting_cache_formatted_text: Mettre en cache le texte formaté
+  setting_clear_on_copy: Effacer sur la copie
   setting_close_duplicate_issues: Fermer les doublons automatiquement
   setting_commit_cross_project_ref: Permettre le référencement et la résolution des demandes de tous les autres projets
   setting_commit_fix_keywords: Mots-clés de résolution

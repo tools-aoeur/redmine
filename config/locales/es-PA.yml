@@ -1239,6 +1239,7 @@ es-PA:
   setting_autologin: Inicio de sesión automático
   setting_bulk_download_max_size: Maximum total size for bulk download
   setting_cache_formatted_text: Cachear texto formateado
+  setting_clear_on_copy: Borrar en copia
   setting_close_duplicate_issues: Close duplicate issues automatically
   setting_commit_cross_project_ref: Permitir referenciar y resolver incidencias de todos los demás proyectos
   setting_commit_fix_keywords: Palabras clave para la corrección

@@ -1254,6 +1254,7 @@
   setting_autologin: 自動登入
   setting_bulk_download_max_size: 大量下載檔案大小總計最大值
   setting_cache_formatted_text: 快取已格式化文字
+  setting_clear_on_copy: 清除副本
   setting_close_duplicate_issues: 自動結束重複的議題
   setting_commit_cross_project_ref: 允許關聯並修正其他專案的議題
   setting_commit_fix_keywords: 認可用於修正之關鍵字

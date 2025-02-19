@@ -1185,6 +1185,7 @@ nl:
   setting_autologin: Automatisch inloggen
   setting_bulk_download_max_size: Maximum total size for bulk download
   setting_cache_formatted_text: Opgemaakte tekst cachen
+  setting_clear_on_copy: Wissen op kopie
   setting_close_duplicate_issues: Close duplicate issues automatically
   setting_commit_cross_project_ref: Toestaan om issues van alle projecten te refereren en op te lossen
   setting_commit_fix_keywords: Vaste trefwoorden
