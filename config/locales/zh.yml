@@ -327,6 +327,7 @@ zh:
   setting_mail_from: 邮件发件人地址
   setting_plain_text_mail: 纯文本（无HTML）
   setting_host_name: 主机名称
+  setting_clear_on_copy: 清除副本
   setting_text_formatting: 文本格式
   setting_wiki_compression: 压缩Wiki历史文档
   setting_feeds_limit: Atom Feed内容条数限制
