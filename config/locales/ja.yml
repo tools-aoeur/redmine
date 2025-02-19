@@ -1203,6 +1203,7 @@ ja:
   setting_autologin: 自動ログイン
   setting_bulk_download_max_size: 一括ダウンロードの合計ファイルサイズの上限
   setting_cache_formatted_text: テキスト書式の変換結果をキャッシュ
+  setting_clear_on_copy: コピー時にクリアする
   setting_close_duplicate_issues: 重複しているチケットを連動して終了
   setting_commit_cross_project_ref: 異なるプロジェクトのチケットの参照/修正を許可
   setting_commit_fix_keywords: 修正用キーワード
