@@ -431,6 +431,7 @@ en:
   setting_mail_from: Emission email address
   setting_plain_text_mail: Plain text mail (no HTML)
   setting_host_name: Host name and path
+  setting_clear_on_copy: Clear on copy
   setting_text_formatting: Text formatting
   setting_wiki_compression: Wiki history compression
   setting_feeds_limit: Maximum number of items in Atom feeds

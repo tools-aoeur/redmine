@@ -444,6 +444,7 @@ it:
   setting_mail_from: Indirizzo sorgente email
   setting_plain_text_mail: Solo testo (non HTML)
   setting_host_name: Nome host
+  setting_clear_on_copy: Cancellare sulla copia
   setting_text_formatting: Formattazione testo
   setting_wiki_compression: Comprimi cronologia wiki
   setting_feeds_limit: Limite contenuti del feed
