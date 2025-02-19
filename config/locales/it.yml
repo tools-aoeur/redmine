@@ -1220,6 +1220,7 @@ it:
   setting_autologin: Connessione automatica
   setting_bulk_download_max_size: Dimensione totale massima per il download in blocco
   setting_cache_formatted_text: Cache testo formattato
+  setting_clear_on_copy: Cancellare sulla copia
   setting_close_duplicate_issues: Chiudi automaticamente le segnalazioni duplicate
   setting_commit_cross_project_ref: Permetti alle segnalazioni degli altri progetti di essere referenziate e risolte
   setting_commit_fix_keywords: Parole chiave chiusura

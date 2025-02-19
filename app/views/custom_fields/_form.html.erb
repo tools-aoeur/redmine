@@ -53,6 +53,7 @@
     <% if %w(IssueCustomField ProjectCustomField).include?(@custom_field.class.name) && @custom_field.format.searchable_supported %>
       <p><%= f.check_box :searchable %></p>
     <% end %>
+    <p><%= f.check_box :clear_on_copy, {:label => :setting_clear_on_copy} %></p>
     <%= call_hook(:"view_custom_fields_form_#{@custom_field.type.to_s.underscore}", :custom_field => @custom_field, :form => f) %>
   </div>
 
