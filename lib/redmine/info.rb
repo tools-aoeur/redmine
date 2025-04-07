@@ -47,6 +47,8 @@ module Redmine
         s << [
           ["Redmine version", Redmine::VERSION],
           ["Ruby version", "#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"],
+          ["Rubygems version", Gem::VERSION],
+          ["Bundler version", Bundler::VERSION],
           ["Rails version", Rails::VERSION::STRING],
           ["Environment", Rails.env],
           ["Database adapter", ActiveRecord::Base.connection.adapter_name],
