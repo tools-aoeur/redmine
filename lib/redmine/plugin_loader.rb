@@ -28,7 +28,9 @@ module Redmine
     end
 
     def run_initializer
-      load initializer if has_initializer?
+      return unless has_initializer?
+
+      load initializer
     end
 
     def to_s
