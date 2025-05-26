@@ -28,7 +28,17 @@ module Redmine
     end
 
     def run_initializer
-      load initializer if has_initializer?
+      return unless has_initializer?
+
+      if defined?(OpenTelemetry)
+        tracer = OpenTelemetry.tracer_provider.tracer('application.boot')
+        tracer.in_span("Plugin:init") do |span|
+          span.set_attribute('path', initializer)
+          load initializer
+        end
+      else
+        load initializer
+      end
     end
 
     def to_s
