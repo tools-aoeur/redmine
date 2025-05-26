@@ -428,10 +428,13 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", :as => :rails_health_check
 
-  Redmine::Plugin.directory.glob("*/config/routes.rb").sort.each do |plugin_routes_path|
-    instance_eval(plugin_routes_path.read, plugin_routes_path.to_s)
+  # Load routes for plugins that passed PluginLoader.setup (respects REDMINE_PLUGINS_IGNORE)
+  Redmine::PluginLoader.directories.map { |dir| File.join(dir.to_s, 'config', 'routes.rb') }
+                                   .select { |path| File.exist?(path) }
+                                   .sort.each do |plugin_routes_path|
+    instance_eval(File.read(plugin_routes_path), plugin_routes_path)
   rescue SyntaxError, StandardError => e
-    plugin_name = plugin_routes_path.parent.parent.basename.to_s
+    plugin_name = File.basename(File.dirname(plugin_routes_path, 2))
     puts "An error occurred while loading the routes definition of #{plugin_name} plugin (#{plugin_routes_path}): #{e.message}."
     exit 1
   end
