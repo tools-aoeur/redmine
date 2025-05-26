@@ -28,7 +28,15 @@ module Redmine
     end
 
     def run_initializer
-      load initializer if has_initializer?
+      if defined?(OpenTelemetry)
+        tracer = OpenTelemetry.tracer_provider.tracer('application.boot')
+        tracer.in_span("Plugin:init") do |span|
+          span.set_attribute('path', initializer)
+          load initializer if has_initializer?
+        end
+      else
+        load initializer if has_initializer?
+      end
     end
 
     def to_s
@@ -86,7 +94,7 @@ module Redmine
     cattr_accessor :directory
     self.directory = Rails.root.join('plugins')
 
-    # Absolute path to the plublic directory where plugins assets are copied
+    # Absolute path to the public directory where plugins assets are copied
     cattr_accessor :public_directory
     self.public_directory = Rails.root.join('public/plugin_assets')
 
