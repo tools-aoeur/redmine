@@ -67,8 +67,17 @@ module Redmine
     def self.setup
       @plugin_directories = []
 
+      # build list of plugin directories to ignore from environment variable REDMINE_PLUGINS_IGNORE
+      # the directories are separated by a colon (:) or blank or return line or comma (,)
+      ignore_dirs = ENV.fetch('REDMINE_PLUGINS_IGNORE', '').split(/[:\n\r,]/).map(&:strip).reject(&:empty?)
+
       Dir.glob(File.join(directory, '*')).each do |directory|
         next unless File.directory?(directory)
+
+        if ignore_dirs.include?(File.basename(directory))
+          Rails.logger.info "Ignoring plugin directory: #{directory}"
+          next
+        end
 
         @plugin_directories << PluginPath.new(directory)
       end
