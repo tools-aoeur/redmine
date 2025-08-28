@@ -245,7 +245,7 @@ class IssuesHelperTest < Redmine::HelperTest
                                :prop_key => 'precedes',
                                :value    => inexistant_issue_number)
     assert_equal "Precedes Ticket ##{inexistant_issue_number} added", show_detail(detail, true)
-    assert_equal "<strong>Precedes</strong> <i>Issue ##{inexistant_issue_number}</i> added", show_detail(detail, false)
+    assert_equal "<strong>Precedes</strong> <i>Ticket ##{inexistant_issue_number}</i> added", show_detail(detail, false)
   end
 
   def test_show_detail_relation_added_should_not_disclose_issue_that_is_not_visible
@@ -255,7 +255,7 @@ class IssuesHelperTest < Redmine::HelperTest
                                :value    => issue.id)
 
     assert_equal "Precedes Ticket ##{issue.id} added", show_detail(detail, true)
-    assert_equal "<strong>Precedes</strong> <i>Issue ##{issue.id}</i> added", show_detail(detail, false)
+    assert_equal "<strong>Precedes</strong> <i>Ticket ##{issue.id}</i> added", show_detail(detail, false)
   end
 
   def test_show_detail_relation_deleted
@@ -276,8 +276,8 @@ class IssuesHelperTest < Redmine::HelperTest
     detail = JournalDetail.new(:property  => 'relation',
                                :prop_key  => 'precedes',
                                :old_value => inexistant_issue_number)
-    assert_equal "Precedes deleted (Issue #9999)", show_detail(detail, true)
-    assert_equal "<strong>Precedes</strong> deleted (<i>Issue #9999</i>)", show_detail(detail, false)
+    assert_equal "Precedes deleted (Ticket #9999)", show_detail(detail, true)
+    assert_equal "<strong>Precedes</strong> deleted (<i>Ticket #9999</i>)", show_detail(detail, false)
   end
 
   def test_show_detail_relation_deleted_should_not_disclose_issue_that_is_not_visible
@@ -286,8 +286,8 @@ class IssuesHelperTest < Redmine::HelperTest
                                :prop_key => 'precedes',
                                :old_value    => issue.id)
 
-    assert_equal "Precedes deleted (Issue ##{issue.id})", show_detail(detail, true)
-    assert_equal "<strong>Precedes</strong> deleted (<i>Issue ##{issue.id}</i>)", show_detail(detail, false)
+    assert_equal "Precedes deleted (Ticket ##{issue.id})", show_detail(detail, true)
+    assert_equal "<strong>Precedes</strong> deleted (<i>Ticket ##{issue.id}</i>)", show_detail(detail, false)
   end
 
   def test_details_to_strings_with_multiple_values_removed_from_custom_field

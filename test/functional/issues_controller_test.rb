@@ -2025,7 +2025,7 @@ class IssuesControllerTest < Redmine::ControllerTest
   def test_index_without_project_should_include_new_issue_link
     @request.session[:user_id] = 2
     get :index
-    assert_select '#content a.new-issue[href="/issues/new"]', :text => 'New issue'
+    assert_select '#content a.new-issue[href="/issues/new"]', :text => 'New ticket'
   end
 
   def test_index_should_show_setting_link_with_edit_project_permission
@@ -8360,7 +8360,7 @@ class IssuesControllerTest < Redmine::ControllerTest
       end
     end
     assert_response :success
-    assert_select '#flash_error', :text => 'Issue cannot be blank'
+    assert_select '#flash_error', :text => 'Ticket cannot be blank'
   end
 
   def test_destroy_issues_from_different_projects

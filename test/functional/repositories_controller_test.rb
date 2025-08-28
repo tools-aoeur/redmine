@@ -89,7 +89,7 @@ class RepositoriesControllerTest < Redmine::RepositoryControllerTest
         }
       )
     end
-    assert_response 302
+    assert_response :found
     repository = Repository.order('id DESC').first
     assert_kind_of Repository::Subversion, repository
     assert_equal 'file:///test', repository.url
@@ -134,7 +134,7 @@ class RepositoriesControllerTest < Redmine::RepositoryControllerTest
         }
       }
     )
-    assert_response 302
+    assert_response :found
     assert_equal 'test_update', Repository.find(11).password
   end
 
@@ -158,7 +158,7 @@ class RepositoriesControllerTest < Redmine::RepositoryControllerTest
     assert_difference 'Repository.count', -1 do
       delete(:destroy, :params => {:id => 11})
     end
-    assert_response 302
+    assert_response :found
     assert_nil Repository.find_by_id(11)
   end
 
@@ -277,7 +277,7 @@ class RepositoriesControllerTest < Redmine::RepositoryControllerTest
         :repository_id => 'foo'
       }
     )
-    assert_response 404
+    assert_response :not_found
   end
 
   def test_revision
@@ -412,7 +412,7 @@ class RepositoriesControllerTest < Redmine::RepositoryControllerTest
       assert_response :success
       assert_equal 'text/javascript', response.media_type
     end
-    assert_include 'alert("Issue is invalid")', response.body
+    assert_include 'alert("Ticket is invalid")', response.body
   end
 
   def test_remove_related_issue
@@ -521,7 +521,7 @@ class RepositoriesControllerTest < Redmine::RepositoryControllerTest
           }
         }
       )
-      assert_response 302
+      assert_response :found
       assert_equal User.find(2), c.reload.user
     end
   end

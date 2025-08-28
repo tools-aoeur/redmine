@@ -88,7 +88,7 @@ class SearchControllerTest < Redmine::ControllerTest
     assert_select 'input[name=all_words][checked=checked]'
     assert_select 'input[name=titles_only]:not([checked])'
 
-    assert_select 'p.buttons a', :text => 'Apply issues filter'
+    assert_select 'p.buttons a', :text => 'Apply tickets filter'
     assert_select '#search-results' do
       assert_select 'dt.issue a', :text => /Bug #5/
       assert_select 'dt.issue-closed a', :text => /Bug #8 \(Closed\)/

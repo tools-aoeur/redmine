@@ -79,7 +79,7 @@ class TimelogControllerTest < Redmine::ControllerTest
     @request.session[:user_id] = 3
 
     get :new
-    assert_response 403
+    assert_response :forbidden
   end
 
   def test_new_should_select_default_role_activity
@@ -332,7 +332,7 @@ class TimelogControllerTest < Redmine::ControllerTest
           :activity_id => '11', :spent_on => '2008-03-14', :hours => '7.3'
         }
       }
-      assert_select_error /Issue is invalid/
+      assert_select_error /Ticket is invalid/
     end
   end
 
@@ -497,7 +497,7 @@ class TimelogControllerTest < Redmine::ControllerTest
         :hours => '7.3'
       }
     }
-    assert_response 403
+    assert_response :forbidden
   end
 
   def test_create_without_project_and_issue_should_fail
@@ -575,7 +575,7 @@ class TimelogControllerTest < Redmine::ControllerTest
       }
     end
 
-    assert_response 403
+    assert_response :forbidden
   end
 
   def test_create_without_project_with_failure
@@ -629,7 +629,7 @@ class TimelogControllerTest < Redmine::ControllerTest
         :issue_id => '5'
       }
     }
-    assert_response 302
+    assert_response :found
     entry.reload
 
     assert_equal 5, entry.issue_id
@@ -648,7 +648,7 @@ class TimelogControllerTest < Redmine::ControllerTest
       }
     }
     assert_response :success
-    assert_select_error /Issue is invalid/
+    assert_select_error /Ticket is invalid/
   end
 
   def test_update_should_allow_to_change_project
@@ -661,7 +661,7 @@ class TimelogControllerTest < Redmine::ControllerTest
         :project_id => '2'
       }
     }
-    assert_response 302
+    assert_response :found
     entry.reload
 
     assert_equal 2, entry.project_id
@@ -679,7 +679,7 @@ class TimelogControllerTest < Redmine::ControllerTest
     }
 
     assert_response :success
-    assert_select_error /Issue is invalid/
+    assert_select_error /Ticket is invalid/
   end
 
   def test_update_should_fail_when_changing_user_without_permission
@@ -797,7 +797,7 @@ class TimelogControllerTest < Redmine::ControllerTest
     # update time entry activity
     post :bulk_update, :params => {:ids => [1, 2], :time_entry => {:activity_id => 9}}
 
-    assert_response 302
+    assert_response :found
     # check that the issues were updated
     assert_equal [9, 9], TimeEntry.where(:id => [1, 2]).collect {|i| i.activity_id}
   end
@@ -818,7 +818,7 @@ class TimelogControllerTest < Redmine::ControllerTest
     # update time entry activity
     post :bulk_update, :params => {:ids => [1, 2, 4], :time_entry => {:activity_id => 9}}
 
-    assert_response 302
+    assert_response :found
     # check that the issues were updated
     assert_equal [9, 9, 9], TimeEntry.where(:id => [1, 2, 4]).collect {|i| i.activity_id}
   end
@@ -831,7 +831,7 @@ class TimelogControllerTest < Redmine::ControllerTest
     assert ! user.allowed_to?(action, TimeEntry.find(5).project)
 
     post :bulk_update, :params => {:ids => [1, 5], :time_entry => {:activity_id => 9}}
-    assert_response 403
+    assert_response :forbidden
   end
 
   def test_bulk_update_with_edit_own_time_entries_permission
@@ -841,7 +841,7 @@ class TimelogControllerTest < Redmine::ControllerTest
     ids = (0..1).map {TimeEntry.generate!(:user => User.find(2)).id}
 
     post :bulk_update, :params => {:ids => ids, :time_entry => {:activity_id => 9}}
-    assert_response 302
+    assert_response :found
   end
 
   def test_bulk_update_with_edit_own_time_entries_permissions_should_be_denied_for_time_entries_of_other_user
@@ -850,7 +850,7 @@ class TimelogControllerTest < Redmine::ControllerTest
     Role.find_by_name('Manager').add_permission! :edit_own_time_entries
 
     post :bulk_update, :params => {:ids => [1, 2], :time_entry => {:activity_id => 9}}
-    assert_response 403
+    assert_response :forbidden
   end
 
   def test_bulk_update_custom_field
@@ -862,7 +862,7 @@ class TimelogControllerTest < Redmine::ControllerTest
         :time_entry => {:custom_field_values => {'10' => '0'}}
       }
     )
-    assert_response 302
+    assert_response :found
     assert_equal ["0", "0"], TimeEntry.where(:id => [1, 2]).collect {|i| i.custom_value_for(10).value}
   end
 
@@ -876,7 +876,7 @@ class TimelogControllerTest < Redmine::ControllerTest
         :time_entry => {:custom_field_values => {field.id.to_s => '__none__'}}
       }
     )
-    assert_response 302
+    assert_response :found
     assert_equal ["", ""], TimeEntry.where(:id => [1, 2]).collect {|i| i.custom_value_for(field).value}
   end
 
@@ -901,7 +901,7 @@ class TimelogControllerTest < Redmine::ControllerTest
     Role.find_by_name('Manager').remove_permission! :edit_time_entries
 
     post :bulk_update, :params => {:ids => [1, 2]}
-    assert_response 403
+    assert_response :forbidden
   end
 
   def test_destroy
