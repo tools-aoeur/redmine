@@ -902,7 +902,7 @@ class MailerTest < ActiveSupport::TestCase
       assert_equal %w(dlopper@somenet.foo jsmith@somenet.foo), recipients
       ActionMailer::Base.deliveries.each do |mail|
         assert_mail_body_match(
-          '1 issue(s) that are assigned to you are due in the next 7 days::',
+          '1 ticket(s) that are assigned to you are due in the next 7 days::',
           mail
         )
         assert_mail_body_match 'Assigned to group (Due in 5 days)', mail

@@ -100,7 +100,7 @@ class ContextMenusControllerTest < Redmine::ControllerTest
     # issue_id: '1,2', set_filter: 1, status_id: '*'
     assert_select 'a.icon-copy-link[data-clipboard-text=?]', "http://test.host/projects/ecookbook/issues?issue_id=1%2C2&set_filter=1&status_id=%2A", :text => 'Copy link'
     assert_select 'a.icon-copy[href=?]', "/issues/bulk_edit?copy=1&#{ids}", :text => 'Copy'
-    assert_select 'a.icon-del[href=?]', "/issues?#{ids}", :text => 'Delete issues'
+    assert_select 'a.icon-del[href=?]', "/issues?#{ids}", :text => 'Delete tickets'
 
     assert_select 'a[href=?]', "/issues/bulk_update?#{ids}&issue%5Bstatus_id%5D=5", :text => 'Closed'
     assert_select 'a[href=?]', "/issues/bulk_update?#{ids}&issue%5Bpriority_id%5D=8", :text => 'Immediate'

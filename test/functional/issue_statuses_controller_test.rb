@@ -40,7 +40,7 @@ class IssueStatusesControllerTest < Redmine::ControllerTest
   def test_index_by_user_should_respond_with_406
     @request.session[:user_id] = 2
     get :index
-    assert_response 406
+    assert_response :not_acceptable
   end
 
   def test_index_should_show_warning_when_no_workflow_is_defined
@@ -175,7 +175,7 @@ class IssueStatusesControllerTest < Redmine::ControllerTest
   def test_update_issue_done_ratio_with_issue_done_ratio_set_to_issue_status
     with_settings :issue_done_ratio => 'issue_status' do
       post :update_issue_done_ratio
-      assert_match /Issue done ratios updated/, flash[:notice].to_s
+      assert_match /Ticket done ratios updated/, flash[:notice].to_s
       assert_redirected_to '/issue_statuses'
     end
   end

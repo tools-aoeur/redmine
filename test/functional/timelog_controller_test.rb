@@ -364,7 +364,7 @@ class TimelogControllerTest < Redmine::ControllerTest
         }
       }
     end
-    assert_select_error /Issue is invalid/
+    assert_select_error /Ticket is invalid/
     assert_select "input[name=?][value=?]", "time_entry[issue_id]", issue.id.to_s
     assert_select "#time_entry_issue a", 0
     assert !response.body.include?('issue_that_is_not_visible')
@@ -556,7 +556,7 @@ class TimelogControllerTest < Redmine::ControllerTest
     end
 
     assert_response :success
-    assert_select_error /Issue is invalid/
+    assert_select_error /Ticket is invalid/
   end
 
   def test_create_without_project_should_deny_without_permission
@@ -940,7 +940,7 @@ class TimelogControllerTest < Redmine::ControllerTest
     assert_select '.total-for-hours', :text => 'Hours: 162:54'
     assert_select 'form#query_form[action=?]', '/time_entries'
 
-    assert_equal ['Project', 'Date', 'User', 'Activity', 'Issue', 'Comment', 'Hours'], columns_in_list
+    assert_equal ['Project', 'Date', 'User', 'Activity', 'Ticket', 'Comment', 'Hours'], columns_in_list
     assert_select '.query-totals>span', 1
   end
 

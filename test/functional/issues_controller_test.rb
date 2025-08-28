@@ -3082,7 +3082,7 @@ class IssuesControllerTest < Redmine::ControllerTest
     get(:show, :params => {:id => 1})
     assert_response :success
     assert_select 'a', :text => 'Edit'
-    assert_select 'a', :text => 'Delete issue'
+    assert_select 'a', :text => 'Delete ticket'
   end
 
   def test_show_on_closed_project_should_not_display_edit_links
@@ -3091,7 +3091,7 @@ class IssuesControllerTest < Redmine::ControllerTest
     get(:show, :params => {:id => 1})
     assert_response :success
     assert_select 'a', :text => 'Edit', :count => 0
-    assert_select 'a', :text => 'Delete issue', :count => 0
+    assert_select 'a', :text => 'Delete ticket', :count => 0
   end
 
   def test_show_should_not_display_history_tabs_for_issue_without_journals
@@ -8638,7 +8638,7 @@ class IssuesControllerTest < Redmine::ControllerTest
     @request.session[:issue_query] = nil
     User.find(3).pref.update(default_issue_query: query.id)
     get :index
-    assert_select 'h2', text: 'Issues'
+    assert_select 'h2', text: 'Tickets'
   end
 
   def test_index_should_ignore_project_default_query_if_it_is_not_public
