@@ -33,7 +33,7 @@ class ContextMenusControllerTest < Redmine::ControllerTest
     assert_select 'a.icon-edit[href=?]', '/issues/1/edit', :text => 'Edit'
     assert_select 'a.icon-copy-link[data-clipboard-text=?]', 'http://test.host/issues/1', :text => 'Copy link'
     assert_select 'a.icon-copy[href=?]', '/projects/ecookbook/issues/1/copy', :text => 'Copy'
-    assert_select 'a.icon-del[href=?]', '/issues?ids%5B%5D=1', :text => 'Delete issue'
+    assert_select 'a.icon-del[href=?]', '/issues?ids%5B%5D=1', :text => 'Delete ticket'
 
     # Statuses
     assert_select 'a[href=?][data-method="patch"]', '/issues/1?ids%5B%5D=1&issue%5Bstatus_id%5D=5', :text => 'Closed'
@@ -56,7 +56,7 @@ class ContextMenusControllerTest < Redmine::ControllerTest
 
     assert_select 'a.icon-edit[href=?]', '/issues/bulk_edit?ids%5B%5D=1&ids%5B%5D=2', :text => 'Bulk edit'
     assert_select 'a.icon-copy[href=?]', '/issues/bulk_edit?copy=1&ids%5B%5D=1&ids%5B%5D=2', :text => 'Copy'
-    assert_select 'a.icon-del[href=?]', '/issues?ids%5B%5D=1&ids%5B%5D=2', :text => 'Delete issues'
+    assert_select 'a.icon-del[href=?]', '/issues?ids%5B%5D=1&ids%5B%5D=2', :text => 'Delete tickets'
 
     # Statuses
     assert_select 'a[href=?][data-method="patch"]', '/issues/bulk_update?ids%5B%5D=1&ids%5B%5D=2&issue%5Bstatus_id%5D=5', :text => 'Closed'
@@ -80,7 +80,7 @@ class ContextMenusControllerTest < Redmine::ControllerTest
       )
       assert_response :success
 
-      assert_select 'a.icon-del.disabled[href="#"]', :text => 'Delete issue'
+      assert_select 'a.icon-del.disabled[href="#"]', :text => 'Delete ticket'
     end
   end
 
@@ -122,7 +122,7 @@ class ContextMenusControllerTest < Redmine::ControllerTest
     assert_select 'a.icon-edit[href=?]', "/issues/bulk_edit?#{ids}", :text => 'Bulk edit'
     # issue_id: '1,2,6', set_filter: 1, status_id: '*'
     assert_select 'a.icon-copy-link[data-clipboard-text=?]', "http://test.host/issues?issue_id=1%2C2%2C6&set_filter=1&status_id=%2A", :text => 'Copy link'
-    assert_select 'a.icon-del[href=?]', "/issues?#{ids}", :text => 'Delete issues'
+    assert_select 'a.icon-del[href=?]', "/issues?#{ids}", :text => 'Delete tickets'
 
     assert_select 'a[href=?]', "/issues/bulk_update?#{ids}&issue%5Bstatus_id%5D=5", :text => 'Closed'
     assert_select 'a[href=?]', "/issues/bulk_update?#{ids}&issue%5Bpriority_id%5D=8", :text => 'Immediate'
@@ -368,12 +368,12 @@ class ContextMenusControllerTest < Redmine::ControllerTest
         :ids => [1, 4] # issue 4 is not visible
       }
     )
-    assert_response 302
+    assert_response :found
   end
 
   def test_should_respond_with_404_without_ids
     get :issues
-    assert_response 404
+    assert_response :not_found
   end
 
   def test_time_entries_context_menu

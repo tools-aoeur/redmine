@@ -328,13 +328,13 @@ class UsersControllerTest < Redmine::ControllerTest
   def test_show_inactive
     @request.session[:user_id] = nil
     get :show, :params => {:id => 5}
-    assert_response 404
+    assert_response :not_found
   end
 
   def test_show_inactive_by_admin
     @request.session[:user_id] = 1
     get :show, :params => {:id => 5}
-    assert_response 200
+    assert_response :ok
     assert_select 'h2', :text => /Dave2 Lopper2/
   end
 
@@ -344,7 +344,7 @@ class UsersControllerTest < Redmine::ControllerTest
 
     @request.session[:user_id] = nil
     get :show, :params => {:id => user.id}
-    assert_response 404
+    assert_response :not_found
   end
 
   def test_show_displays_memberships_based_on_project_visibility
@@ -371,7 +371,7 @@ class UsersControllerTest < Redmine::ControllerTest
   def test_show_current_should_require_authentication
     @request.session[:user_id] = nil
     get :show, :params => {:id => 'current'}
-    assert_response 302
+    assert_response :found
   end
 
   def test_show_current
@@ -386,13 +386,13 @@ class UsersControllerTest < Redmine::ControllerTest
     get :show, :params => {:id => 2}
     assert_select 'table.list.issue-report>tbody' do
       assert_select 'tr:nth-of-type(1)' do
-        assert_select 'td:nth-of-type(1)>a', :text => 'Assigned issues'
+        assert_select 'td:nth-of-type(1)>a', :text => 'Assigned tickets'
         assert_select 'td:nth-of-type(2)>a', :text => '1'   # open
         assert_select 'td:nth-of-type(3)>a', :text => '0'   # closed
         assert_select 'td:nth-of-type(4)>a', :text => '1'   # total
       end
       assert_select 'tr:nth-of-type(2)' do
-        assert_select 'td:nth-of-type(1)>a', :text => 'Reported issues'
+        assert_select 'td:nth-of-type(1)>a', :text => 'Reported tickets'
         assert_select 'td:nth-of-type(2)>a', :text => '11'  # open
         assert_select 'td:nth-of-type(3)>a', :text => '2'   # closed
         assert_select 'td:nth-of-type(4)>a', :text => '13'  # total
@@ -649,7 +649,7 @@ class UsersControllerTest < Redmine::ControllerTest
 
     get :edit, :params => {:id => 6}
 
-    assert_response 404
+    assert_response :not_found
   end
 
   def test_edit_user_with_full_text_formatting_custom_field_should_not_fail
@@ -850,7 +850,7 @@ class UsersControllerTest < Redmine::ControllerTest
       :id => 2,
       :user => {:status => 3}
     }
-    assert_response 302
+    assert_response :found
     user = User.find(2)
     assert_equal 3, user.status
     assert_equal '1', user.pref[:no_self_notified]
@@ -990,7 +990,7 @@ class UsersControllerTest < Redmine::ControllerTest
   def test_update_should_be_denied_for_anonymous
     assert User.find(6).anonymous?
     put :update, :params => {:id => 6}
-    assert_response 404
+    assert_response :not_found
   end
 
   def test_update_with_blank_email_should_not_raise_exception
@@ -1044,7 +1044,7 @@ class UsersControllerTest < Redmine::ControllerTest
     assert_no_difference 'User.count' do
       delete :destroy, :params => {:id => 2, :confirm => User.find(2).login}
     end
-    assert_response 403
+    assert_response :forbidden
   end
 
   def test_destroy_should_be_denied_for_anonymous
@@ -1052,7 +1052,7 @@ class UsersControllerTest < Redmine::ControllerTest
     assert_no_difference 'User.count' do
       delete :destroy, :params => {:id => 6, :confirm => User.find(6).login}
     end
-    assert_response 404
+    assert_response :not_found
   end
 
   def test_destroy_should_redirect_to_back_url_param
@@ -1098,7 +1098,7 @@ class UsersControllerTest < Redmine::ControllerTest
       assert_no_difference 'User.count' do
         delete :destroy, params: {id: user.id}
       end
-      assert_response 422
+      assert_response :unprocessable_entity
     end
   end
 
@@ -1109,7 +1109,7 @@ class UsersControllerTest < Redmine::ControllerTest
       assert_no_difference 'User.count' do
         delete :destroy, params: {id: user.id}
       end
-      assert_response 422
+      assert_response :unprocessable_entity
     end
   end
 
@@ -1159,7 +1159,7 @@ class UsersControllerTest < Redmine::ControllerTest
     assert_no_difference 'User.count' do
       delete :bulk_destroy, :params => {:ids => [2], :confirm => 'Yes'}
     end
-    assert_response 403
+    assert_response :forbidden
   end
 
   def test_bulk_destroy_should_be_denied_for_anonymous
@@ -1167,6 +1167,6 @@ class UsersControllerTest < Redmine::ControllerTest
     assert_no_difference 'User.count' do
       delete :bulk_destroy, :params => {:ids => [6], :confirm => "Yes"}
     end
-    assert_response 404
+    assert_response :not_found
   end
 end

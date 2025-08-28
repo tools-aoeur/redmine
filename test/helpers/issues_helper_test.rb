@@ -244,7 +244,7 @@ class IssuesHelperTest < Redmine::HelperTest
     detail = JournalDetail.new(:property => 'relation',
                                :prop_key => 'precedes',
                                :value    => inexistant_issue_number)
-    assert_equal "Precedes Issue ##{inexistant_issue_number} added", show_detail(detail, true)
+    assert_equal "Precedes Ticket ##{inexistant_issue_number} added", show_detail(detail, true)
     assert_equal "<strong>Precedes</strong> <i>Issue ##{inexistant_issue_number}</i> added", show_detail(detail, false)
   end
 
@@ -254,7 +254,7 @@ class IssuesHelperTest < Redmine::HelperTest
                                :prop_key => 'precedes',
                                :value    => issue.id)
 
-    assert_equal "Precedes Issue ##{issue.id} added", show_detail(detail, true)
+    assert_equal "Precedes Ticket ##{issue.id} added", show_detail(detail, true)
     assert_equal "<strong>Precedes</strong> <i>Issue ##{issue.id}</i> added", show_detail(detail, false)
   end
 
