@@ -347,7 +347,7 @@ class TimelogControllerTest < Redmine::ControllerTest
           :activity_id => '11', :spent_on => '2008-03-14', :hours => '7.3'
         }
       }
-      assert_select_error /Issue is invalid/
+      assert_select_error /Ticket is invalid/
     end
   end
 
@@ -964,7 +964,7 @@ class TimelogControllerTest < Redmine::ControllerTest
       assert_select 'td.user'
       assert_select 'td.hours'
     end
-    assert_equal ['Project', 'Date', 'Issue', 'User', 'Hours'], columns_in_list
+    assert_equal ['Project', 'Date', 'Ticket', 'User', 'Hours'], columns_in_list
   end
 
   def test_index_with_default_query_setting_using_custom_field

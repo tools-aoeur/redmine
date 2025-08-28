@@ -816,7 +816,7 @@ class MailerTest < ActiveSupport::TestCase
     mail = last_email
     assert mail.to.include?('dlopper@somenet.foo')
     assert_mail_body_match 'Bug #3: Error 281 when updating a recipe (5 days late)', mail
-    assert_mail_body_match 'View all issues (2 open)', mail
+    assert_mail_body_match 'View all tickets (2 open)', mail
     url =
       "http://localhost:3000/issues?f%5B%5D=status_id&f%5B%5D=assigned_to_id" \
         "&f%5B%5D=due_date&op%5Bassigned_to_id%5D=%3D&op%5Bdue_date%5D=%3Ct%2B&op%5B" \
@@ -907,7 +907,7 @@ class MailerTest < ActiveSupport::TestCase
         )
         assert_mail_body_match 'Assigned to group (Due in 5 days)', mail
         assert_mail_body_match(
-          "View all issues (#{mail.to.include?('dlopper@somenet.foo') ? 3 : 2} open)",
+          "View all tickets (#{mail.to.include?('dlopper@somenet.foo') ? 3 : 2} open)",
           mail
         )
       end

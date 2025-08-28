@@ -3914,15 +3914,15 @@ class IssuesControllerTest < Redmine::ControllerTest
     assert_response :success
 
     assert_select 'form#issue-form' do
-      assert_select 'a[title=?]', 'View all issue statuses description', :text => 'View all issue statuses description'
-      assert_select 'select[name=?][title=?]', 'issue[status_id]', 'Description for Assigned issue status'
+      assert_select 'a[title=?]', 'View all ticket statuses description', :text => 'View all ticket statuses description'
+      assert_select 'select[name=?][title=?]', 'issue[status_id]', 'Description for Assigned ticket status'
     end
 
     assert_select 'div#issue_statuses_description' do
-      assert_select 'h3', :text => 'Issue statuses description', :count => 1
+      assert_select 'h3', :text => 'Ticket statuses description', :count => 1
       assert_select 'dt', 2
       assert_select 'dt', :text => 'New', :count => 1
-      assert_select 'dd', :text => 'Description for New issue status', :count => 1
+      assert_select 'dd', :text => 'Description for New ticket status', :count => 1
     end
   end
 

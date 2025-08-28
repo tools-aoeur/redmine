@@ -103,7 +103,7 @@ class WorkflowsControllerTest < Redmine::ControllerTest
 
     get :edit, :params => {:role_id => 1, :tracker_id => 1}
     assert_response :success
-    assert_select 'td', 'New issue'
+    assert_select 'td', 'New ticket'
     assert_select 'input[type=checkbox][name=?][value="1"][checked=checked]', 'transitions[0][1][always]'
   end
 
