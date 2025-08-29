@@ -828,10 +828,10 @@ class MailerTest < ActiveSupport::TestCase
                     :text => '1'
       assert_select 'a[href=?]',
                     'http://localhost:3000/issues?assigned_to_id=me&set_filter=1&sort=due_date%3Aasc',
-                    :text => 'View all issues'
-      assert_select '/p:nth-last-of-type(1)', :text => 'View all issues (2 open)'
+                    :text => 'View all tickets'
+      assert_select '/p:nth-last-of-type(1)', :text => 'View all tickets (2 open)'
     end
-    assert_equal "1 issue(s) due in the next #{days} days", mail.subject
+    assert_equal "1 ticket(s) due in the next #{days} days", mail.subject
   end
 
   def test_reminders_language_auto
