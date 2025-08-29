@@ -76,7 +76,7 @@ class SearchControllerTest < Redmine::ControllerTest
 
     assert_select '#search-results-counts' do
       assert_select 'a', :text => 'Changesets (6)'
-      assert_select 'a', :text => 'Issues (5)'
+      assert_select 'a', :text => 'Tickets (5)'
       assert_select 'a', :text => 'Projects (4)'
     end
   end

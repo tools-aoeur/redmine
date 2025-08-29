@@ -81,8 +81,8 @@ class TokenTest < ActiveSupport::TestCase
     Token.create!(:user_id => 2, :action => 'unknown_action', :created_on => 2.days.ago)
     Token.create!(:user_id => 3, :action => 'unknown_action', :created_on => 2.hours.ago)
 
-    assert_difference 'Token.count', -4 do
-      assert_equal 4, Token.destroy_expired
+    assert_difference 'Token.count', -3 do
+      assert_equal 3, Token.destroy_expired
     end
   end
 

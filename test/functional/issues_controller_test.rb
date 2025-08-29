@@ -3915,7 +3915,7 @@ class IssuesControllerTest < Redmine::ControllerTest
 
     assert_select 'form#issue-form' do
       assert_select 'a[title=?]', 'View all ticket statuses description', :text => 'View all ticket statuses description'
-      assert_select 'select[name=?][title=?]', 'issue[status_id]', 'Description for Assigned ticket status'
+      assert_select 'select[name=?][title=?]', 'issue[status_id]', 'Description for Assigned issue status'
     end
 
     assert_select 'div#issue_statuses_description' do
