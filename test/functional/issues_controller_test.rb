@@ -2139,7 +2139,7 @@ class IssuesControllerTest < Redmine::ControllerTest
       assert_select 'a', {:count => 1, :text => 'Watch'}
       assert_select 'a', {:count => 1, :text => 'Copy'}
       assert_select 'div.drdn-items a', {:count => 1, :text => 'Copy link'}
-      assert_select 'div.drdn-items a', {:count => 1, :text => 'Delete issue'}
+      assert_select 'div.drdn-items a', {:count => 1, :text => 'Delete ticket'}
     end
     assert_select 'form#issue-form' do
       assert_select 'fieldset' do
@@ -3922,7 +3922,7 @@ class IssuesControllerTest < Redmine::ControllerTest
       assert_select 'h3', :text => 'Ticket statuses description', :count => 1
       assert_select 'dt', 2
       assert_select 'dt', :text => 'New', :count => 1
-      assert_select 'dd', :text => 'Description for New ticket status', :count => 1
+      assert_select 'dd', :text => 'Description for New issue status', :count => 1
     end
   end
 
