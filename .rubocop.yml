@@ -34,6 +34,9 @@ Layout/ClosingParenthesisIndentation:
   Exclude:
     - 'lib/redmine/wiki_formatting/textile/redcloth3.rb'
 
+Layout/EmptyLinesAfterModuleInclusion:
+  Enabled: false
+
 Layout/EmptyLinesAroundAccessModifier:
   Exclude:
     - 'config/initializers/10-patches.rb'
@@ -169,6 +172,9 @@ Rails/FindEach:
 Rails/HelperInstanceVariable:
   Enabled: false
 
+Rails/OrderArguments:
+  Enabled: false
+
 Rails/Output:
   Exclude:
     - 'config/routes.rb'
@@ -223,6 +229,9 @@ Style/BlockDelimiters:
     - 'db/migrate/007_create_journals.rb'
     - 'lib/redmine/string_array_diff/diff.rb'
     - 'lib/redmine/string_array_diff/diffable.rb'
+
+Style/CollectionQuerying:
+  Enabled: false
 
 Style/EmptyStringInsideInterpolation:
   Enabled: false
@@ -290,6 +299,9 @@ Style/RedundantCondition:
 Style/RedundantConstantBase:
   Exclude:
     - 'config/environments/production.rb'
+
+Style/RedundantRegexpEscape:
+  Enabled: false
 
 Style/RedundantParentheses:
   Enabled: false
