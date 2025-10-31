@@ -28,6 +28,7 @@ module Redmine
     end
 
     def run_initializer
+      Rails.logger.info "Loading plugin: #{File.basename(@dir)}"
       return unless has_initializer?
 
       if defined?(OpenTelemetry)
@@ -70,6 +71,7 @@ module Redmine
       Rails.application.config.to_prepare do
         PluginLoader.directories.each(&:run_initializer)
 
+        Rails.logger.info "All plugins initialized, calling after_plugins_loaded hook"
         Redmine::Hook.call_hook :after_plugins_loaded
       end
     end
