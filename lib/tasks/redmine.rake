@@ -130,6 +130,16 @@ DESC
   end
 
   namespace :plugins do
+    # Load RSpec task only in test/development environments
+    if Rails.env.test? || Rails.env.development?
+      begin
+        require 'rspec/core/rake_task'
+        RSPEC_AVAILABLE = true
+      rescue LoadError
+        RSPEC_AVAILABLE = false
+      end
+    end
+
     desc 'Migrates installed plugins.'
     task :migrate => :environment do
       name = ENV['NAME']
@@ -156,7 +166,13 @@ DESC
     end
 
     desc 'Runs the plugins tests.'
-    task :test do
+    task :test => :environment do
+      # Run RSpec tests if available
+      if defined?(RSPEC_AVAILABLE) && RSPEC_AVAILABLE && (!ENV['NAME'] || Rails.root.join("plugins/#{ENV['NAME']}/spec").exist?)
+        Rake::Task['redmine:plugins:spec'].invoke
+      end
+
+      # Run Test::Unit tests
       test_files = FileList[
         "plugins/#{ENV['NAME'] || '*'}/test/unit/**/*_test.rb",
         "plugins/#{ENV['NAME'] || '*'}/test/functional/**/*_test.rb",
@@ -213,6 +229,26 @@ DESC
           $: << "test"
           Rails::TestUnit::Runner.run_from_rake 'test', test_files
         end
+      end
+    end
+
+    # Add RSpec task if available
+    if defined?(RSPEC_AVAILABLE) && RSPEC_AVAILABLE
+      desc 'Runs the plugins spec.'
+      RSpec::Core::RakeTask.new :spec => 'db:test:prepare' do |t|
+        # current plugin (or all) spec/ directory
+        plugin_dir = "plugins/#{ENV['NAME'] || '*'}"
+        spec_dirs = Dir.glob("#{plugin_dir}/spec")
+        # add our spec/ directory to the path so other plugins can simply
+        # put this on top of their spec:
+        #
+        #   require "spec_helper"
+        #
+        spec_dirs << Rails.root.join('spec').to_s
+        # which spec to run
+        t.pattern = "#{plugin_dir}/spec/**/*_spec.rb"
+        # which LOAD_PATH (for spec_helper especially)
+        t.ruby_opts = "-I#{spec_dirs.join(':')}" unless spec_dirs.empty?
       end
     end
   end

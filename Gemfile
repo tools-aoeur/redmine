@@ -105,23 +105,44 @@ group :development do
   gem 'bullet'
 end
 
+# Web server & rest client pulled up to become available in all scopes
+gem 'puma'
+gem 'rest-client'
+
 group :test do
+  gem 'factory_bot'
   gem "rails-dom-testing", '>= 2.3.0'
   gem 'mocha', '>= 2.0.1'
   gem 'simplecov', '~> 0.22.0', :require => false
   gem "ffi", platforms: [:mingw, :x64_mingw, :mswin]
   # For running system tests
-  gem 'puma'
+  # gem 'puma' (made global)
   gem "capybara", ">= 3.39"
   gem 'selenium-webdriver', '>= 4.11.0'
+
   # RuboCop
   gem 'rubocop', require: false
+  gem 'rubocop-factory_bot', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
+  gem 'rubocop-rake', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-thread_safety', require: false
+
+  # RSpec support
+  gem 'rspec'
+  gem 'rspec-core'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
+
+  # Extras
   gem 'bundle-audit', require: false
+  gem 'erb_lint', require: false
+
   # for testing oauth provider capabilities
   gem 'oauth2'
-  gem 'rest-client'
+  # gem 'rest-client' (made global)
 end
 
 local_gemfile = File.join(File.dirname(__FILE__), "Gemfile.local")
