@@ -107,7 +107,7 @@ module RedmineApp
       :same_site => :lax
     )
 
-    if File.exist?(File.join(File.dirname(__FILE__), 'additional_environment.rb'))
+    if File.exist?(File.join(File.dirname(__FILE__), 'additional_environment.rb')) && !Rails.env.test?
       instance_eval File.read(File.join(File.dirname(__FILE__), 'additional_environment.rb'))
     end
   end

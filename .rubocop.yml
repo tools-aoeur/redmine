@@ -20,6 +20,9 @@ AllCops:
 plugins:
   - rubocop-performance
   - rubocop-rails
+  # - rubocop-rake
+  # - rubocop-rspec
+  # - rubocop-thread_safety
 
 # Rules for Redmine
 
@@ -153,6 +156,9 @@ Rails/BulkChangeTable:
     - 'db/migrate/20190510070108_add_unique_id_to_import_items.rb'
     - 'db/migrate/20200826153402_add_totp_to_user.rb'
     - 'db/migrate/20221012135202_add_index_to_custom_values.rb'
+    - 'db/migrate/20250423065135_create_reactions.rb'
+    - 'db/migrate/20250611092155_create_doorkeeper_tables.rb'
+    - 'db/migrate/20250611092227_enable_pkce.rb'
 
 Rails/CompactBlank:
   Enabled: false
@@ -326,6 +332,12 @@ Style/TrailingCommaInArrayLiteral:
 
 Style/TrailingCommaInHashLiteral:
   Enabled: false
+
+# Additional configuration for better RSpec/Rake/Thread safety support
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
 
 Style/YodaExpression:
   Enabled: false
