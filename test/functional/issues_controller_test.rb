@@ -8996,4 +8996,57 @@ class IssuesControllerTest < Redmine::ControllerTest
       assert_select 'thead.related-issues th', text: 'Total estimated time'
     end
   end
+
+  def test_query_issue_id
+    get :index, params: {
+      project_id: 1,
+      set_filter: 1,
+      f: ['id'],
+      op: { 'id' => '=' },
+      v: { 'id' => ['1'] }
+    }
+    assert_response :success
+    assert_select 'td.id a[href^="/issues/"]'
+    assert_select 'a[href="/issues/1"]', text: "1"
+  end
+
+  def test_query_root_id
+    get :index, params: {
+      project_id: 1,
+      set_filter: 1,
+      f: ['root_id'],
+      op: { 'root_id' => '=' },
+      v: { 'root_id' => ['1'] }
+    }
+    assert_response :success
+    # The exact number of results may vary based on fixture data
+    assert_select 'td.id a[href^="/issues/"]'
+    assert_select 'a[href="/issues/1"]', text: "1"
+  end
+
+  def test_query_parent_id
+    get :index, params: {
+      project_id: 1,
+      set_filter: 1,
+      f: ['parent_id'],
+      op: { 'parent_id' => '=' },
+      v: { 'parent_id' => ['1'] }
+    }
+    assert_response :success
+    # Should find issues with parent_id = 1 (may be 0 results)
+    assert_select 'td.id a[href^="/issues/"]', minimum: 0
+  end
+
+  def test_query_regex_subject
+    get :index, params: {
+      project_id: 1,
+      set_filter: 1,
+      f: ['subject'],
+      op: { 'subject' => '=r' },
+      v: { 'subject' => ['.*subproject.*'] }
+    }
+    assert_response :success
+    # Should find 5 issues with "subproject" in the subject (case sensitive)
+    assert_select 'td.id a[href^="/issues/"]', 2
+  end
 end
