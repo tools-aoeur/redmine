@@ -56,7 +56,7 @@ class QueriesHelperTest < Redmine::HelperTest
     with_locale 'en' do
       options = filters_options_for_select(IssueQuery.new)
       assert_select_in options, 'optgroup[label=?]', 'Relations', 1
-      assert_select_in options, 'optgroup[label=?] > option', 'Relations', 11
+      assert_select_in options, 'optgroup[label=?] > option', 'Relations', 12
       assert_select_in options, 'optgroup > option[value=relates]', :text => 'Related to'
     end
   end

@@ -328,7 +328,8 @@ class Query < ApplicationRecord
     "!o"  => :label_no_open_issues,
     "ev"  => :label_has_been,       # "ev" stands for "ever"
     "!ev" => :label_has_never_been,
-    "cf"  => :label_changed_from
+    "cf"  => :label_changed_from,
+    "=r"  => :label_regex
   }
 
   class_attribute :operators_by_filter_type
@@ -341,8 +342,8 @@ class Query < ApplicationRecord
     :list_subprojects => [ "*", "!*", "=", "!" ],
     :date => [ "=", ">=", "<=", "><", "<t+", ">t+", "><t+", "t+", "nd", "t", "ld", "nw", "w", "lw", "l2w", "nm", "m", "lm", "y", ">t-", "<t-", "><t-", "t-", "!*", "*" ],
     :date_past => [ "=", ">=", "<=", "><", ">t-", "<t-", "><t-", "t-", "t", "ld", "w", "lw", "l2w", "m", "lm", "y", "!*", "*" ],
-    :string => [ "~", "*~", "=", "!~", "!", "^", "$", "!*", "*" ],
-    :text => [  "~", "*~", "!~", "^", "$", "!*", "*" ],
+    :string => [ "~", "*~", "=", "!~", "!", "^", "$", "!*", "*", "=r" ],
+    :text => [  "~", "*~", "!~", "^", "$", "!*", "*", "=r" ],
     :search => [ "~", "*~", "!~" ],
     :integer => [ "=", ">=", "<=", "><", "!*", "*" ],
     :float => [ "=", ">=", "<=", "><", "!*", "*" ],
@@ -1514,6 +1515,9 @@ class Query < ApplicationRecord
       else
         sql = '1=0'
       end
+    when "=r"
+      # Regular expression matching
+      sql = Redmine::Database.regexp_match("#{db_table}.#{db_field}", value.first.to_s)
     else
       raise QueryError, "Unknown query operator #{operator}"
     end

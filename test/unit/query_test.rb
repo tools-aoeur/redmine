@@ -3548,4 +3548,61 @@ class QueryTest < ActiveSupport::TestCase
 
     User.current = nil
   end
+
+  def test_operators_includes_regex
+    operators = Query.operators
+    assert_equal :label_regex, operators['=r']
+  end
+
+  def test_operators_by_filter_type_includes_regex_for_string_and_text
+    filters = Query.operators_by_filter_type
+    assert_includes filters[:string], '=r'
+    assert_includes filters[:text], '=r'
+  end
+
+  def test_sql_for_field_with_regex_operator
+    query = IssueQuery.new
+    sql = query.send(:sql_for_field, "subject", "=r", ["^item"], "issues", "subject", false)
+    assert_match(/issues\.subject REGEXP/, sql) if /(mysql|sqlite)/i.match?(Query.connection.adapter_name)
+    assert_match(/issues\.subject ~/, sql) if /postgresql/i.match?(Query.connection.adapter_name)
+    assert_match(/\^item/, sql)
+  end
+
+  def test_root_id_filter_is_available
+    query = IssueQuery.new
+    assert_includes query.available_filters.keys, 'root_id'
+    assert_equal :tree, query.available_filters['root_id'][:type]
+  end
+
+  def test_sql_for_root_id_field_with_equals_operator
+    query = IssueQuery.new
+    sql = query.send(:sql_for_root_id_field, "root_id", "=", ["1,2,3"])
+    assert_equal "issues.root_id IN (1,2,3)", sql
+  end
+
+  def test_sql_for_root_id_field_with_tilde_operator
+    with_settings :default_language => 'en' do
+      Issue.delete_all
+      root_issue = Issue.generate!(:subject => 'Root')
+      child_issue = Issue.generate!(:parent_issue_id => root_issue.id)
+
+      query = IssueQuery.new
+      sql = query.send(:sql_for_root_id_field, "root_id", "~", [child_issue.id.to_s])
+      assert_match(/issues\.root_id IN \(\d+\)/, sql)
+    end
+  end
+
+  def test_sql_for_root_id_field_with_not_any_operator
+    query = IssueQuery.new
+    sql = query.send(:sql_for_root_id_field, "root_id", "!*", [""])
+    expected_sql = "issues.root_id IS NULL OR issues.root_id = issues.id"
+    assert_equal expected_sql, sql
+  end
+
+  def test_sql_for_root_id_field_with_any_operator
+    query = IssueQuery.new
+    sql = query.send(:sql_for_root_id_field, "root_id", "*", [""])
+    expected_sql = "issues.root_id IS NOT NULL AND issues.root_id <> issues.id"
+    assert_equal expected_sql, sql
+  end
 end
