@@ -383,6 +383,7 @@ ja:
   field_repository_is_default: メインリポジトリ
   field_role: ロール
   field_root_directory: ルートディレクトリ
+  field_root_issue: ルートチケット
   field_scm_path_encoding: パスのエンコーディング
   field_searchable: 検索対象
   field_sharing: 共有
@@ -817,6 +818,7 @@ ja:
   label_radio_buttons: ラジオボタン
   label_read: 読む...
   label_readonly: 読み取り専用
+  label_regex: 正規表現
   label_register: 登録する
   label_registered_on: 登録日
   label_registration_activation_by_email: メールでアカウントを有効化
