@@ -384,6 +384,7 @@ en-GB:
   field_repository_is_default: Main repository
   field_role: Role
   field_root_directory: Root directory
+  field_root_issue: Root task
   field_scm_path_encoding: Path encoding
   field_searchable: Searchable
   field_sharing: Sharing
@@ -826,6 +827,7 @@ en-GB:
   label_radio_buttons: radio buttons
   label_read: Read...
   label_readonly: Read-only
+  label_regex: regex
   label_register: Register
   label_registered_on: Registered on
   label_registration_activation_by_email: account activation by email

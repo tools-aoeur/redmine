@@ -365,6 +365,7 @@ class IssueQuery < Query
     end
     add_available_filter "parent_id", :type => :tree, :label => :field_parent_issue
     add_available_filter "child_id", :type => :tree, :label => :label_subtask_plural
+    add_available_filter "root_id", :type => :tree, :label => :field_root_issue
 
     add_available_filter "issue_id", :type => :integer, :label => :label_issue
 
@@ -811,6 +812,32 @@ class IssueQuery < Query
       "#{Issue.table_name}.parent_id IS NULL"
     when "*"
       "#{Issue.table_name}.parent_id IS NOT NULL"
+    end
+  end
+
+  def sql_for_root_id_field(field, operator, value)
+    case operator
+    when "="
+      # accepts a comma separated list of root ids
+      root_ids = value.first.to_s.scan(/\d+/).map(&:to_i).uniq
+      if root_ids.present?
+        "#{Issue.table_name}.root_id IN (#{root_ids.join(",")})"
+      else
+        "1=0"
+      end
+    when "~"
+      # matches any issues within the same tree as the given issue id(s)
+      ids = value.first.to_s.scan(/\d+/).map(&:to_i).uniq
+      root_ids = Issue.where(:id => ids).pluck(:root_id).compact.uniq
+      if root_ids.present?
+        "#{Issue.table_name}.root_id IN (#{root_ids.join(",")})"
+      else
+        "1=0"
+      end
+    when "!*"
+      "#{Issue.table_name}.root_id IS NULL OR #{Issue.table_name}.root_id = #{Issue.table_name}.id"
+    when "*"
+      "#{Issue.table_name}.root_id IS NOT NULL AND #{Issue.table_name}.root_id <> #{Issue.table_name}.id"
     end
   end
 

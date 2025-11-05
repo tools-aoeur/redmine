@@ -23,7 +23,7 @@ module Redmine
     class << self
       # Returns true if the database is SQLite
       def sqlite?
-        ActiveRecord::Base.connection.adapter_name =~ /sqlite/i
+        /sqlite/i.match?(ActiveRecord::Base.connection.adapter_name)
       end
 
       # Returns true if the database is PostgreSQL
@@ -100,6 +100,18 @@ module Redmine
           else
             "DATE(#{column})"
           end
+        end
+      end
+
+      # Returns a SQL statement for regular expression matching
+      def regexp_match(column, pattern)
+        if sqlite?
+          # Implemented here, because not supported in Rails Arel
+          "#{column} REGEXP #{ActiveRecord::Base.connection.quote(pattern)}"
+        else
+          ActiveRecord::Base.connection.visitor.compile(
+            Arel::Nodes::Regexp.new(Arel.sql(column), Arel::Nodes.build_quoted(pattern), false)
+          )
         end
       end
 

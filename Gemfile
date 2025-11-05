@@ -80,6 +80,8 @@ if File.exist?(database_file)
         gem 'pg', '~> 1.5.3'
       when /sqlite3/
         gem 'sqlite3', '~> 2.5.0'
+        # for REGEXP support with SQLite
+        gem 'sqlite3_ar_regexp'
       when /sqlserver/
         gem 'tiny_tds', '~> 2.1.2'
         gem 'activerecord-sqlserver-adapter', '~> 7.2.0'
