@@ -31,7 +31,7 @@ gem 'net-pop', '~> 0.1.2'
 gem 'net-smtp', '~> 0.5.0'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :x64_mingw, :mswin]
+gem 'tzinfo-data', platforms: [:windows]
 
 # TOTP-based 2-factor authentication
 gem 'rotp', '>= 5.0.0'
@@ -119,7 +119,8 @@ group :test do
   gem "rails-dom-testing", '>= 2.3.0'
   gem 'mocha', '>= 2.0.1'
   gem 'simplecov', '~> 0.22.0', :require => false
-  gem "ffi", platforms: [:mingw, :x64_mingw, :mswin]
+  gem "ffi", platforms: [:windows]
+
   # For running system tests
   # gem 'puma' (made global)
   gem "capybara", ">= 3.39"
