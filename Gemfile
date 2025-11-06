@@ -53,8 +53,9 @@ end
 
 # Include database gems for the adapters found in the database
 # configuration file
-database_file = File.join(File.dirname(__FILE__), "config/database.yml")
-if File.exist?(database_file)
+gemfile_db_file = File.join(__dir__, "Gemfile.db")
+database_file = File.join(__dir__, "config/database.yml")
+if !File.exist?(gemfile_db_file) && File.exist?(database_file)
   database_config = File.read(database_file)
 
   # Requiring libraries in a Gemfile may cause Bundler warnings or
@@ -92,6 +93,8 @@ if File.exist?(database_file)
   else
     warn("No adapter found in config/database.yml, please configure it first")
   end
+elsif File.exist?(gemfile_db_file)
+  eval_gemfile gemfile_db_file
 else
   warn("Please configure your config/database.yml first")
 end
@@ -150,7 +153,7 @@ group :test do
   # gem 'rest-client' (made global)
 end
 
-local_gemfile = File.join(File.dirname(__FILE__), "Gemfile.local")
+local_gemfile = File.join(__dir__, "Gemfile.local")
 if File.exist?(local_gemfile)
   eval_gemfile local_gemfile
 end
