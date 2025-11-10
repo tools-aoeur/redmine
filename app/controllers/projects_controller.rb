@@ -299,12 +299,15 @@ class ProjectsController < ApplicationController
 
     @project_to_destroy = @project
     if api_request? || params[:confirm] == @project_to_destroy.identifier
+      # Capture admin status before scheduling job, as inline job execution in tests
+      # may interfere with User.current
+      is_admin = User.current.admin?
       DestroyProjectJob.schedule(@project_to_destroy)
       flash[:notice] = l(:notice_successful_delete)
       respond_to do |format|
         format.html do
           redirect_to(
-            User.current.admin? ? admin_projects_path : projects_path
+            is_admin ? admin_projects_path : projects_path
           )
         end
         format.api  {render_api_ok}
