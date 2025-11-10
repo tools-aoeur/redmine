@@ -39,6 +39,10 @@ require 'fileutils'
 
 Redmine::SudoMode.disable!
 
+# Set plugin directory to empty directory by default to avoid side effects from installed plugins
+Redmine::Plugin.directory = Rails.root.join('test/fixtures/no_plugins')
+Redmine::PluginLoader.directory = Redmine::Plugin.directory
+
 $redmine_tmp_attachments_directory = "#{Rails.root}/tmp/test/attachments"
 FileUtils.mkdir_p $redmine_tmp_attachments_directory
 
