@@ -1,0 +1,43 @@
+# Ruby LSP Configuration for Redmine subproject
+# This ensures Ruby LSP uses the correct environment for this specific project
+
+# Features to enable for this project
+enabledFeatures:
+  - "codeActions"
+  - "diagnostics"
+  - "documentHighlights"
+  - "documentSymbols"
+  - "foldingRanges"
+  - "formatting"
+  - "hover"
+  - "inlayHints"
+  - "selectionRanges"
+  - "semanticHighlighting"
+  - "completion"
+  - "codeLens"
+  - "definition"
+  - "workspaceSymbols"
+  - "signatureHelp"
+
+# Formatter configuration
+formatter: "auto"
+
+# Linter configuration
+linters:
+  - "rubocop"
+
+# Index configuration
+indexing:
+  # Don't index these directories to improve performance
+  excludedPatterns:
+    - "**/vendor/**"
+    - "**/tmp/**"
+    - "**/log/**"
+    - "**/.git/**"
+    - "**/coverage/**"
+    - "**/public/assets/**"
+    - "**/public/packs/**"
+    - "**/node_modules/**"
+
+# Experimental features
+experimentalFeaturesEnabled: false
