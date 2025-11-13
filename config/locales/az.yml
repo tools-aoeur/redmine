@@ -1,7 +1,7 @@
 #
 # Translated by Saadat Mutallimova
 # Data Processing Center of the Ministry of Communication and Information Technologies
-# 
+#
 az:
   direction: ltr
   date:
@@ -212,11 +212,6 @@ az:
       two_words_connector: " və "
       words_connector: ", "
 
-      # Rails 2.3
-      words_connector: ", "
-      two_words_connector: " və"
-      last_word_connector: " və "
-
   actionview_instancetag_blank_option: Seçim edin
 
   button_activate: Aktivləşdirmək
@@ -358,7 +353,7 @@ az:
   field_parent_title: Valideyn səhifə
   field_parent: Valideyn layihə
   field_parent_issue: Valideyn tapşırıq
-  field_password_confirmation: Təsdiq 
+  field_password_confirmation: Təsdiq
   field_password: Parol
   field_port: Port
   field_possible_values: Mümkün olan təyinatlar
@@ -453,7 +448,7 @@ az:
   label_comment_plural5: şərhlərin
   label_commits_per_author: İstifadəçi üzərində dəyişikliklər
   label_commits_per_month: Ay üzərində dəyişikliklər
-  label_confirmation: Təsdiq 
+  label_confirmation: Təsdiq
   label_contains: tərkibi
   label_copied: surəti köçürülüb
   label_copy_workflow_from: görülən işlərin ardıcıllığının surətini köçürmək
@@ -490,7 +485,7 @@ az:
   label_environment: Mühit
   label_equals: sayılır
   label_example: Nümunə
-  label_export_to: ixrac etmək 
+  label_export_to: ixrac etmək
   label_feed_plural: Atom
   label_feeds_access_key_created_on: "Atom-ə giriş açarı %{value} əvvəl yaradılıb"
   label_f_hour: "%{value} saat"
@@ -590,7 +585,7 @@ az:
   label_options: Opsiyalar
   label_overview: Baxış
   label_password_lost: Parolun bərpası
-  label_permissions_report: Giriş hüquqları üzrə hesabat 
+  label_permissions_report: Giriş hüquqları üzrə hesabat
   label_permissions: Giriş hüquqları
   label_plugins: Modullar
   label_precedes: növbəti
@@ -654,7 +649,7 @@ az:
   label_string: Mətn
   label_subproject_plural: Altlayihələr
   label_subtask_plural: Alt tapşırıqlar
-  label_text: Uzun mətn 
+  label_text: Uzun mətn
   label_theme: Mövzu
   label_this_month: bu ay
   label_this_week: bu həftə
@@ -775,7 +770,7 @@ az:
   permission_edit_wiki_pages: Wiki-səhifənin redaktə edilməsi
   permission_export_wiki_pages: Wiki-səhifənin ixracı
   permission_log_time: Sərf olunan vaxtın uçotu
-  permission_view_changesets: Saxlayıcı dəyişikliklərinə baxış 
+  permission_view_changesets: Saxlayıcı dəyişikliklərinə baxış
   permission_view_time_entries: Sərf olunan vaxta baxış
   permission_manage_project_activities: Layihə üçün hərəkət tiplərinin idarə edilməsi
   permission_manage_boards: Forumların idarə edilməsi
@@ -826,7 +821,7 @@ az:
   setting_default_language: Susmaya görə dil
   setting_default_notification_option: Susmaya görə xəbərdarlıq üsulu
   setting_default_projects_public: Yeni layihələr ümumaçıq hesab edilir
-  setting_diff_max_lines_displayed: diff üçün sətirlərin maksimal sayı 
+  setting_diff_max_lines_displayed: diff üçün sətirlərin maksimal sayı
   setting_display_subprojects_issues: Susmaya görə altlayihələrin əks olunması
   setting_emails_footer: Məktubun sətiraltı qeydləri
   setting_enabled_scm: Daxil edilən SCM
@@ -850,7 +845,7 @@ az:
   setting_text_formatting: Mətnin formatlaşdırılması
   setting_time_format: Vaxtın formatı
   setting_user_format: Adın əks olunma formatı
-  setting_welcome_text: Salamlama mətni 
+  setting_welcome_text: Salamlama mətni
   setting_wiki_compression: Wiki tarixçəsinin sıxlaşdırılması
 
   status_active: aktivdir
@@ -978,7 +973,7 @@ az:
   label_subproject_new: Yeni alt layihə
   text_own_membership_delete_confirmation: |-
     Siz bəzi və ya bütün hüquqları silməyə çalışırsınız, nəticədə bu layihəni redaktə etmək hüququnu da itirə bilərsiniz. Davam etmək istədiyinizə əminsinizmi?
-    
+
   label_close_versions: Başa çatmış variantları bağlamaq
   label_board_sticky: Bərkidilib
   label_board_locked: Bloklanıb
@@ -987,7 +982,7 @@ az:
   text_zoom_in: Yaxınlaşdırmaq
   notice_unable_delete_time_entry: Jurnalın qeydini silmək mümkün deyildir.
   label_user_mail_option_none: Hadisə yoxdur
-  field_member_of_group: Təyin olunmuş qrup 
+  field_member_of_group: Təyin olunmuş qrup
   field_assigned_to_role: Təyin olunmuş rol
   notice_not_authorized_archived_project: Sorğulanan layihə arxivləşdirilib.
   label_principal_search: "İstifadəçini və ya qrupu tapmaq:"
@@ -999,7 +994,7 @@ az:
   text_time_logged_by_changeset: "%{value} redaksiyada nəzərə alınıb."
   setting_commit_logtime_enabled: Vaxt uçotunu qoşmaq
   notice_gantt_chart_truncated: Əks oluna biləcək elementlərin maksimal sayı artdığına görə diaqram kəsiləcək (%{max})
-  setting_gantt_items_limit: Qant diaqramında əks olunan elementlərin maksimal sayı 
+  setting_gantt_items_limit: Qant diaqramında əks olunan elementlərin maksimal sayı
   field_warn_on_leaving_unsaved: Yadda saxlanılmayan mətnin səhifəsi bağlanan zaman xəbərdarlıq etmək
   text_warn_on_leaving_unsaved: Tərk etmək istədiyiniz cari səhifədə yadda saxlanılmayan və itə biləcək mətn vardır.
   label_my_queries: Mənim yadda saxlanılan sorğularım
@@ -1007,8 +1002,8 @@ az:
   label_news_comment_added: Xəbərə şərh əlavə olunub
   button_expand_all: Hamısını aç
   button_collapse_all: Hamısını çevir
-  label_additional_workflow_transitions_for_assignee: İstifadəçi icraçı olduğu zaman əlavə keçidlər 
-  label_additional_workflow_transitions_for_author: İstifadəçi müəllif olduğu zaman əlavə keçidlər 
+  label_additional_workflow_transitions_for_assignee: İstifadəçi icraçı olduğu zaman əlavə keçidlər
+  label_additional_workflow_transitions_for_author: İstifadəçi müəllif olduğu zaman əlavə keçidlər
   label_bulk_edit_selected_time_entries: Sərf olunan vaxtın seçilən qeydlərinin kütləvi şəkildə dəyişdirilməsi
   text_time_entries_destroy_confirmation: Siz sərf olunan vaxtın seçilən qeydlərini silmək istədiyinizə əminsinizmi?
   label_role_anonymous: Anonim
@@ -1039,7 +1034,7 @@ az:
   text_scm_command_not_available: Variantların nəzarət sisteminin komandasına giriş mümkün deyildir. Xahiş olunur, inzibatçı panelindəki sazlamaları yoxlayın.
   notice_issue_successful_create: Tapşırıq %{id} yaradılıb.
   label_between: arasında
-  setting_issue_group_assignment: İstifadəçi qruplarına təyinata icazə vermək 
+  setting_issue_group_assignment: İstifadəçi qruplarına təyinata icazə vermək
   label_diff: Fərq(diff)
   text_git_repository_note: "Saxlama yerini göstərin (məs: /gitrepo, c:\\gitrepo)"
   description_query_sort_criteria_direction: Çeşidləmə qaydası
@@ -1086,11 +1081,11 @@ az:
   text_issue_conflict_resolution_cancel: Mənim dəyişikliklərimi ləğv etmək və tapşırığı yenidən göstərmək %{link}
   permission_manage_related_issues: Əlaqəli tapşırıqların idarə edilməsi
   field_auth_source_ldap_filter: LDAP filtri
-  label_search_for_watchers: Nəzarətçiləri axtarmaq 
-  notice_account_deleted: "Sizin uçot qeydiniz tam olaraq silinib" 
-  setting_unsubscribe: "İstifadəçilərə şəxsi uçot qeydlərini silməyə icazə vermək" 
-  button_delete_my_account: "Mənim uçot qeydlərimi silmək" 
-  text_account_destroy_confirmation: "Sizin uçot qeydiniz bir daha bərpa edilmədən tam olaraq silinəcək.\nDavam etmək istədiyinizə əminsinizmi?" 
+  label_search_for_watchers: Nəzarətçiləri axtarmaq
+  notice_account_deleted: "Sizin uçot qeydiniz tam olaraq silinib"
+  setting_unsubscribe: "İstifadəçilərə şəxsi uçot qeydlərini silməyə icazə vermək"
+  button_delete_my_account: "Mənim uçot qeydlərimi silmək"
+  text_account_destroy_confirmation: "Sizin uçot qeydiniz bir daha bərpa edilmədən tam olaraq silinəcək.\nDavam etmək istədiyinizə əminsinizmi?"
   error_session_expired: Sizin sessiya bitmişdir. Xahiş edirik yenidən daxil olun.
   text_session_expiration_settings: "Diqqət: bu sazlamaların dəyişməyi cari sessiyanın bağlanmasına çıxara bilər."
   setting_session_lifetime: Sessiyanın maksimal Session maximum həyat müddəti
