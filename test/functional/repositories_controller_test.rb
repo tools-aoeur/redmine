@@ -420,7 +420,7 @@ class RepositoriesControllerTest < Redmine::RepositoryControllerTest
       assert_response :success
       assert_equal 'text/javascript', response.media_type
     end
-    assert_include 'alert("Issue is invalid")', response.body
+    assert_include 'alert("Ticket is invalid")', response.body
   end
 
   def test_remove_related_issue

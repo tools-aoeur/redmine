@@ -2121,7 +2121,7 @@ class IssuesControllerTest < Redmine::ControllerTest
     get(:index, :params => {:project_id => 1})
     assert_select(
       '#content a.new-issue[href="/projects/ecookbook/issues/new"]',
-      :text => 'New issue'
+      :text => 'New ticket'
     )
   end
 
@@ -2144,7 +2144,7 @@ class IssuesControllerTest < Redmine::ControllerTest
   def test_index_without_project_should_include_new_issue_link
     @request.session[:user_id] = 2
     get :index
-    assert_select '#content a.new-issue[href="/issues/new"]', :text => 'New issue'
+    assert_select '#content a.new-issue[href="/issues/new"]', :text => 'New ticket'
   end
 
   def test_index_should_show_setting_link_with_edit_project_permission
@@ -2177,7 +2177,7 @@ class IssuesControllerTest < Redmine::ControllerTest
       get(:index, :params => {:project_id => 1})
       assert_select(
         '#main-menu a.new-issue[href="/projects/ecookbook/issues/new"]',
-        :text => 'New issue'
+        :text => 'New ticket'
       )
     end
   end
@@ -2258,7 +2258,7 @@ class IssuesControllerTest < Redmine::ControllerTest
       assert_select 'a', {:count => 1, :text => 'Watch'}
       assert_select 'a', {:count => 1, :text => 'Copy'}
       assert_select 'div.drdn-items a', {:count => 1, :text => 'Copy link'}
-      assert_select 'div.drdn-items a', {:count => 1, :text => 'Delete issue'}
+      assert_select 'div.drdn-items a', {:count => 1, :text => 'Delete ticket'}
     end
     assert_select 'form#issue-form' do
       assert_select 'fieldset' do
@@ -3215,7 +3215,7 @@ class IssuesControllerTest < Redmine::ControllerTest
     get(:show, :params => {:id => 1})
     assert_response :success
     assert_select 'a', :text => 'Edit'
-    assert_select 'a', :text => 'Delete issue'
+    assert_select 'a', :text => 'Delete ticket'
   end
 
   def test_show_on_closed_project_should_not_display_edit_links
@@ -3975,7 +3975,7 @@ class IssuesControllerTest < Redmine::ControllerTest
       }
     )
     assert_response :internal_server_error
-    assert_select_error /No default issue/
+    assert_select_error /No default ticket/
   end
 
   def test_get_new_with_no_tracker_should_display_an_error
@@ -4083,12 +4083,12 @@ class IssuesControllerTest < Redmine::ControllerTest
     assert_response :success
 
     assert_select 'form#issue-form' do
-      assert_select 'a[title=?]', 'View all issue statuses description', :text => 'View all issue statuses description'
+      assert_select 'a[title=?]', 'View all ticket statuses description', :text => 'View all ticket statuses description'
       assert_select 'select[name=?][title=?]', 'issue[status_id]', 'Description for Assigned issue status'
     end
 
     assert_select 'div#issue_statuses_description' do
-      assert_select 'h3', :text => 'Issue statuses description', :count => 1
+      assert_select 'h3', :text => 'Ticket statuses description', :count => 1
       assert_select 'dt', 2
       assert_select 'dt', :text => 'New', :count => 1
       assert_select 'dd', :text => 'Description for New issue status', :count => 1
@@ -7980,7 +7980,7 @@ class IssuesControllerTest < Redmine::ControllerTest
       }
     )
     assert_response :success
-    assert_select '#errorExplanation span', :text => 'Failed to save 2 issue(s) on 2 selected: #1, #2.'
+    assert_select '#errorExplanation span', :text => 'Failed to save 2 ticket(s) on 2 selected: #1, #2.'
     assert_select '#errorExplanation ul li', :text => 'Start date is not a valid date: #1, #2'
   end
 
@@ -8000,7 +8000,7 @@ class IssuesControllerTest < Redmine::ControllerTest
     )
     assert_response :success
     assert_select '#errorExplanation span',
-                  :text => "Failed to save 2 issue(s) on 3 selected: ##{issue1.id}, ##{issue2.id}."
+                  :text => "Failed to save 2 ticket(s) on 3 selected: ##{issue1.id}, ##{issue2.id}."
     assert_select '#errorExplanation ul li',
                   :text => "Due date must be greater than start date: ##{issue1.id}, ##{issue2.id}"
     assert_select '#bulk-selection li', 2
@@ -8708,7 +8708,7 @@ class IssuesControllerTest < Redmine::ControllerTest
       end
     end
     assert_response :success
-    assert_select '#flash_error', :text => 'Issue cannot be blank'
+    assert_select '#flash_error', :text => 'Ticket cannot be blank'
   end
 
   def test_destroy_issues_from_different_projects
@@ -8982,7 +8982,7 @@ class IssuesControllerTest < Redmine::ControllerTest
     @request.session[:issue_query] = nil
     User.find(3).pref.update(default_issue_query: query.id)
     get :index
-    assert_select 'h2', text: 'Issues'
+    assert_select 'h2', text: 'Tickets'
   end
 
   def test_index_should_ignore_project_default_query_if_it_is_not_public
@@ -8996,7 +8996,7 @@ class IssuesControllerTest < Redmine::ControllerTest
       @request.session[:user_id] = user.id
       @request.session[:issue_query] = nil
       get :index, params: { project_id: query.project.id }
-      assert_select 'h2', text: 'Issues'
+      assert_select 'h2', text: 'Tickets'
     end
   end
 
@@ -9010,7 +9010,7 @@ class IssuesControllerTest < Redmine::ControllerTest
         @request.session[:user_id] = user.id
         @request.session[:issue_query] = nil
         get :index
-        assert_select 'h2', text: 'Issues'
+        assert_select 'h2', text: 'Tickets'
       end
     end
   end

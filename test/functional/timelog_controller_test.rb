@@ -332,7 +332,7 @@ class TimelogControllerTest < Redmine::ControllerTest
           :activity_id => '11', :spent_on => '2008-03-14', :hours => '7.3'
         }
       }
-      assert_select_error /Issue is invalid/
+      assert_select_error /Ticket is invalid/
     end
   end
 
@@ -347,7 +347,7 @@ class TimelogControllerTest < Redmine::ControllerTest
           :activity_id => '11', :spent_on => '2008-03-14', :hours => '7.3'
         }
       }
-      assert_select_error /Issue is invalid/
+      assert_select_error /Ticket is invalid/
     end
   end
 
@@ -364,7 +364,7 @@ class TimelogControllerTest < Redmine::ControllerTest
         }
       }
     end
-    assert_select_error /Issue is invalid/
+    assert_select_error /Ticket is invalid/
     assert_select "input[name=?][value=?]", "time_entry[issue_id]", issue.id.to_s
     assert_select "#time_entry_issue a", 0
     assert !response.body.include?('issue_that_is_not_visible')
@@ -556,7 +556,7 @@ class TimelogControllerTest < Redmine::ControllerTest
     end
 
     assert_response :success
-    assert_select_error /Issue is invalid/
+    assert_select_error /Ticket is invalid/
   end
 
   def test_create_without_project_should_deny_without_permission
@@ -648,7 +648,7 @@ class TimelogControllerTest < Redmine::ControllerTest
       }
     }
     assert_response :success
-    assert_select_error /Issue is invalid/
+    assert_select_error /Ticket is invalid/
   end
 
   def test_update_should_allow_to_change_project
@@ -679,7 +679,7 @@ class TimelogControllerTest < Redmine::ControllerTest
     }
 
     assert_response :success
-    assert_select_error /Issue is invalid/
+    assert_select_error /Ticket is invalid/
   end
 
   def test_update_should_fail_when_changing_user_without_permission
@@ -940,7 +940,7 @@ class TimelogControllerTest < Redmine::ControllerTest
     assert_select '.total-for-hours', :text => 'Hours: 162:54'
     assert_select 'form#query_form[action=?]', '/time_entries'
 
-    assert_equal ['Project', 'Date', 'User', 'Activity', 'Issue', 'Comment', 'Hours'], columns_in_list
+    assert_equal ['Project', 'Date', 'User', 'Activity', 'Ticket', 'Comment', 'Hours'], columns_in_list
     assert_select '.query-totals>span', 1
   end
 
@@ -964,7 +964,7 @@ class TimelogControllerTest < Redmine::ControllerTest
       assert_select 'td.user'
       assert_select 'td.hours'
     end
-    assert_equal ['Project', 'Date', 'Issue', 'User', 'Hours'], columns_in_list
+    assert_equal ['Project', 'Date', 'Ticket', 'User', 'Hours'], columns_in_list
   end
 
   def test_index_with_default_query_setting_using_custom_field
@@ -1735,7 +1735,7 @@ class TimelogControllerTest < Redmine::ControllerTest
       assert_equal 'text/csv; header=present', response.media_type
 
       parsed_csv = CSV.parse(response.body)
-      assert_equal %w[Project Date User Activity Issue Comment Hours], parsed_csv.first
+      assert_equal %w[Project Date User Activity Ticket Comment Hours], parsed_csv.first
       assert_equal(
         [
           'eCookbook', '03/12/2007', 'Redmine Admin', 'Design',
