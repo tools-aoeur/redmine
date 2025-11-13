@@ -175,7 +175,7 @@ class IssueStatusesControllerTest < Redmine::ControllerTest
   def test_update_issue_done_ratio_with_issue_done_ratio_set_to_issue_status
     with_settings :issue_done_ratio => 'issue_status' do
       post :update_issue_done_ratio
-      assert_match /Issue done ratios updated/, flash[:notice].to_s
+      assert_match /Ticket done ratios updated/, flash[:notice].to_s
       assert_redirected_to '/issue_statuses'
     end
   end

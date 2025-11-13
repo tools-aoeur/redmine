@@ -120,7 +120,7 @@ class IssueTest < ActiveSupport::TestCase
     issue = Issue.generate(:start_date => '2013-06-04')
     issue.stubs(:soonest_start).returns(Date.parse('2013-06-10'))
     assert !issue.valid?
-    assert_include "Start date cannot be earlier than 06/10/2013 because of preceding issues", issue.errors.full_messages
+    assert_include "Start date cannot be earlier than 06/10/2013 because of preceding tickets", issue.errors.full_messages
   end
 
   def test_start_date_lesser_than_soonest_start_should_not_validate_on_update_if_changed
@@ -128,7 +128,7 @@ class IssueTest < ActiveSupport::TestCase
     issue.stubs(:soonest_start).returns(Date.parse('2013-06-10'))
     issue.start_date = '2013-06-07'
     assert !issue.valid?
-    assert_include "Start date cannot be earlier than 06/10/2013 because of preceding issues", issue.errors.full_messages
+    assert_include "Start date cannot be earlier than 06/10/2013 because of preceding tickets", issue.errors.full_messages
   end
 
   def test_start_date_lesser_than_soonest_start_should_validate_on_update_if_unchanged
@@ -2477,7 +2477,7 @@ class IssueTest < ActiveSupport::TestCase
       child = Issue.new(:parent_issue_id => issue2.id, :start_date => '2012-10-16',
         :project_id => 1, :tracker_id => 1, :status_id => 1, :subject => 'Child', :author_id => 1)
       assert !child.valid?
-      assert_include 'Start date cannot be earlier than 10/18/2012 because of preceding issues', child.errors.full_messages
+      assert_include 'Start date cannot be earlier than 10/18/2012 because of preceding tickets', child.errors.full_messages
       assert_equal Date.parse('2012-10-18'), child.soonest_start
       child.start_date = '2012-10-18'
       assert child.save
