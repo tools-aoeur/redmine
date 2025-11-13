@@ -950,7 +950,6 @@ sq:
   label_descending: Zbritës
   label_date_from_to: Nga %{start} deri më %{end}
   label_days_to_html: "%{days} ditë deri më %{date}"
-  label_wiki_content_added: U shtua faqe Wiki page added
   label_wiki_content_added: U shtua faqe Wiki
   label_wiki_content_updated: U përditësua faqe Wiki
   label_group: Grup
@@ -1335,18 +1334,6 @@ sq:
   twofa_text_backup_codes_hint: Përdorni këto kode, në vend se të një fjalëkalimi njëpërdorimsh, për raste kur s’e keni faktorin e dytër. Çdo kod mund të përdoret vetëm një herë. Është e këshillueshme që të shtypen dhe të ruhen në një vend të parrezik.
   twofa_text_backup_codes_created_at: Kode kopjeruajtjesh prodhuar më %{datetime}.
   twofa_backup_codes_already_shown: Kodet e kopjeruajtjeve s’mund të shfaqen sërish, ju lutemi, nëse duhet, <a data-method="post" href="%{bc_path}">prodhoni kode të rinj kopjeruajtjesh</a>.
-  error_can_not_execute_macro_html: Error executing the <strong>%{name}</strong> macro
-    (%{error})
-  error_macro_does_not_accept_block: This macro does not accept a block of text
-  error_childpages_macro_no_argument: With no argument, this macro can be called from
-    wiki pages only
-  error_circular_inclusion: Circular inclusion detected
-  error_page_not_found: Page not found
-  error_filename_required: Filename required
-  error_invalid_size_parameter: Invalid size parameter
-  error_attachment_not_found: Attachment %{name} not found
-  permission_delete_project: Delete the project
-  field_twofa_scheme: Two-factor authentication scheme
   text_user_destroy_confirmation: Are you sure you want to delete this user and remove
     all references to them? This cannot be undone. Often, locking a user instead of
     deleting them is the better solution. To confirm, please enter their login (%{login})

@@ -751,7 +751,6 @@ hr:
   button_activate: Aktiviraj
   button_sort: Redoslijed
   button_log_time: Zapiši vrijeme
-  button_rollback: Izvrši rollback na ovu verziju
   button_watch: Prati
   button_unwatch: Prekini pracenje
   button_reply: Odgovori
@@ -797,8 +796,6 @@ hr:
   text_tracker_no_workflow: Tijek rada nije definiran za ovaj tracker
   text_unallowed_characters: Nedozvoljeni znakovi
   text_comma_separated: Višestruke vrijednosti su dozvoljene (razdvojene zarezom).
-  text_issues_ref_in_commit_messages: Referencing and fixing issues in commit messages
-  text_tracker_no_workflow: No workflow defined for this tracker
   text_issues_ref_in_commit_messages: Referencing and fixing issues in commit messages
   text_issue_added: "Predmet %{id} je prijavljen (prijavio %{author})."
   text_issue_updated: "Predmet %{id} je promijenjen %{author})."
