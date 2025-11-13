@@ -200,7 +200,7 @@ class IssueRelationsControllerTest < Redmine::ControllerTest
       assert_response :success
       assert_equal 'text/javascript', response.media_type
     end
-    assert_include 'Related issue cannot be blank', response.body
+    assert_include 'Related ticket cannot be blank', response.body
   end
 
   def test_create_duplicated_follows_relations_should_not_raise_exception
@@ -277,10 +277,10 @@ class IssueRelationsControllerTest < Redmine::ControllerTest
     assert_response :success
     assert_equal 'text/javascript', response.media_type
     # issue #1 is invalid
-    assert_include 'Related issue is invalid: #1', response.body
+    assert_include 'Related ticket is invalid: #1', response.body
     # issues #4 and #5 can't be related by default
-    assert_include 'Related issue cannot be blank', response.body
-    assert_include 'Related issue doesn&#39;t belong to the same project', response.body
+    assert_include 'Related ticket cannot be blank', response.body
+    assert_include 'Related ticket doesn&#39;t belong to the same project', response.body
   end
 
   def test_destroy

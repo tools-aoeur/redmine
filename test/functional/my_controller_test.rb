@@ -112,7 +112,7 @@ class MyControllerTest < Redmine::ControllerTest
     assert_response :success
 
     assert_select '#block-issuequery' do
-      assert_select 'h3', :text => 'Issues'
+      assert_select 'h3', :text => 'Tickets'
       assert_select 'select[name=?]', 'settings[issuequery][query_id]' do
         assert_select 'option[value="5"]', :text => 'Open issues by priority and tracker'
       end
@@ -123,7 +123,7 @@ class MyControllerTest < Redmine::ControllerTest
     user = User.find(2)
     query =
       IssueQuery.create!(
-        :name => 'All issues', :user => user,
+        :name => 'All tickets', :user => user,
         :column_names => [:tracker, :subject, :status, :assigned_to]
       )
     user.pref.my_page_layout = {'top' => ['issuequery']}
@@ -220,7 +220,7 @@ class MyControllerTest < Redmine::ControllerTest
     end
 
     assert_select '#block-select' do
-      assert_select 'option[value=?]:not([disabled])', 'issuequery__2', :text => 'Issues'
+      assert_select 'option[value=?]:not([disabled])', 'issuequery__2', :text => 'Tickets'
     end
   end
 

@@ -171,7 +171,7 @@ class VersionsControllerTest < Redmine::ControllerTest
     assert_response :success
 
     assert_select 'p.progress-info' do
-      assert_select 'a', :text => '1 issue'
+      assert_select 'a', :text => '1 ticket'
       assert_select 'a', :text => '1 open'
     end
 
@@ -227,7 +227,7 @@ class VersionsControllerTest < Redmine::ControllerTest
     get :show, :params => {:id => 3}
 
     assert_response :success
-    assert_select 'a.icon.icon-add', :text => 'New issue'
+    assert_select 'a.icon.icon-add', :text => 'New ticket'
   end
 
   def test_show_with_text_format

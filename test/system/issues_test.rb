@@ -34,14 +34,14 @@ class IssuesSystemTest < ApplicationSystemTestCase
       find('input[name=commit]').click
     end
 
-    assert_text /Issue #\d+ created./
+    assert_text(/Ticket #\d+ created./)
 
     # find created issue
     issue = Issue.find_by_subject("new test issue")
     assert_kind_of Issue, issue
 
     # check redirection
-    find 'div#flash_notice', :visible => true, :text => "Issue ##{issue.id} created."
+    find 'div#flash_notice', :visible => true, :text => "Ticket ##{issue.id} created."
     assert_equal issue_path(:id => issue), current_path
 
     # check issue attributes
@@ -88,7 +88,7 @@ class IssuesSystemTest < ApplicationSystemTestCase
     fill_in field2.name, :with => 'CF2 value'
     assert_difference 'Issue.count' do
       page.first(:button, 'Create').click
-      assert_text /Issue #\d+ created./
+      assert_text /Ticket #\d+ created./
     end
 
     issue = Issue.order('id desc').first
@@ -128,7 +128,7 @@ class IssuesSystemTest < ApplicationSystemTestCase
     end
     assert_difference 'Issue.count' do
       find('input[name=commit]').click
-      assert_text /Issue #\d+ created./
+      assert_text /Ticket #\d+ created./
     end
 
     issue = Issue.order('id desc').first
@@ -145,7 +145,7 @@ class IssuesSystemTest < ApplicationSystemTestCase
       attach_file 'attachments[dummy][file]', Rails.root.join('test/fixtures/files/testfile.txt')
       fill_in 'attachments[1][description]', :with => 'Some description'
       click_on 'Create'
-      assert_text /Issue #\d+ created./
+      assert_text /Ticket #\d+ created./
     end
     assert_equal 1, issue.attachments.count
     assert_equal 'Some description', issue.attachments.first.description
@@ -168,7 +168,7 @@ class IssuesSystemTest < ApplicationSystemTestCase
       attach_file 'attachments[dummy][file]', Rails.root.join('test/fixtures/files/testfile.txt')
       fill_in 'attachments[1][description]', :with => 'Some description'
       click_on 'Create'
-      assert_text /Issue #\d+ created./
+      assert_text /Ticket #\d+ created./
     end
     assert_equal 1, issue.attachments.count
     assert_equal 'Some description', issue.attachments.first.description
@@ -187,7 +187,7 @@ class IssuesSystemTest < ApplicationSystemTestCase
           click_on 'Create'
         end
         click_on 'Create'
-        assert_text /Issue #\d+ created./
+        assert_text /Ticket #\d+ created./
       end
     end
 
@@ -207,7 +207,7 @@ class IssuesSystemTest < ApplicationSystemTestCase
     end
     assert_difference 'Issue.count' do
       click_button('Create')
-      assert_text /Issue #\d+ created./
+      assert_text /Ticket #\d+ created./
     end
 
     issue = Issue.order('id desc').first
