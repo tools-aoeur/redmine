@@ -322,7 +322,6 @@
   setting_user_format: Felhasználók megjelenítésének formája
   setting_activity_days_default: Napok megjelenítése a project aktivitásnál
   setting_display_subprojects_issues: Alapértelmezettként mutassa az alprojektek feladatait is a projekteken
-  setting_start_of_week: A hét első napja
 
   project_module_issue_tracking: Feladat követés
   project_module_time_tracking: Idő rögzítés
