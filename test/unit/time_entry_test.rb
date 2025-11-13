@@ -184,7 +184,7 @@ class TimeEntryTest < ActiveSupport::TestCase
       entry.issue = issue
       assert !entry.save
       assert entry.errors[:base].present?
-      assert_equal 'Cannot log time on a closed issue', entry.errors[:base].first
+      assert_equal 'Cannot log time on a closed ticket', entry.errors[:base].first
     end
   end
 
@@ -293,7 +293,7 @@ class TimeEntryTest < ActiveSupport::TestCase
                             :activity => TimeEntryActivity.first,
                             :hours => 1)
       assert !entry.save
-      assert_equal ["Comment cannot be blank", "Issue cannot be blank"], entry.errors.full_messages.sort
+      assert_equal ["Comment cannot be blank", "Ticket cannot be blank"], entry.errors.full_messages.sort
     end
   end
 

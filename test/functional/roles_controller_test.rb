@@ -310,7 +310,7 @@ class RolesControllerTest < Redmine::ControllerTest
     # Details
     to_test = {
       :add_project => '"",Create project,Yes,No,No,No,""',
-      :add_issue_notes => 'Issue tracking,Add notes,Yes,Yes,Yes,Yes,Yes',
+      :add_issue_notes => 'Ticket tracking,Add notes,Yes,Yes,Yes,Yes,Yes',
       :manage_wiki => 'Wiki,Manage wiki,Yes,No,No,"",""'
     }
     to_test.each do |name, expected|

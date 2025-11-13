@@ -56,7 +56,7 @@ class MyPageTest < ApplicationSystemTestCase
 
     log_user('jsmith', 'jsmith')
     visit '/my/page'
-    select 'Watched issues', :from => 'Add'
+    select 'Watched tickets', :from => 'Add'
 
     assert page.has_css?('#block-issueswatched')
     assert_equal({'top' => ['issueswatched', 'issuesassignedtome']},
@@ -71,7 +71,7 @@ class MyPageTest < ApplicationSystemTestCase
 
     log_user('jsmith', 'jsmith')
     visit '/my/page'
-    select 'Issues', :from => 'Add'
+    select 'Tickets', :from => 'Add'
     # Select which query to display
     select query.name, :from => 'Custom query'
     click_on 'Save'

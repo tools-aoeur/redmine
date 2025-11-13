@@ -283,7 +283,7 @@ class TrackersControllerTest < Redmine::ControllerTest
       delete :destroy, params: {id: tracker.id}
     end
     assert_response :success
-    assert_match /The following projects have issues with this tracker:/, flash[:error]
+    assert_match /The following projects have tickets with this tracker:/, flash[:error]
     projects.each do |project|
       assert_match /#{project.name}/, flash[:error]
     end

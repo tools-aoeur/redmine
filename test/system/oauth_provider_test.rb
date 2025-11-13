@@ -26,7 +26,7 @@ class OauthProviderSystemTest < ApplicationSystemTestCase
       # anything when the redirect URI's host is 127.0.0.1.
       fill_in 'Redirect URI', with: 'http://127.0.0.1'
 
-      check 'View Issues'
+      check 'View tickets'
       click_button 'Create'
 
       assert_text "Application created."
@@ -37,7 +37,7 @@ class OauthProviderSystemTest < ApplicationSystemTestCase
     find 'h2', visible: true, text: /Oauth Test/
     find 'p code', visible: true, text: app.uid
     find 'p strong', visible: true, text: /will not be shown again/
-    find 'p code', visible: true, text: /View Issues/
+    find 'p code', visible: true, text: /View tickets/
 
     # scrape the clear text secret from the page
     app_secret = all(:css, 'p code')[1].text
@@ -78,7 +78,7 @@ class OauthProviderSystemTest < ApplicationSystemTestCase
 
       find 'h2', visible: true, text: 'Authorization required'
       find 'p', visible: true, text: /Authorize Oauth Test/
-      find '.oauth-permissions', visible: true, text: /View Issues/
+      find '.oauth-permissions', visible: true, text: /View tickets/
       find '.oauth-permissions', visible: true, text: /View project/
 
       click_button 'Authorize'
