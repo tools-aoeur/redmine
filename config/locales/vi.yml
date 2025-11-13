@@ -817,7 +817,6 @@ vi:
   permission_edit_messages: Sửa bài viết
   permission_edit_own_messages: Sửa bài viết cá nhân
   permission_delete_messages: Xóa bài viết
-  permission_delete_own_messages: Xóa bài viết cá nhân
   label_example: Ví dụ
   text_repository_usernames_mapping: "Lựa chọn hoặc cập nhật ánh xạ người dùng hệ thống với người dùng trong kho lưu trữ.\nKhi người dùng trùng hợp về tên và email sẽ được tự động ánh xạ."
   permission_delete_own_messages: Xóa thông điệp
@@ -1051,8 +1050,6 @@ vi:
     Tài khoản của bạn sẽ bị xóa vĩnh viễn, không thể khôi phục lại!
   error_session_expired: Phiên làm việc của bạn bị quá hạn, hãy đăng nhập lại
   text_session_expiration_settings: "Chú ý : Thay đổi các thiết lập này có thể gây vô hiệu hóa Session hiện tại"
-  setting_session_lifetime: Thời gian tồn tại lớn nhất của Session
-  setting_session_timeout: Thời gian vô hiệu hóa Session
   label_session_expiration: Phiên làm việc bị quá hạn
   permission_close_project: Đóng / Mở lại dự án
   button_close: Đóng
