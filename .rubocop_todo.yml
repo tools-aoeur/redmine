@@ -405,6 +405,7 @@ Rails/Exit:
     - 'config/environment.rb'
     - 'config/initializers/10-patches.rb'
     - 'config/routes.rb'
+    - 'lib/redmine/configuration.rb'
 
 # Configuration parameters: Include.
 # Include: **/app/models/**/*.rb
