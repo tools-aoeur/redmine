@@ -115,6 +115,7 @@ gem 'puma'
 gem 'rest-client'
 
 group :test do
+  gem 'minitest', '~> 5.0'
   gem 'factory_bot'
   gem "rails-dom-testing", '>= 2.3.0'
   gem 'mocha', '>= 2.0.1'
