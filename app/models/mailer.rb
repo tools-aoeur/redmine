@@ -560,6 +560,21 @@ class Mailer < ActionMailer::Base
       :subject => 'Redmine test'
   end
 
+  # Sends a custom email with provided subject and message content
+  def custom_email(user, subject, message)
+    @custom_message = message
+    mail :to => user,
+      :subject => subject
+  end
+
+  # Send a custom email to user with provided content
+  #
+  # Example:
+  #   Mailer.deliver_custom_email(user, title: 'Custom Subject', message: '<p>Content</p>')
+  def self.deliver_custom_email(user, options = {})
+    custom_email(user, options[:title], options[:message]).deliver_later
+  end
+
   # Send a test email to user. Will raise error that may occur during delivery.
   #
   # Exemple:
