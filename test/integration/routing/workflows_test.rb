@@ -23,10 +23,10 @@ class RoutingWorkflowsTest < Redmine::RoutingTest
   def test_workflows
     should_route 'GET /workflows' => 'workflows#index'
     should_route 'GET /workflows/edit' => 'workflows#edit'
-    should_route 'PATCH /workflows/update' => 'workflows#update'
+    should_route 'POST /workflows/update' => 'workflows#update'
 
     should_route 'GET /workflows/permissions' => 'workflows#permissions'
-    should_route 'PATCH /workflows/update_permissions' => 'workflows#update_permissions'
+    should_route 'POST /workflows/update_permissions' => 'workflows#update_permissions'
 
     should_route 'GET /workflows/copy' => 'workflows#copy'
     should_route 'POST /workflows/duplicate' => 'workflows#duplicate'
