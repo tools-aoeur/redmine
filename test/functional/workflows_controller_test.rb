@@ -145,10 +145,23 @@ class WorkflowsControllerTest < Redmine::ControllerTest
     end
   end
 
+  def test_edit_form_should_submit_via_post_to_update_workflows_path
+    get :edit, :params => {:role_id => 2, :tracker_id => 1}
+    assert_response :success
+    # The workflow form must use POST directly (not PATCH via _method override)
+    # to avoid Rack::MethodOverride failing to parse _method from an oversized
+    # POST body when many statuses generate thousands of form parameters.
+    # See: https://www.redmine.org/issues/42875
+    assert_select 'form#workflow_form[method=post][action=?]', '/workflows/update' do
+      assert_select 'input[name="_method"]', false,
+                    'Form should not include a hidden _method field; POST must be used directly'
+    end
+  end
+
   def test_post_edit
     WorkflowTransition.delete_all
 
-    patch :update, :params => {
+    post :update, :params => {
       :role_id => 2,
       :tracker_id => 1,
       :transitions => {
@@ -166,7 +179,7 @@ class WorkflowsControllerTest < Redmine::ControllerTest
   def test_post_edit_with_allowed_statuses_for_new_issues
     WorkflowTransition.delete_all
 
-    patch :update, :params => {
+    post :update, :params => {
       :role_id => 2,
       :tracker_id => 1,
       :transitions => {
@@ -183,7 +196,7 @@ class WorkflowsControllerTest < Redmine::ControllerTest
   def test_post_edit_with_additional_transitions
     WorkflowTransition.delete_all
 
-    patch :update, :params => {
+    post :update, :params => {
       :role_id => 2,
       :tracker_id => 1,
       :transitions => {
@@ -241,7 +254,54 @@ class WorkflowsControllerTest < Redmine::ControllerTest
     end
 
     assert_nothing_raised do
-      patch :update, :params => {
+      post :update, :params => {
+        :role_id => 2,
+        :tracker_id => 1,
+        :transitions => transitions_data
+      }
+    end
+    assert_response :found
+  end
+
+  def test_post_edit_with_large_number_of_statuses_via_post
+    # The workflow edit form submits via POST to avoid a routing failure
+    # caused by Rack::MethodOverride (Rack >= 3.1.14).
+    #
+    # When many statuses are configured, the form generates more parameters
+    # than Rack's default query parameter limit (4096). When the form used
+    # method: :patch (internally POST + hidden _method=patch),
+    # Rack::MethodOverride tried to parse the entire POST body to find
+    # _method, hit the limit, and silently dropped _method. The request
+    # stayed as POST, which did not match the PATCH-only route, resulting
+    # in a 404 "Page not found" error.
+    #
+    # The fix uses method: :post directly with a POST route, so
+    # Rack::MethodOverride does not need to find _method for routing.
+    #
+    # See: https://www.redmine.org/issues/42875
+    WorkflowTransition.delete_all
+
+    num_statuses = 40
+    transitions_data = {}
+
+    transitions_data['0'] = {}
+    (1..num_statuses).each do |status_id|
+      transitions_data['0'][status_id.to_s] = {'always' => '1'}
+    end
+
+    (1..num_statuses).each do |status_id_from| # rubocop:disable Style/CombinableLoops
+      transitions_data[status_id_from.to_s] = {}
+      (1..num_statuses).each do |status_id_to|
+        next if status_id_from == status_id_to
+
+        transitions_data[status_id_from.to_s][status_id_to.to_s] = {
+          'always' => '1', 'author' => '1', 'assignee' => '1'
+        }
+      end
+    end
+
+    assert_nothing_raised do
+      post :update, :params => {
         :role_id => 2,
         :tracker_id => 1,
         :transitions => transitions_data
@@ -399,7 +459,7 @@ class WorkflowsControllerTest < Redmine::ControllerTest
   def test_post_permissions
     WorkflowPermission.delete_all
 
-    patch :update_permissions, :params => {
+    post :update_permissions, :params => {
       :role_id => 1,
       :tracker_id => 2,
       :permissions => {

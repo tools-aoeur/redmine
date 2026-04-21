@@ -397,9 +397,9 @@ Rails.application.routes.draw do
   resources :workflows, only: [:index] do
     collection do
       get 'edit'
-      patch 'update'
+      post 'update', :action => 'update', :as => 'update'
       get 'permissions'
-      patch 'update_permissions'
+      post 'update_permissions'
       get 'copy'
       post 'duplicate'
     end
