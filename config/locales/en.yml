@@ -1369,6 +1369,10 @@ en:
   text_issue_conflict_resolution_overwrite: "Apply my changes anyway (previous notes will be kept but some changes may be overwritten)"
   text_issue_conflict_resolution_add_notes: "Add my notes and discard my other changes"
   text_issue_conflict_resolution_cancel: "Discard all my changes and redisplay %{link}"
+  text_issue_conflict_resolution_safe_merge: "Apply only my non-conflicting changes and keep intermediate updates"
+  text_issue_conflict_resolution_safe_merge_summary_title: "Fields that changed while you were editing:"
+  text_issue_conflict_resolution_safe_merge_summary: "The following fields were changed by another user: %{fields}. If you choose '%{option}', these fields will keep their intermediate values and won't be overwritten by your changes."
+  text_issue_conflict_resolution_safe_merge_no_conflicts: "No actual conflicting changes were identified in your edit. '%{option}' has been selected automatically."
   text_account_destroy_confirmation: "Are you sure you want to proceed?\nYour account will be permanently deleted, with no way to reactivate it."
   text_session_expiration_settings: "Warning: changing these settings may expire the current sessions including yours."
   text_project_closed: This project is closed and read-only.

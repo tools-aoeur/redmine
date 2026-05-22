@@ -1234,6 +1234,10 @@
   text_scm_config: 您可以在 config/configuration.yml 中設定 SCM 命令。請在編輯該檔案之後重新啟動 Redmine 應用程式。
   text_scm_command_not_available: SCM 命令無法使用。請檢查管理面板中的設定。
   text_issue_conflict_resolution_overwrite: "直接套用我的變更 (先前的筆記將會被保留，但是某些變更可能會被複寫)"
+  text_issue_conflict_resolution_safe_merge: "僅套用我沒有衝突的變更並保留期間內的更新"
+  text_issue_conflict_resolution_safe_merge_summary_title: "您編輯期間內已變更的欄位："
+  text_issue_conflict_resolution_safe_merge_summary: "下列欄位已被其他使用者變更：%{fields}。如果您選擇『%{option}』，這些欄位將保留其中途值，不會被您的變更覆寫。"
+  text_issue_conflict_resolution_safe_merge_no_conflicts: "這次編輯未識別出實際衝突，因此已自動選取『%{option}』。"
   text_issue_conflict_resolution_add_notes: "新增我的筆記並捨棄我其他的變更"
   text_issue_conflict_resolution_cancel: "捨棄我全部的變更並重新顯示 %{link}"
   text_account_destroy_confirmation: |-

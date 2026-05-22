@@ -219,6 +219,7 @@ class IssuesController < ApplicationController
         unless User.current.allowed_to?(:view_private_notes, @issue.project)
           @conflict_journals.reject!(&:private_notes?)
         end
+        @conflicting_fields_summary = build_conflicting_fields_summary
       end
     end
 
@@ -573,6 +574,8 @@ class IssuesController < ApplicationController
       when 'overwrite'
         issue_attributes = issue_attributes.dup
         issue_attributes.delete(:lock_version)
+      when 'safe_merge'
+        issue_attributes = safely_merge_issue_attributes(issue_attributes)
       when 'add_notes'
         issue_attributes = issue_attributes.slice(:notes, :private_notes)
       when 'cancel'
@@ -585,6 +588,47 @@ class IssuesController < ApplicationController
     @priorities = IssuePriority.active
     @allowed_statuses = @issue.new_statuses_allowed_to(User.current)
     true
+  end
+
+  def safely_merge_issue_attributes(issue_attributes)
+    issue_conflict_analyzer(issue_attributes).safe_merge_attributes
+  end
+
+  def issue_attributes_from_params
+    issue_attributes = params[:issue] || {}
+    issue_attributes = issue_attributes.to_unsafe_hash if issue_attributes.respond_to?(:to_unsafe_hash)
+    issue_attributes
+  end
+
+  def build_conflicting_fields_summary
+    conflicting_attribute_keys, conflicting_custom_field_keys = issue_conflict_analyzer.actual_conflicting_issue_change_keys
+
+    field_labels = []
+
+    conflicting_attribute_keys.each do |key|
+      field_labels << conflict_summary_attribute_label(key)
+    end
+
+    conflicting_custom_field_keys.each do |key|
+      custom_field = CustomField.find_by(id: key)
+      field_labels << (custom_field ? custom_field.name : "Custom field #{key}")
+    end
+
+    field_labels
+  end
+
+  def conflict_summary_attribute_label(key)
+    translation_key = "field_#{key.sub(/_id\z/, '')}"
+
+    if I18n.exists?(translation_key)
+      l(translation_key.to_sym)
+    else
+      key.humanize
+    end
+  end
+
+  def issue_conflict_analyzer(issue_attributes=issue_attributes_from_params)
+    IssueConflictAnalyzer.new(@issue, issue_attributes, params[:last_journal_id])
   end
 
   # Used by #new and #create to build a new issue from the params

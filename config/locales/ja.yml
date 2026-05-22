@@ -1023,6 +1023,10 @@ ja:
   field_multiple: 複数選択可
   setting_commit_cross_project_ref: 異なるプロジェクトのチケットの参照/修正を許可
   text_issue_conflict_resolution_add_notes: 自分の編集内容を破棄しコメントのみ追加
+  text_issue_conflict_resolution_safe_merge: 競合していない自分の変更のみを適用し、その間の更新は保持
+  text_issue_conflict_resolution_safe_merge_summary_title: "編集中に変更された項目:"
+  text_issue_conflict_resolution_safe_merge_summary: "次の項目は他のユーザーによって変更されました: %{fields}。『%{option}』を選ぶと、これらの項目は途中の値のまま保持され、あなたの変更では上書きされません。"
+  text_issue_conflict_resolution_safe_merge_no_conflicts: "今回の編集では実際の競合は確認されませんでした。そのため『%{option}』が自動的に選択されています。"
   text_issue_conflict_resolution_overwrite: 自分の編集内容の保存を強行 (他のユーザーの更新内容はコメントを除き上書きされます)
   notice_issue_update_conflict: このチケットを編集中に他のユーザーが更新しました。
   text_issue_conflict_resolution_cancel: 自分の編集内容を破棄し %{link} を再表示
