@@ -84,9 +84,11 @@ class IssueConflictAnalyzer
   def submitted_issue_change_keys
     custom_field_values = @issue_attributes[:custom_field_values] || @issue_attributes['custom_field_values'] || {}
 
-    submitted_attribute_keys = conflicting_relevant_issue_attribute_keys.select do |key|
+    relevant_attribute_keys = conflicting_relevant_issue_attribute_keys.select do |key|
       @issue_attributes.key?(key) || @issue_attributes.key?(key.to_sym)
-    end.select do |key|
+    end
+
+    submitted_attribute_keys = relevant_attribute_keys.select do |key|
       normalize_conflict_value(issue_attribute_value(@issue_attributes, key)) != normalize_conflict_value(baseline_issue_attribute_value(key))
     end
 

@@ -316,7 +316,7 @@ class IssuesControllerTransactionTest < Redmine::ControllerTest
     assert_equal 'intermediate subject', issue.subject
     assert_equal 4, issue.fixed_version_id
 
-    journal = Journal.order('id DESC').first
+    journal = Journal.order(id: :desc).first
     assert_equal 'safe_merge_conflict_resolution', journal.notes
     assert journal.details.any? {|detail| detail.prop_key == 'fixed_version_id'}
     assert journal.details.none? {|detail| detail.prop_key == 'subject'}
@@ -372,7 +372,7 @@ class IssuesControllerTransactionTest < Redmine::ControllerTest
     assert_equal 'intermediate subject', issue.subject
     assert_equal 4, issue.fixed_version_id
 
-    journal = Journal.order('id DESC').first
+    journal = Journal.order(id: :desc).first
     assert_equal 'safe_merge_conflict_resolution', journal.notes
     assert journal.details.any? {|detail| detail.prop_key == 'fixed_version_id'}
     assert journal.details.none? {|detail| detail.prop_key == 'subject'}
