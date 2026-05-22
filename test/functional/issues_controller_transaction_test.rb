@@ -406,11 +406,9 @@ class IssuesControllerTransactionTest < Redmine::ControllerTest
 
     assert_response :success
     assert_select 'div.conflict'
-    assert_select 'text_issue_conflict_resolution_safe_merge_summary_title' do
-      # Verify summary title is present
-    end
-    assert_equal [I18n.t(:field_subject)], assigns(:conflicting_fields_summary)
-    assert_no_match(/Priority/, assigns(:conflicting_fields_summary).join(', '))
+    assert_select 'div.box strong', :text => I18n.t(:text_issue_conflict_resolution_safe_merge_summary_title)
+    assert_select 'div.box', :text => /#{Regexp.escape(I18n.t(:field_subject))}/
+    assert_select 'div.box', :text => /#{Regexp.escape(I18n.t(:field_priority))}/, :count => 0
   end
 
   def test_update_stale_issue_should_ignore_unchanged_stale_form_values_in_conflicting_fields_summary
@@ -441,7 +439,7 @@ class IssuesControllerTransactionTest < Redmine::ControllerTest
 
     assert_response :success
     assert_select 'div.conflict'
-    assert assigns(:conflicting_fields_summary).blank?
+    assert_select 'div.box strong', :count => 0
     assert_select 'div.box', :text => /#{Regexp.escape(I18n.t(:text_issue_conflict_resolution_safe_merge_no_conflicts, :option => I18n.t(:text_issue_conflict_resolution_safe_merge)))}/
     assert_select 'input[name=conflict_resolution][value=safe_merge][checked=checked]'
   end
@@ -473,7 +471,7 @@ class IssuesControllerTransactionTest < Redmine::ControllerTest
 
     assert_response :success
     assert_select 'div.conflict'
-    assert assigns(:conflicting_fields_summary).blank?
+    assert_select 'div.box strong', :count => 0
     assert_select 'div.box', :text => /#{Regexp.escape(I18n.t(:text_issue_conflict_resolution_safe_merge_no_conflicts, :option => I18n.t(:text_issue_conflict_resolution_safe_merge)))}/
     assert_select 'input[name=conflict_resolution][value=safe_merge][checked=checked]'
   end
