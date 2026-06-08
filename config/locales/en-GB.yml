@@ -1331,6 +1331,10 @@ en-GB:
   text_issue_category_reassign_to: Reassign tickets to this category
   text_issue_conflict_resolution_add_notes: Add my notes and discard my other changes
   text_issue_conflict_resolution_cancel: Discard all my changes and redisplay %{link}
+  text_issue_conflict_resolution_auto_merge: Apply only my non-conflicting changes and keep intermediate updates
+  text_issue_conflict_resolution_auto_merge_summary_title: "Fields that changed while you were editing:"
+  text_issue_conflict_resolution_auto_merge_summary: "The following fields were changed by another user: %{fields}. If you choose '%{option}', these fields will keep their intermediate values and won't be overwritten by your changes."
+  text_issue_conflict_resolution_auto_merge_no_conflicts: "No actual conflicting changes were identified in your edit. '%{option}' has been selected automatically."
   text_issue_conflict_resolution_overwrite: Apply my changes anyway (previous notes will be kept but some changes may be
     overwritten)
   text_issue_updated: "Ticket %{id} has been updated by %{author}."

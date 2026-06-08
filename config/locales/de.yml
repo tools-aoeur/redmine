@@ -1370,6 +1370,10 @@ de:
   text_issue_category_reassign_to: Tickets dieser Kategorie zuordnen
   text_issue_conflict_resolution_add_notes: Nur meine Kommentare hinzufügen und meine übrigen Änderungen verwerfen
   text_issue_conflict_resolution_cancel: Meine Kommentare und Änderungen verwerfen und %{link} neu anzeigen
+  text_issue_conflict_resolution_auto_merge: Nur meine nicht in Konflikt stehenden Änderungen übernehmen und zwischenzeitliche Aktualisierungen beibehalten
+  text_issue_conflict_resolution_auto_merge_summary_title: "Felder, die während Ihrer Bearbeitung geändert wurden:"
+  text_issue_conflict_resolution_auto_merge_summary: "Die folgenden Felder wurden von einem anderen Benutzer geändert: %{fields}. Wenn Sie '%{option}' wählen, behalten diese Felder ihre zwischenzeitlichen Werte und werden nicht durch Ihre Änderungen überschrieben."
+  text_issue_conflict_resolution_auto_merge_no_conflicts: "Für Ihre Bearbeitung wurden keine tatsächlichen Konflikte festgestellt. '%{option}' wurde deshalb automatisch ausgewählt."
   text_issue_conflict_resolution_overwrite: Meine Änderungen trotzdem übernehmen (bisherige Kommentare bleiben bestehen,
     weitere Änderungen werden möglicherweise überschrieben)
   text_issue_updated: "Ticket %{id} wurde aktualisiert von %{author}."

@@ -1398,6 +1398,10 @@
   text_issue_category_reassign_to: 重新分派這些議題至其它分類
   text_issue_conflict_resolution_add_notes: "新增我的筆記並捨棄我其他的變更"
   text_issue_conflict_resolution_cancel: "捨棄我全部的變更並重新顯示 %{link}"
+  text_issue_conflict_resolution_auto_merge: "僅套用我沒有衝突的變更並保留期間內的更新"
+  text_issue_conflict_resolution_auto_merge_summary_title: "您編輯期間內已變更的欄位："
+  text_issue_conflict_resolution_auto_merge_summary: "下列欄位已被其他使用者變更：%{fields}。如果您選擇『%{option}』，這些欄位將保留其中途值，不會被您的變更覆寫。"
+  text_issue_conflict_resolution_auto_merge_no_conflicts: "這次編輯未識別出實際衝突，因此已自動選取『%{option}』。"
   text_issue_conflict_resolution_overwrite: "直接套用我的變更 (先前的筆記將會被保留，但是某些變更可能會被複寫)"
   text_issue_updated: "議題 %{id} 已被 %{author} 更新。"
   text_issues_destroy_confirmation: '確定刪除已選擇的議題？'
