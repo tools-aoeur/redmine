@@ -245,8 +245,14 @@ Style/EmptyStringInsideInterpolation:
 Style/FetchEnvVar:
   Enabled: false
 
+Style/EmptyClassDefinition:
+  Enabled: false
+  
 Style/EmptyElse:
   EnforcedStyle: empty
+
+Style/FileOpen:
+  Enabled: false
 
 Style/FormatString:
   Enabled: false
@@ -266,6 +272,9 @@ Style/FrozenStringLiteralComment:
 Style/GlobalStdStream:
   Enabled: false
 
+Style/HashAsLastArrayItem:
+  Enabled: false
+  
 Style/HashSyntax:
   EnforcedStyle: no_mixed_keys
   EnforcedShorthandSyntax: either
@@ -293,10 +302,19 @@ Style/NegatedIfElseCondition:
 Style/NumericPredicate:
   Enabled: false
 
+Style/OneClassPerFile:
+  Enabled: false
+
+Style/PartitionInsteadOfDoubleSelect:
+  Enabled: false
+
 Style/PerlBackrefs:
   Enabled: false
 
 Style/RaiseArgs:
+  Enabled: false
+
+Style/ReduceToHash:
   Enabled: false
 
 Style/RedundantCondition:
@@ -310,6 +328,9 @@ Style/RedundantRegexpEscape:
   Enabled: false
 
 Style/RedundantParentheses:
+  Enabled: false
+
+Style/SelectByKind:
   Enabled: false
 
 Style/Semicolon:
