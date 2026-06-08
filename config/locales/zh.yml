@@ -1322,6 +1322,10 @@ zh:
   text_issue_category_reassign_to: 为问题选择其它类别
   text_issue_conflict_resolution_add_notes: 添加说明并取消我的其他变更处理。
   text_issue_conflict_resolution_cancel: 取消我所有的变更并重新刷新显示 %{link} 。
+  text_issue_conflict_resolution_auto_merge: 仅应用我没有冲突的更改并保留期间的更新
+  text_issue_conflict_resolution_auto_merge_summary_title: "您编辑期间已更改的字段："
+  text_issue_conflict_resolution_auto_merge_summary: "以下字段已被其他用户更改：%{fields}。如果您选择“%{option}”，这些字段将保留其中间值，不会被您的更改覆盖。"
+  text_issue_conflict_resolution_auto_merge_no_conflicts: "在您的这次编辑中未发现实际冲突，因此已自动选择“%{option}”。"
   text_issue_conflict_resolution_overwrite: 直接套用我的变更 （先前的说明将被保留，但是某些变更内容可能会被覆盖）
   text_issue_updated: "问题 %{id} 已由 %{author} 更新。"
   text_issues_destroy_confirmation: '您确定要删除选中的问题吗？'

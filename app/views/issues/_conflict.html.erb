@@ -21,7 +21,20 @@
     </div>
   <% end %>
 </div>
+
+<% if @conflicting_fields_summary.present? %>
+  <div class="box" style="margin: 1em 0;">
+    <p><strong><%= l(:text_issue_conflict_resolution_auto_merge_summary_title) %></strong></p>
+    <p><%= l(:text_issue_conflict_resolution_auto_merge_summary, :fields => @conflicting_fields_summary.join(', '), :option => l(:text_issue_conflict_resolution_auto_merge)) %></p>
+  </div>
+<% else %>
+  <div class="box" style="margin: 1em 0;">
+    <p><%= l(:text_issue_conflict_resolution_auto_merge_no_conflicts, :option => l(:text_issue_conflict_resolution_auto_merge)) %></p>
+  </div>
+<% end %>
+
 <p>
+  <label><%= radio_button_tag 'conflict_resolution', 'auto_merge', @conflicting_fields_summary.blank? %> <%= l(:text_issue_conflict_resolution_auto_merge) %></label><br />
   <label><%= radio_button_tag 'conflict_resolution', 'overwrite' %> <%= l(:text_issue_conflict_resolution_overwrite) %></label><br />
   <% if @issue.notes.present? %>
   <label><%= radio_button_tag 'conflict_resolution', 'add_notes' %> <%= l(:text_issue_conflict_resolution_add_notes) %></label><br />
