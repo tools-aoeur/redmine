@@ -57,6 +57,7 @@ class IssuesControllerTransactionTest < Redmine::ControllerTest
 
     assert_select 'div.conflict'
     assert_select 'input[name=?][value=?]', 'conflict_resolution', 'overwrite'
+    assert_select 'input[name=?][value=?]', 'conflict_resolution', 'auto_merge'
     assert_select 'input[name=?][value=?]', 'conflict_resolution', 'add_notes'
     assert_select 'label' do
       assert_select 'input[name=?][value=?]', 'conflict_resolution', 'cancel'
@@ -280,6 +281,211 @@ class IssuesControllerTransactionTest < Redmine::ControllerTest
     assert_equal 'add_privates_notes_conflict_resolution', journal.notes
     assert_equal true, journal.private_notes
     assert journal.details.empty?
+  end
+
+  def test_update_stale_issue_with_auto_merge_should_keep_non_conflicting_changes_only
+    issue = Issue.find(1)
+    @request.session[:user_id] = 2
+
+    stale_lock_version = issue.lock_version
+    last_journal_id = issue.last_journal_id
+
+    issue.init_journal(User.find(1), 'intermediate update')
+    issue.subject = 'intermediate subject'
+    assert issue.save
+
+    assert_difference 'Journal.count' do
+      put(
+        :update,
+        :params => {
+          :id => issue.id,
+          :issue => {
+            :subject => 'user subject change',
+            :fixed_version_id => 4,
+            :notes => 'auto_merge_conflict_resolution',
+            :lock_version => stale_lock_version
+          },
+          :last_journal_id => last_journal_id,
+          :conflict_resolution => 'auto_merge'
+        }
+      )
+    end
+
+    assert_response :found
+    issue.reload
+    assert_equal 'intermediate subject', issue.subject
+    assert_equal 4, issue.fixed_version_id
+
+    journal = Journal.order(id: :desc).first
+    assert_equal 'auto_merge_conflict_resolution', journal.notes
+    assert journal.details.any? {|detail| detail.prop_key == 'fixed_version_id'}
+    assert journal.details.none? {|detail| detail.prop_key == 'subject'}
+  end
+
+  def test_update_stale_issue_with_auto_merge_after_conflict_form_should_keep_non_conflicting_changes_only
+    issue = Issue.find(1)
+    @request.session[:user_id] = 2
+
+    stale_lock_version = issue.lock_version
+    last_journal_id = issue.last_journal_id
+
+    issue.init_journal(User.find(1), 'intermediate update')
+    issue.subject = 'intermediate subject'
+    assert issue.save
+
+    put(
+      :update,
+      :params => {
+        :id => issue.id,
+        :issue => {
+          :subject => 'user subject change',
+          :fixed_version_id => 4,
+          :notes => 'auto_merge_conflict_resolution',
+          :lock_version => stale_lock_version
+        },
+        :last_journal_id => last_journal_id
+      }
+    )
+
+    assert_response :success
+    assert_select 'div.conflict'
+
+    assert_difference 'Journal.count' do
+      put(
+        :update,
+        :params => {
+          :id => issue.id,
+          :issue => {
+            :subject => 'user subject change',
+            :fixed_version_id => 4,
+            :notes => 'auto_merge_conflict_resolution',
+            :lock_version => stale_lock_version
+          },
+          :last_journal_id => last_journal_id,
+          :conflict_resolution => 'auto_merge'
+        }
+      )
+    end
+
+    assert_response :found
+    issue.reload
+    assert_equal 'intermediate subject', issue.subject
+    assert_equal 4, issue.fixed_version_id
+
+    journal = Journal.order(id: :desc).first
+    assert_equal 'auto_merge_conflict_resolution', journal.notes
+    assert journal.details.any? {|detail| detail.prop_key == 'fixed_version_id'}
+    assert journal.details.none? {|detail| detail.prop_key == 'subject'}
+  end
+
+  def test_update_stale_issue_should_show_conflicting_fields_summary
+    issue = Issue.find(1)
+    @request.session[:user_id] = 2
+
+    stale_lock_version = issue.lock_version
+    last_journal_id = issue.last_journal_id
+
+    issue.init_journal(User.find(1), 'intermediate update')
+    issue.subject = 'intermediate subject'
+    issue.priority = IssuePriority.find(6)
+    assert issue.save
+
+    put(
+      :update,
+      :params => {
+        :id => issue.id,
+        :issue => {
+          :subject => 'user subject change',
+          :fixed_version_id => 4,
+          :notes => 'user notes',
+          :lock_version => stale_lock_version
+        },
+        :last_journal_id => last_journal_id
+      }
+    )
+
+    assert_response :success
+    assert_select 'div.conflict'
+    assert_select 'div.conflict + div.box strong', :text => I18n.t(:text_issue_conflict_resolution_auto_merge_summary_title)
+    assert_select 'div.conflict + div.box', :text => /#{Regexp.escape(I18n.t(:field_subject))}/
+    assert_select 'div.conflict + div.box', :text => /#{Regexp.escape(I18n.t(:field_priority))}/, :count => 0
+  end
+
+  def test_update_stale_issue_should_ignore_unchanged_stale_form_values_in_conflicting_fields_summary
+    issue = Issue.find(1)
+    @request.session[:user_id] = 2
+
+    stale_lock_version = issue.lock_version
+    last_journal_id = issue.last_journal_id
+    original_subject = issue.subject
+
+    issue.init_journal(User.find(1), 'intermediate update')
+    issue.subject = 'intermediate subject'
+    assert issue.save
+
+    put(
+      :update,
+      :params => {
+        :id => issue.id,
+        :issue => {
+          :subject => original_subject,
+          :fixed_version_id => 4,
+          :notes => 'user notes',
+          :lock_version => stale_lock_version
+        },
+        :last_journal_id => last_journal_id
+      }
+    )
+
+    assert_response :success
+    assert_select 'div.conflict'
+    assert_select 'div.conflict + div.box strong', :count => 0
+    expected_auto_merge_message =
+      I18n.t(
+        :text_issue_conflict_resolution_auto_merge_no_conflicts,
+        :option => I18n.t(:text_issue_conflict_resolution_auto_merge)
+      )
+    assert_select 'div.conflict + div.box',
+                  :text => /#{Regexp.escape(expected_auto_merge_message)}/
+    assert_select 'input[name=conflict_resolution][value=auto_merge][checked=checked]'
+  end
+
+  def test_update_stale_issue_should_ignore_conflicting_values_that_already_match_current_issue_state
+    issue = Issue.find(1)
+    @request.session[:user_id] = 2
+
+    stale_lock_version = issue.lock_version
+    last_journal_id = issue.last_journal_id
+
+    issue.init_journal(User.find(1), 'intermediate update')
+    issue.subject = 'intermediate subject'
+    assert issue.save
+
+    put(
+      :update,
+      :params => {
+        :id => issue.id,
+        :issue => {
+          :subject => 'intermediate subject',
+          :fixed_version_id => 4,
+          :notes => 'user notes',
+          :lock_version => stale_lock_version
+        },
+        :last_journal_id => last_journal_id
+      }
+    )
+
+    assert_response :success
+    assert_select 'div.conflict'
+    assert_select 'div.conflict + div.box strong', :count => 0
+    expected_auto_merge_message =
+      I18n.t(
+        :text_issue_conflict_resolution_auto_merge_no_conflicts,
+        :option => I18n.t(:text_issue_conflict_resolution_auto_merge)
+      )
+    assert_select 'div.conflict + div.box',
+                  :text => /#{Regexp.escape(expected_auto_merge_message)}/
+    assert_select 'input[name=conflict_resolution][value=auto_merge][checked=checked]'
   end
 
   def test_update_stale_issue_with_cancel_conflict_resolution_should_redirect_without_updating
