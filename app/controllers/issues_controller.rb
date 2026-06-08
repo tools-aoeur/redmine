@@ -603,28 +603,7 @@ class IssuesController < ApplicationController
   end
 
   def build_conflicting_fields_summary
-    conflicting_attribute_keys, conflicting_custom_field_keys = issue_conflict_analyzer.actual_conflicting_issue_change_keys
-
-    field_labels = conflicting_attribute_keys.map do |key|
-      conflict_summary_attribute_label(key)
-    end
-
-    conflicting_custom_field_keys.each do |key|
-      custom_field = CustomField.find_by(id: key)
-      field_labels << (custom_field ? custom_field.name : "Custom field #{key}")
-    end
-
-    field_labels
-  end
-
-  def conflict_summary_attribute_label(key)
-    translation_key = "field_#{key.delete_suffix('_id')}"
-
-    if I18n.exists?(translation_key)
-      l(translation_key.to_sym)
-    else
-      key.humanize
-    end
+    issue_conflict_analyzer.actual_conflicting_fields.map(&:label)
   end
 
   def issue_conflict_analyzer(issue_attributes=issue_attributes_from_params)
