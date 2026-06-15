@@ -10,6 +10,10 @@ require 'active_support/core_ext/integer/time'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Rails 8.0 timezone preservation configuration
+  # This setting ensures timezone offset preservation when converting to time
+  ActiveSupport.to_time_preserves_timezone = true
+
   config.enable_reloading = false
   # config.action_view.cache_template_loading = true
 
