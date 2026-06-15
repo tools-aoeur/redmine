@@ -18,10 +18,6 @@ end
 # load rails/redmine
 require_relative '../config/environment'
 
-# Rails 8.0 timezone preservation configuration
-# This setting ensures timezone offset preservation when converting to time
-ActiveSupport.to_time_preserves_timezone = true
-
 require Rails.root.join('test/object_helpers').expand_path(__FILE__)
 include ObjectHelpers # rubocop:disable Style/MixinUsage
 include Redmine::QuoteReply::Helper  # rubocop:disable Style/MixinUsage
