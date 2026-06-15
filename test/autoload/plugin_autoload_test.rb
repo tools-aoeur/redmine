@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 require_relative '../test_helper'
 class Redmine::PluginAutoloadTest < ActiveSupport::TestCase
-  if ENV['REDMINE_PLUGINS_DIRECTORY']
+  if ENV['REDMINE_AUTOLOAD_TEST']
     def test_autoload
       assert_equal true, Object.const_defined?(:Foo)
     end
