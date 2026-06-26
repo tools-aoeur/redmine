@@ -31,15 +31,7 @@ module Redmine
       Rails.logger.info "Loading plugin: #{File.basename(@dir)}"
       return unless has_initializer?
 
-      if defined?(OpenTelemetry)
-        tracer = OpenTelemetry.tracer_provider.tracer('application.boot')
-        tracer.in_span("Plugin:init") do |span|
-          span.set_attribute('path', initializer)
-          load initializer
-        end
-      else
-        load initializer
-      end
+      load initializer
     end
 
     def to_s
