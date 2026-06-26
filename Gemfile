@@ -26,9 +26,9 @@ gem "requestjs-rails", "~> 0.0.13"
 
 #  Ruby Standard Gems
 gem 'csv', '~> 3.3.2'
-gem 'net-imap', '~> 0.5.7'
-gem 'net-pop', '~> 0.1.2'
-gem 'net-smtp', '~> 0.5.0'
+gem 'net-imap', '~> 0.5.7', require: 'net/imap'
+gem 'net-pop', '~> 0.1.2', require: 'net/pop'
+gem 'net-smtp', '~> 0.5.0', require: 'net/smtp'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:windows]
@@ -38,7 +38,7 @@ gem 'rotp', '>= 5.0.0'
 gem 'rqrcode'
 
 # HTML pipeline and sanitization
-gem "html-pipeline", "~> 2.13.2"
+gem "html-pipeline", "~> 2.13.2", require: 'html/pipeline'
 gem "sanitize", "~> 6.0"
 
 # Optional gem for LDAP authentication
