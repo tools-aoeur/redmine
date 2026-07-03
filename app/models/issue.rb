@@ -2135,7 +2135,7 @@ class Issue < ApplicationRecord
   end
 
   def roles_for_workflow(user)
-    roles = user.admin ? Role.all.to_a : user.roles_for_project(project)
+    roles = user.admin? ? Role.all.to_a : user.roles_for_project(project)
     roles.select(&:consider_workflow?)
   end
 end
