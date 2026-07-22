@@ -1181,6 +1181,71 @@ class MailerTest < ActiveSupport::TestCase
     end
   end
 
+  # Transient delivery error classification and retry behaviour
+
+  def test_transient_delivery_error_predicate_matches_transient_classes
+    assert Mailer.transient_delivery_error?(Net::ReadTimeout.new)
+    assert Mailer.transient_delivery_error?(Net::OpenTimeout.new)
+    assert Mailer.transient_delivery_error?(EOFError.new)
+    assert Mailer.transient_delivery_error?(Errno::ECONNRESET.new)
+    assert Mailer.transient_delivery_error?(Net::SMTPServerBusy.new("421 service unavailable"))
+  end
+
+  def test_transient_delivery_error_predicate_does_not_match_permanent_classes
+    assert_not Mailer.transient_delivery_error?(StandardError.new("delivery error"))
+    assert_not Mailer.transient_delivery_error?(Net::SMTPFatalError.new("550 No such user"))
+    assert_not Mailer.transient_delivery_error?(RuntimeError.new("unknown"))
+  end
+
+  def test_transient_smtp_error_raises_transient_delivery_error
+    mail = Mailer.test_email(User.find(1))
+    mail.delivery_method.stubs(:deliver!).raises(Net::ReadTimeout.new)
+
+    assert_raise Mailer::TransientDeliveryError do
+      mail.deliver
+    end
+  end
+
+  def test_transient_delivery_error_always_raised_regardless_of_raise_delivery_errors
+    mail = Mailer.test_email(User.find(1))
+    mail.delivery_method.stubs(:deliver!).raises(Errno::ECONNRESET.new)
+
+    # Even with raise_delivery_errors = false, transient errors must propagate
+    # so the job framework can schedule a retry.
+    ActionMailer::Base.raise_delivery_errors = false
+    assert_raise Mailer::TransientDeliveryError do
+      mail.deliver
+    end
+  ensure
+    ActionMailer::Base.raise_delivery_errors = false
+  end
+
+  def test_transient_delivery_error_preserves_original_cause
+    mail = Mailer.test_email(User.find(1))
+    original = Net::ReadTimeout.new
+    mail.delivery_method.stubs(:deliver!).raises(original)
+
+    error = assert_raise Mailer::TransientDeliveryError do
+      mail.deliver
+    end
+    assert_same original, error.cause
+  end
+
+  def test_permanent_recipient_error_does_not_raise_transient_delivery_error
+    mail = Mailer.test_email(User.find(1))
+    permanent_error = Net::SMTPFatalError.new("550 Mailbox unavailable")
+    mail.delivery_method.stubs(:deliver!).raises(permanent_error)
+
+    ActionMailer::Base.raise_delivery_errors = true
+    error = assert_raise Net::SMTPFatalError do
+      mail.deliver
+    end
+    assert_equal "550 Mailbox unavailable", error.message
+    assert_not_kind_of Mailer::TransientDeliveryError, error
+  ensure
+    ActionMailer::Base.raise_delivery_errors = false
+  end
+
   def test_with_synched_deliveries_should_yield_with_synced_deliveries
     ActionMailer::MailDeliveryJob.queue_adapter = ActiveJob::QueueAdapters::AsyncAdapter.new
 

@@ -28,10 +28,67 @@ class Mailer < ActionMailer::Base
   include Redmine::I18n
   include Roadie::Rails::Automatic
 
+  # Raised when a mail delivery fails due to a transient network or SMTP error.
+  # The delivery job retries on this exception; permanent recipient errors do not
+  # use this class and are therefore never retried.
+  TransientDeliveryError = Class.new(StandardError)
+
+  # Exception classes whose presence signals a retriable delivery failure.
+  TRANSIENT_DELIVERY_ERRORS = [
+    Net::ReadTimeout,
+    Net::OpenTimeout,
+    EOFError,
+    Errno::ECONNRESET,
+    Net::SMTPServerBusy,
+  ].freeze
+
+  # Number of times DeliveryJob retries a TransientDeliveryError before giving up.
+  # 7 attempts covers a worst-case throttle window of roughly 60 minutes given
+  # the backoff formula below.
+  DELIVERY_RETRY_ATTEMPTS = 7
+
+  # Base (in seconds) of the exponential backoff used between retry attempts.
+  # Sized for O365-style burst throttling, which can hold connections in
+  # timeout for several minutes.
+  DELIVERY_RETRY_BACKOFF_BASE = 30
+
+  # Upper bound (in seconds) of the random jitter added to each backoff delay,
+  # to avoid retry storms when many jobs fail at the same time.
+  DELIVERY_RETRY_JITTER_MAX = 60
+
+  # Computes the exponential backoff + jitter delay (in seconds) before the
+  # next retry of a failed delivery job.
+  DELIVERY_RETRY_WAIT = lambda do |executions|
+    (2**executions) * DELIVERY_RETRY_BACKOFF_BASE + rand(DELIVERY_RETRY_JITTER_MAX)
+  end
+
   class DeliveryJob < ActionMailer::MailDeliveryJob
     include Redmine::JobWrapper
 
     around_enqueue :keep_current_user
+
+    # Explicit queue declaration — consistent with ApplicationJob and survives
+    # changes to deliver_later_queue_name in additional_environment.rb.
+    queue_as :mailers
+
+    # Disable Sidekiq's own retry for this job: managed via retry_on below.
+    sidekiq_options retry: false if respond_to?(:sidekiq_options)
+
+    # Retry on transient SMTP/network failures with exponential backoff + jitter.
+    # See DELIVERY_RETRY_* constants above for the tuning parameters.
+    retry_on TransientDeliveryError,
+             wait: Mailer::DELIVERY_RETRY_WAIT,
+             attempts: Mailer::DELIVERY_RETRY_ATTEMPTS do |job, error|
+      original = error.cause || error
+      mailer, action = job.arguments[0], job.arguments[1]
+      Rails.logger.error(
+        "Mail delivery exhausted retries: " \
+        "job_id=#{job.job_id} mailer=#{mailer} action=#{action} " \
+        "error_class=#{original.class} " \
+        "error_message=#{original.message.inspect}"
+      )
+      raise original
+    end
   end
 
   self.delivery_job = DeliveryJob
@@ -758,6 +815,13 @@ class Mailer < ActionMailer::Base
       mail.raise_delivery_errors = true
       super
     rescue => e
+      # Re-raise transient network/SMTP errors so the delivery job can retry.
+      # We always re-raise regardless of raise_delivery_errors because the job
+      # framework needs the exception to schedule the retry.
+      if transient_delivery_error?(e)
+        raise TransientDeliveryError, "#{e.class}: #{e.message}", cause: e
+      end
+
       unhandled = true
       msg = e.message
       if msg.include?('No such user')
@@ -791,6 +855,13 @@ class Mailer < ActionMailer::Base
         retry
       end
     end
+  end
+
+  # Returns true when +error+ is a transient SMTP/network failure that the
+  # delivery job should retry.  Permanent recipient errors (e.g. "No such
+  # user") are explicitly excluded so they are never retried.
+  def self.transient_delivery_error?(error)
+    TRANSIENT_DELIVERY_ERRORS.any? {|klass| error.is_a?(klass)}
   end
 
   # Returns an array of email addresses to notify by
