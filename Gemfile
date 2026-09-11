@@ -30,6 +30,10 @@ gem 'net-imap', '~> 0.5.7', require: 'net/imap'
 gem 'net-pop', '~> 0.1.2', require: 'net/pop'
 gem 'net-smtp', '~> 0.5.0', require: 'net/smtp'
 
+# json 3.0.0 is not compatible with Rails 7.2.3.1 (https://github.com/rails/rails/pull/58601).
+# TODO: Remove this pin after updating to a Rails version that includes the fix.
+gem 'json', '< 3.0'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:windows]
 
