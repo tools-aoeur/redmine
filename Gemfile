@@ -1,21 +1,22 @@
 source 'https://rubygems.org'
 
-ruby '>= 3.2.0', '< 3.5.0'
+ruby '>= 3.4.0', '< 3.5.0'
 
 gem 'rails', '7.2.4'
 gem 'rouge', '~> 4.5'
 gem 'mini_mime', '~> 1.1.0'
 gem "actionpack-xml_parser"
 gem 'roadie-rails', '~> 3.3.0'
+gem 'css_parser', '>= 3.3.0', '< 4.0'
 gem 'marcel'
-gem 'mail', '~> 2.8.1'
+gem 'mail', '~> 2.9.1'
 gem 'nokogiri', '~> 1.19.1'
 gem 'i18n', '~> 1.14.1'
 gem 'rbpdf', '~> 1.21.4'
 gem 'addressable'
 gem 'rubyzip'
 gem 'propshaft', '~> 1.1.0'
-gem 'rack', '>= 3.1.3'
+gem 'rack', '>= 3.2.8'
 gem "stimulus-rails", "~> 1.3"
 gem "importmap-rails", "~> 2.0"
 gem 'commonmarker', '~> 2.8.0'
@@ -39,7 +40,7 @@ gem 'rqrcode'
 
 # HTML pipeline and sanitization
 gem "html-pipeline", "~> 2.13.2", require: 'html/pipeline'
-gem "sanitize", "~> 6.0"
+gem "sanitize", "~> 7.0.1"
 
 # Optional gem for LDAP authentication
 group :ldap do
@@ -80,7 +81,7 @@ if !File.exist?(gemfile_db_file) && File.exist?(database_file)
       when /postgresql/
         gem 'pg', '~> 1.5.3'
       when /sqlite3/
-        gem 'sqlite3', '~> 2.5.0'
+        gem 'sqlite3', '~> 2.10.2'
         # for REGEXP support with SQLite
         gem 'sqlite3_ar_regexp'
       when /sqlserver/
